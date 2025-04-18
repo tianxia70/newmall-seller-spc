@@ -1,0 +1,146 @@
+<template>
+  <div class="mr-2 flex justify-end lg:justify-between w-full lg:w-auto">
+    <a-space class="mr-0 lg:mr-5" size="medium">
+
+      <a-tooltip :content="'搜索'" >
+        <a-button :shape="'circle'" @click="() => appStore.searchOpen = true" class="hidden lg:inline">
+          <template #icon>
+            <icon-search />
+          </template>
+        </a-button>
+      </a-tooltip>
+
+      <a-tooltip :content="isFullScreen ? '关闭全屏' : '全屏'">
+        <a-button :shape="'circle'" class="hidden lg:inline" @click="screen">
+          <template #icon>
+            <icon-fullscreen-exit v-if="isFullScreen" />
+            <icon-fullscreen v-else />
+          </template>
+        </a-button>
+      </a-tooltip>
+
+      <!-- <a-trigger trigger="click">
+        <a-button :shape="'circle'">
+          <template #icon>
+            <a-badge
+              :count="5"
+              dot
+              :dotStyle="{ width: '5px', height: '5px' }"
+              v-if="messageStore.messageList.length > 0"
+            >
+              <icon-notification />
+            </a-badge>
+            <icon-notification v-else />
+          </template>
+        </a-button>
+
+        <template #content>
+          <message-notification />
+        </template>
+      </a-trigger> -->
+
+      <a-tooltip :content="'页面设置'">
+        <a-button :shape="'circle'" @click="() => appStore.settingOpen = true" class="hidden lg:inline">
+          <template #icon>
+            <icon-settings />
+          </template>
+        </a-button>
+      </a-tooltip>
+
+    </a-space>
+    <a-dropdown @select="handleSelect" trigger="hover">
+
+      <div class="flex items-center">
+          <a-avatar class="bg-gray text-3xl avatar" style="top: -1px;">
+          <!-- <img
+            :src="userInfo.avatar || $url + 'avatar.png'"
+          /> -->
+        </a-avatar>
+        <div class="user-name">admin</div>
+      </div>
+      
+      
+
+      <template #content>
+        <a-doption value="userCenter"><icon-user /> 个人中心</a-doption>
+        <!-- <a-doption value="clearCache"><icon-delete /> {{ $t('sys.clearCache') }}</a-doption> -->
+        <a-divider style="margin: 5px 0" />
+        <a-doption value="logout"><icon-poweroff /> 推出</a-doption>
+      </template>
+    </a-dropdown>
+
+    <a-modal v-model:visible="showLogoutModal" @ok="handleLogout" @cancel="handleLogoutCancel">
+      <template #title>推出弹窗</template>
+      <div>推出信息</div>
+    </a-modal>
+
+  </div>
+</template>
+
+
+<script setup>
+  import { ref, computed } from 'vue'
+  import { useAppStore } from '@/store'
+  import tool from '@/utils/tool'
+  import MessageNotification from './components/message-notification.vue'
+  import { useRouter } from 'vue-router'
+  import { useI18n } from 'vue-i18n'
+  import { Message } from '@arco-design/web-vue'
+
+  const { t } = useI18n()
+  // const userStore = useUserStore()
+  const appStore  = useAppStore()
+  const setting = ref(null)
+  const router = useRouter()
+  const isFullScreen = ref(false)
+  const showLogoutModal = ref(false)
+
+  // const userInfo = computed(() => userStore.userInfo)
+  const handleSelect = async (name) => {
+    if (name === 'userCenter') {
+      router.push({ name: 'userCenter'})
+    }
+    if (name === 'clearCache') {
+      // const res = await commonApi.clearAllCache()
+      tool.local.remove('dictData')
+      res.success && Message.success(res.message)
+    }
+    if (name === 'logout') {
+      showLogoutModal.value = true
+      document.querySelector('#app').style.filter = 'grayscale(1)'
+    }
+  }
+
+  const handleLogout = async () => {
+    await userStore.logout()
+    document.querySelector('#app').style.filter = 'grayscale(0)'
+    router.push({name:'login'})
+  }
+
+  const handleLogoutCancel = () => {
+    document.querySelector('#app').style.filter = 'grayscale(0)'
+  }
+
+  const screen = () => {
+    tool.screen(document.documentElement)
+    isFullScreen.value = !isFullScreen.value
+  }
+
+</script>
+<style scoped>
+:deep(.arco-avatar-text) {
+  top: 1px;
+}
+:deep(.arco-divider-horizontal) {
+  margin: 5px 0;
+}
+.avatar {
+  cursor: pointer; margin-top: 6px;
+}
+
+.user-name {
+  padding-left: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+</style>
