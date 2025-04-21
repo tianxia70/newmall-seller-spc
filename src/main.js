@@ -8,10 +8,14 @@ import i18n from '@/i18n'
 import directives from './directives'
 
 // 样式
+import 'vant/lib/index.css'
 import '@arco-design/web-vue/dist/arco.css';
 import './styles/skin.less'
 import './styles/index.css'
 import './styles/global.less'
+
+// 全局组件
+import globalComponents from "@/components";
 
 // 盘口配置
 async function bootstrap() {
@@ -26,6 +30,7 @@ async function bootstrap() {
   .use(store)
   .use(i18n)
   .use(directives)
+  .use(globalComponents);
 
   app.mount('#app')
 
@@ -38,6 +43,15 @@ async function bootstrap() {
   favicon.setAttribute('type', 'image/x-icon')
   favicon.setAttribute('href', config.favicon)
   document.head.appendChild(favicon)
+
+  // 自定义主题色
+  if (config.themeColor) {
+    appStore.changeColor(config.themeColor)
+  }
+  // 主题模式
+  if (config.themeMode) {
+    appStore.toggleMode(config.themeMode)
+  }
 }
 
 bootstrap()

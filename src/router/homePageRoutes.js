@@ -3,7 +3,7 @@ export const homePageRoutes = [
     name: 'dashboard',
     path: '/dashboard',
     meta: {
-      title: '工作台',
+      title: '仪表盘',
       icon: 'icon-dashboard',
       affix: true
     },

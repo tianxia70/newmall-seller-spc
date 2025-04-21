@@ -26,7 +26,7 @@
           <template v-for="res in resultList">
             <li
               class="flex items-center"
-              v-if="res && res.path.indexOf(':') === -1 && res.components && res?.meta?.type === 'M'"
+              v-if="res && res.path.indexOf(':') === -1 && res.path.length > 1 && res.components"
               @click="gotoPage(res)"
             >
               <div class="icon-box flex justify-center items-center">
@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-import {ref, onMounted, onUnmounted, nextTick} from 'vue'
+import {ref, onMounted, nextTick} from 'vue'
 import { useRouter } from 'vue-router'
 import { useAppStore } from "@/store"
 import { loadSiteConfig } from '@/utils'

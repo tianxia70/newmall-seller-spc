@@ -1,10 +1,11 @@
 import { defineStore } from 'pinia'
 import tool from '@/utils/tool'
+import { cloneDeep } from 'lodash'
 
 const defaultTag = [ { name: 'dashboard', title: '仪表盘', path: '/dashboard', affix: true } ]
 const useTagStore = defineStore('seller_pc_store_tag', {
   state: () => ({
-    tags: (! tool.local.get('tags') || tool.local.get('tags').length === 0 ) ? defaultTag : tool.local.get('tags')
+    tags: (! tool.local.get('tags') || tool.local.get('tags').length === 0 ) ? cloneDeep(defaultTag) : tool.local.get('tags')
   }),
 
   getters: {
@@ -62,8 +63,8 @@ const useTagStore = defineStore('seller_pc_store_tag', {
     },
 
     clearTags() {
-      this.tags = defaultTag
-      tool.local.set('tags', defaultTag)
+      this.tags = cloneDeep(defaultTag)
+      tool.local.set('tags', cloneDeep(defaultTag))
     },
   },
 })

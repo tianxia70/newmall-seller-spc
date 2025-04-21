@@ -1,29 +1,20 @@
+import { defineStore } from 'pinia'
+import { generate, getRgbStr } from '@arco-design/color'
+
 let defaultSetting = {
-  appName: 'dd',
+  appName: 'argos',
   mode: 'light',
   tag: true,
   menuCollapse: false,
-  menuWidth: 230,
+  menuWidth: 240,
   layout: 'classic',
   skin: 'mine',
-  i18n: false,
-  language: 'zh_CN',
-  animation: 'ma-slide-down',
-  color: '#165dff',
+  animation: 'ma-slide-right',
+  color: '#165DFF',
   settingOpen: false,
   searchOpen: false,
   registerWangEditorButtonFlag: false
 }
-
-import { defineStore } from 'pinia'
-// import tool from '@/utils/tool'
-import { generate, getRgbStr } from '@arco-design/color'
-
-// if (!tool.local.get('setting')) {
-//   tool.local.set('setting', defaultSetting)
-// } else {
-//   defaultSetting = tool.local.get('setting')
-// }
 
 document.body.setAttribute('arco-theme', defaultSetting.mode)
 document.body.setAttribute('mine-skin', defaultSetting.skin)
@@ -52,50 +43,31 @@ const useAppStore = defineStore('seller_pc_store_app', {
       document.body.setAttribute('arco-theme', this.mode)
       defaultSetting.mode = this.mode
       this.changeColor(this.color)
-      // tool.local.set('setting', defaultSetting)
     },
 
     toggleMenu(status) {
       this.menuCollapse = status
       defaultSetting.menuCollapse = this.menuCollapse
-      // tool.local.set('setting', defaultSetting)
     },
 
     toggleTag(status) {
       this.tag = status
       defaultSetting.tag = this.tag
-      // tool.local.set('setting', defaultSetting)
-    },
-
-    toggleI18n(i18n) {
-      this.i18n = i18n
-      defaultSetting.i18n = this.i18n
-      // tool.local.set('setting', defaultSetting)
     },
 
     toggleWs(val) {
       this.ws = val
       defaultSetting.ws = this.ws
-      // tool.local.set('setting', defaultSetting)
     },
 
     changeMenuWidth(width) {
       this.menuWidth = width
       defaultSetting.menuWidth = this.menuWidth
-      // tool.local.set('setting', defaultSetting)
     },
 
     changeLayout(layout) {
       this.layout = layout
       defaultSetting.layout = this.layout
-      // tool.local.set('setting', defaultSetting)
-    },
-
-    changeLanguage(language) {
-      this.language = language
-      defaultSetting.language = this.language
-      // tool.local.set('setting', defaultSetting)
-      window.location.reload()
     },
 
     changeColor(color) {
@@ -108,26 +80,23 @@ const useAppStore = defineStore('seller_pc_store_app', {
         document.body.style.setProperty(`--arcoblue-${index + 1}`, rgbStr)
       })
       defaultSetting.color = this.color
-      // tool.local.set('setting', defaultSetting)
     },
 
     changeAnimation(name) {
       this.animation = name
       defaultSetting.animation = this.animation
-      // tool.local.set('setting', defaultSetting)
     },
 
     useSkin(name) {
       this.skin = name
       defaultSetting.skin = this.skin
       document.body.setAttribute('mine-skin', this.skin)
-      // tool.local.set('setting', defaultSetting)
     },
 
     setRegisterWangEditorButtonFlag(value) {
       this.registerWangEditorButtonFlag = value
     }
-  },
+  }
 })
 
 export default useAppStore

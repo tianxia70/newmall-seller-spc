@@ -5,7 +5,7 @@
         <a v-for="tag in tagStore.tags" :key="tag.path" @contextmenu.prevent="openContextMenu($event, tag)"
           :class="route.fullPath == tag.path ? 'active' : ''"
           @click="tagJump(tag)">
-          {{ tag.customTitle ? tag.customTitle : appStore.i18n ? ($t('menus.' + tag.name).indexOf('.') > 0 ? tag.title : $t('menus.' + tag.name)) : tag.title }}
+          {{ tag.customTitle ? t(tag.customTitle) : t(tag.title) }}
           <icon-close class="tag-icon" v-if="!tag.affix" @click.stop="closeTag(tag)" />
         </a>
       </div>
@@ -27,16 +27,16 @@
         <ul class="ma-tags-more-contextmenu">
           <li @click="tagToolRefreshTag">
             <icon-refresh />
-            {{ $t('sys.tags.refresh') }}
+            {{ t('刷新') }}
           </li>
           <a-divider class="dropdown-divider" />
           <li @click="tagToolCloseCurrentTag">
             <icon-close-circle />
-            {{ $t('sys.tags.closeTag') }}
+            {{ t('关闭当前标签') }}
           </li>
           <li @click="tagToolCloseOtherTag">
             <icon-close-circle-fill />
-            {{ $t('sys.tags.closeOtherTag') }}
+            {{ t('关闭其他标签') }}
           </li>
         </ul>
       </template>
@@ -44,28 +44,28 @@
     <ul class="tags-contextmenu" v-if="contextMenuVisible" :style="{ left: left + 'px', top: top + 'px' }">
       <li @click="contextMenuRefreshTag">
         <icon-refresh />
-        {{ $t('sys.tags.refresh') }}
+        {{ t('刷新') }}
       </li>
       <li @click="contextMenuMaxSizeTag">
         <icon-fullscreen />
-        {{ $t('sys.tags.fullscreen') }}
+        {{ t('全屏') }}
       </li>
       <a-divider />
       <li @click="contextMenuCloseRightTag">
         <icon-arrow-right />
-        {{ $t('sys.tags.closeRightTag') }}
+        {{ t('关闭右侧标签') }}
       </li>
       <li @click="contextMenuCloseLeftTag">
         <icon-arrow-left />
-        {{ $t('sys.tags.closeLeftTag') }}
+        {{ t('关闭左侧标签') }}
       </li>
       <li @click="contextMenuCloseTag" :class="contextMenuItem.affix ? 'disabled' : ''">
         <icon-close-circle />
-        {{ $t('sys.tags.closeTag') }}
+        {{ t('关闭当前标签') }}
       </li>
       <li @click="contextMenuCloseOtherTag">
         <icon-close-circle-fill />
-        {{ $t('sys.tags.closeOtherTag') }}
+        {{ t('关闭其他标签') }}
       </li>
     </ul>
   </div>
@@ -77,9 +77,10 @@ import { useAppStore, useTagStore } from '@/store'
 import { useRoute, useRouter } from 'vue-router'
 import { addTag, closeTag, refreshTag } from '@/utils/common'
 import Sortable from "sortablejs"
-import { Message } from '@arco-design/web-vue'
-import { IconFaceFrownFill } from '@arco-design/web-vue/dist/arco-vue-icon'
+import { useI18n } from 'vue-i18n'
 import tool from '@/utils/tool'
+
+const { t } = useI18n()
 
 const route = useRoute()
 const router = useRouter()

@@ -1,20 +1,26 @@
 import { createPinia } from "pinia";
 import { createPersistedState } from 'pinia-plugin-persistedstate';
-import useLanguageStore from "./modules/language";
+import useCurrencyStore from './modules/currency'
 import useAppStore from "./modules/app";
 import useKeepAliveStore from './modules/keepAlive'
 import useTagStore from './modules/tag'
 import useIframeStore from './modules/iframe'
+import useSystemStore from './modules/system'
+import useUserStore from './modules/user'
+import useChatStore from './modules/chat'
 
 const pinia = createPinia();
 pinia.use(createPersistedState())
 
 export {
-  useLanguageStore,
   useAppStore,
+  useCurrencyStore,
   useKeepAliveStore,
   useTagStore,
-  useIframeStore
+  useIframeStore,
+  useSystemStore,
+  useUserStore,
+  useChatStore
 };
 
 export default pinia;

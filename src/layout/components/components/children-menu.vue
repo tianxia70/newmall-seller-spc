@@ -10,14 +10,14 @@
           <template #icon v-if="menu.meta.icon">
             <component :is="menu.meta.icon" :class="menu.meta.icon.indexOf('ma') > 0 ? 'icon' : ''" />
           </template>
-          {{ appStore.i18n ? ( $t(`menus.${menu.name}`).indexOf('.') > 0 ? menu.meta.title : $t(`menus.${menu.name}`) ) : menu.meta.title }}
+          {{ t(menu.meta.title) }}
         </a-menu-item>
         <a-sub-menu v-else :key="menu.name || menu.meta.name">
           <template #icon v-if="menu.meta.icon">
             <component :is="menu.meta.icon" :class="menu.meta.icon.indexOf('ma') > 0 ? 'icon' : ''" />
           </template>
           <template #title @click="routerPush(menu.path)">
-            {{ appStore.i18n ? ( $t(`menus.${menu.name}`).indexOf('.') > 0 ? menu.meta.title : $t(`menus.${menu.name}`) ) : menu.meta.title }}
+            {{ t(menu.meta.title) }}
           </template>
           <template v-if="menu.children">
             <children-menu v-model="menu.children" />
@@ -28,14 +28,16 @@
   </a-layout-content>
 </template>
 <script setup>
-  import { useTagStore, useAppStore } from '@/store'
+  import { useTagStore } from '@/store'
   import { useRouter } from 'vue-router'
+  import { useI18n } from 'vue-i18n'
+
+  const { t } = useI18n()
 
   defineProps({ modelValue: Array })
 
   const router = useRouter()
   const emits  = defineEmits(['go'])
-  const appStore = useAppStore()
   const tagStore = useTagStore()
 
   const routerPush = (menu) => {
