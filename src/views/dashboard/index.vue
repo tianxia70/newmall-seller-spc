@@ -1,5 +1,5 @@
 <template>
-  <div> {{ t('仪表盘') }}</div>
+  <div class="ma-content-block p-4"> {{ t('仪表盘') }}</div>
 </template>
 
 <script setup>

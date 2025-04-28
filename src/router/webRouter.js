@@ -12,6 +12,11 @@ const routes = [
     path: '/login',
     component: () => import('@/views/login-register/login/index.vue'),
     meta: { title: '登录' }
+  }, {
+    name: 'register',
+    path: '/register',
+    component: () => import('@/views/login-register/register/index.vue'),
+    meta: { title: '注册' }
   }
   , {
     path: "/:pathMatch(.*)*",

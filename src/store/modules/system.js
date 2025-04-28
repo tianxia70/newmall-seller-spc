@@ -7,7 +7,8 @@ import {
   sellerMallStatNoPushNum,
   notificationUnreadCount,
   addMoneyNotify,
-  notifyCallback
+  notifyCallback,
+  getCountryList
 } from '@/api/system'
 
 const useSystemStore = defineStore('seller_pc_store_system', {
@@ -24,7 +25,8 @@ const useSystemStore = defineStore('seller_pc_store_system', {
     message_count: 0,
     message_count_interval: null,
     has_money_in: false,
-    money_interval: null
+    money_interval: null,
+    countryList: []
   }),
 
   getters: {
@@ -166,6 +168,13 @@ const useSystemStore = defineStore('seller_pc_store_system', {
       if (this.money_interval) {
         clearInterval(this.money_interval)
         this.money_interval = null
+      }
+    },
+    getCountryListHandle() {
+      if (!this.countryList.length) {
+        getCountryList(0).then(res => {
+          this.countryList = res
+        })
       }
     }
   }

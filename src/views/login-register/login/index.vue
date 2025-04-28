@@ -99,7 +99,7 @@
           </div>
           <div class="footer-tips">
             <span>{{ t('如果您没有账号，') }}</span>
-            <a-link>{{ t('点击注册') }}</a-link>
+            <a-link @click="navigationTo('/register')">{{ t('点击注册') }}</a-link>
           </div>
         </div>
       </div>
@@ -254,7 +254,13 @@
     chatStore.setChatHandle()
 
     subLoading.value = false
-    navigationTo('/')
+
+    const redirect = route.query.redirect
+    if (redirect) {
+      navigationTo(redirect)
+    } else {
+      navigationTo('/')
+    }
   }
 
   const loginRequeset = () => {
@@ -392,7 +398,7 @@
             display: block;
             width: 0;
             height: 4px;
-            background-color: rgb(var(--primary-6));;
+            background-color: rgb(var(--primary-6));
             position: absolute;
             left: 0;
             bottom: 0;

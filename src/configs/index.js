@@ -25,7 +25,7 @@ export const loginMobileKey = 'seller_pc_login_mobile'
 export const APP_PROXY_PREFIX = '/api'
 
 // 路由白名单
-export const whiteRoute = ['login', 'mineDoc', 'interfaceList', 'interfaceCode', 'signature']
+export const whiteRoute = ['login', 'register']
 
 // 系统支持的多语言标识
 export const langMessages = [ 'en', 'zh-cn', 'zh-tw', 'es', 'pt', 'af', 'el', 'it', 'ru', 'tr', 'de', 'fr', 'ja', 'ko', 'ms', 'th', 'tl', 'ar', 'vi', 'hi', 'id']

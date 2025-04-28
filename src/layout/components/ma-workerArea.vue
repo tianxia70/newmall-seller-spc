@@ -1,6 +1,8 @@
 <template>
   <a-layout-content class="work-area customer-scrollbar relative">
     <div class="h-full" :class="{ 'p-3': $route.path.indexOf('maIframe') === -1 }">
+      <setting-step-block></setting-step-block>
+      
       <router-view v-slot="{ Component }">
         <transition :name="appStore.animation" mode="out-in">
           <keep-alive :include="keepStore.keepAlives">
@@ -16,6 +18,8 @@
 <script setup>
   import { useAppStore, useKeepAliveStore } from '@/store'
   import IframeView from './components/iframe-view.vue'
+  import settingStepBlock from './setting-step-block.vue'
+
   const appStore = useAppStore()
   const keepStore = useKeepAliveStore()
 </script>

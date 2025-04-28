@@ -142,3 +142,12 @@ export const notifyCallback = (params) =>
     method: 'get',
     params
   });
+
+/**
+ * 获取国家地区列表
+ */
+export const getCountryList = (parentId) =>
+  request({
+    url: `/user/area/list/${parentId}`,
+    method: 'get'
+  });

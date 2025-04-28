@@ -23,10 +23,10 @@ router.beforeEach(async (to, from, next) => {
   
   // 登录状态下
   if (token) {
-    // if (to.name === 'login') {
-    //   next({ path: defaultRoutePath })
-    //   return
-    // }
+    if (to.name === 'login') {
+      next({ path: '/' })
+      return
+    }
 
     if (!userStore.userInfo) {
       // 用户信息

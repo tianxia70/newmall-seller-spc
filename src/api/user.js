@@ -21,6 +21,28 @@ export const userLoginSeller = (params) =>
   });
 
 /**
+ * 注册验证码
+ */
+export const sendCaptchCodeNoneLogin = (params) =>
+  request({
+    url: '/user/sendCaptchCodeNoneLogin',
+    method: 'post',
+    params
+  });
+
+
+/**
+ * 用户注册-商家简易版
+ */
+
+export const sellerV2Register = (data) =>
+  request({
+    url: '/user/seller/v2/register',
+    method: 'post',
+    data
+  });
+
+/**
  * 用户信息
  */
 export const userCurrentGet = () =>
@@ -45,4 +67,14 @@ export const userWalletGetMyWallet = () =>
   request({
     url: '/user/wallet/getMyWallet',
     method: 'post'
+  });
+
+/**
+ * 实名认证
+ */
+export const kycApply = (params) =>
+  request({
+    url: '/user/kyc/apply',
+    method: 'post',
+    params
   });

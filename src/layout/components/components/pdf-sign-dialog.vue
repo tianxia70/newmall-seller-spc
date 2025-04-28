@@ -3,6 +3,8 @@
     <a-modal
       v-model:visible="signVisible"
       :width="700"
+      :mask-closable="false"
+      :esc-to-close="false"
       :closable="false"
     >
       <template #title>{{ t('签名') }}</template>
@@ -24,6 +26,8 @@
     <a-modal
       :visible="visible"
       :width="700"
+      :mask-closable="false"
+      :esc-to-close="false"
       :closable="false"
     >
       <template #title>{{ t('用户协议') }}</template>
