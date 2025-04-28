@@ -12,25 +12,42 @@
 </template>
 
 <script setup>
-  import { onMounted, computed } from 'vue'
-  import { useAppStore, useSystemStore, useChatStore } from '@/store'
+  import { onMounted, computed, watch } from 'vue'
+  import { useAppStore, useSystemStore, useChatStore, useUserStore } from '@/store'
+  import { getToken } from "@/utils/token-util.js";
 
+  const token = getToken()
   const appStore = useAppStore()
   const systemStore = useSystemStore()
   const chatStore = useChatStore()
+  const userStore = useUserStore()
 
   const customer_service_url = computed(() => systemStore.customer_service_url)
+  const sellerInfo = computed(() => userStore.sellerInfo)
+  const imDone = computed(() => chatStore.imDone)
 
   const serviceHandle = () => {
     window.open(customer_service_url.value)
   }
 
+  watch(
+    () => sellerInfo.value,
+    (val) => {
+      if (val && token && !imDone.value) {
+        // IM 配置
+        chatStore.loadImConfig()
+      }
+    }
+  , { immediate: true })
+
   onMounted(() => {
     // 系统配置
     systemStore.getSystemConfig()
 
-    // IM 配置
-    chatStore.loadImConfig()
+    if (!token) {
+      // IM 配置
+      chatStore.loadImConfig()
+    }
   })
 </script>
 

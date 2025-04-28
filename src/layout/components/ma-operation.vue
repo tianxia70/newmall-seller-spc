@@ -1,13 +1,14 @@
 <template>
   <div class="mr-2 flex justify-end lg:justify-between w-full lg:w-auto">
     <div class="flex items-center gap-5">
-      <div class="notice-content">
+      <div v-if="systemNotice" class="notice-content">
         <notice-bar
           left-icon="volume-o"
           scrollable
-          text="无论我们能活多久，我们能够享受的只有无法分割的此刻，此外别无其他。"
+          :text="systemNotice"
         />
       </div>
+      <message-content></message-content>
       <language-picker></language-picker>
       <currency-picker></currency-picker>
       <div class="user-content">
@@ -56,16 +57,19 @@
 
 <script setup>
   import { ref, computed } from 'vue'
-  import { useAppStore, useUserStore } from '@/store'
+  import { useAppStore, useUserStore, useSystemStore } from '@/store'
   import tool from '@/utils/tool'
   import { NoticeBar, Image as VanImage} from 'vant'
   import { userAvatarData } from '@/configs'
+  import messageContent from './message-content.vue'
 
   const appStore  = useAppStore()
+  const systemStore  = useSystemStore()
   const userStore = useUserStore()
   const isFullScreen = ref(false)
 
   const userInfo = computed(() => userStore.userInfo)
+  const systemNotice = computed(() => systemStore.system_notice)
 
   const defaultAvatar = new URL('@/assets/images/avatar/default_avatar.png', import.meta.url)
   const showAvatar = computed(() => {

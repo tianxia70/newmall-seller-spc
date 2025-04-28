@@ -39,6 +39,7 @@ function audioInit(){
 const getChatConfig = (isClient = false, business = false, userName = '') => {
   const userInfo = useUserStore().userInfo
   const sellerInfo = useUserStore().sellerInfo
+  
   let lang = i18n.global.locale.value || 'en'
 
   let config = {
@@ -60,7 +61,7 @@ const getChatConfig = (isClient = false, business = false, userName = '') => {
     }
   }
 
-  if (userInfo) {
+  if (userInfo && sellerInfo) {
     const {usercode, lastLoginTime} = userInfo
     const {id, roleName, recomUserName, createTime, avatar, imInitMessage} = sellerInfo
 

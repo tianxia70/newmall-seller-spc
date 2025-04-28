@@ -13,6 +13,9 @@
 
     <ma-button-menu />
 
+    <!-- 通知弹窗组件 -->
+    <notice-alert-dialog></notice-alert-dialog>
+
     <div class="max-size-exit" @click="tagExitMaxSize"><icon-close /></div>
   </a-layout-content>
 </template>
@@ -27,10 +30,9 @@
   import Setting from './setting.vue'
   import SystemSearch from './search.vue'
   import MaButtonMenu from './components/ma-buttonMenu.vue'
+  import NoticeAlertDialog from './components/notice-alert-dialog.vue'
 
   const appStore = useAppStore()
-
-  // const userStore = useUserStore()
 
   const settingRef = ref()
   const systemSearchRef = ref()

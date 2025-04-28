@@ -17,7 +17,7 @@
           <div v-else class="flex items-center justify-center p-5">{{ $t('暂无数据') }}</div>
         </div>
       </template>
-      <a-button class="area-code-btn">
+      <a-button class="area-code-btn" :class="{'ar': isArLang()}">
         {{ areaCodeValue }}
       </a-button>
     </a-dropdown>
@@ -38,7 +38,7 @@
   import { countries } from './config'
   import { useI18n } from 'vue-i18n'
   import tool from '@/utils/tool'
-  import { loadSiteConfig } from '@/utils'
+  import { loadSiteConfig, isArLang } from '@/utils'
   import { phoneAreaCodeKey, phoneAreaCodeDefalut } from '@/configs'
 
   const { t } = useI18n()
@@ -137,6 +137,11 @@
       justify-content: center;
       position: relative;
       color: var(--color-text-1);
+      &.ar {
+        &::after {
+          right: 100%;
+        }
+      }
       &::after {
         content: '';
         display: block;

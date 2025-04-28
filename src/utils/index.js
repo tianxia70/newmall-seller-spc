@@ -1,4 +1,5 @@
 import router from '@/router';
+import i18n from '@/i18n'
 
 export const loadSiteConfig = async (siteName = 'argos') => {
   try {
@@ -112,4 +113,20 @@ export const dateFormat = (date, format = "") => {
       }
   }
   return _format
+}
+
+// 是否是阿拉伯语
+export const isArLang = () => {
+  return i18n.global.locale.value === 'ar'
+}
+
+// 是否为真
+export const isTruthy = (value) => {
+  if (typeof value === 'boolean') {
+    return value === true;
+  }
+  if (typeof value === 'string') {
+    return value.toLowerCase() === 'true';
+  }
+  return false;
 }

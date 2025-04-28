@@ -4,6 +4,7 @@ import { Notification } from '@arco-design/web-vue';
 import { getToken } from "@/utils/token-util.js";
 import { isEmpty } from "lodash";
 import moment from "moment-timezone";
+import { Message } from '@arco-design/web-vue'
 import { useUserStore } from "@/store";
 import { useCurrencyStore } from '@/store'
 import qs from "qs";
@@ -179,11 +180,19 @@ function createRequest(service, externalService) {
     const headerConfig = {
       'x-api-language': i18n.global.locale.value || 'en', // 多语言
       'x-api-currency': currencyStore.currencyShort || 'USD', // 币种
-      'tz': moment.tz.guess(true) // 时区
     };
 
     if (token) {
       headerConfig["token"] = token;
+    }
+
+    if (!config.params) {
+      config.params = {}
+    }
+
+    config.params = {
+      ...config.params,
+      'tz': moment.tz.guess(true) // 时区
     }
 
     const configDefault = {
@@ -197,6 +206,11 @@ function createRequest(service, externalService) {
       timeout: 60000,
       data: {},
     };
+
+    // 如果是 FormData，必须删除 Content-Type 让浏览器自动加
+    if (config.data instanceof FormData) {
+      delete configDefault.headers['Content-Type'];
+    }
 
     delete config.headers;
     const option = Object.assign(configDefault, config);

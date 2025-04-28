@@ -1,0 +1,37 @@
+{
+  "id": "4678196",
+  "name": "商家PC",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "6789084",
+      "name": "通知管理",
+      "font_class": "tongzhiguanli-",
+      "unicode": "e634",
+      "unicode_decimal": 58932
+    },
+    {
+      "icon_id": "24684551",
+      "name": "清除、全部已读",
+      "font_class": "a-qingchuquanbuyidu",
+      "unicode": "e71c",
+      "unicode_decimal": 59164
+    },
+    {
+      "icon_id": "41706092",
+      "name": "闭眼睛",
+      "font_class": "biyanjing",
+      "unicode": "e727",
+      "unicode_decimal": 59175
+    },
+    {
+      "icon_id": "41706097",
+      "name": "眼睛",
+      "font_class": "yanjing",
+      "unicode": "e722",
+      "unicode_decimal": 59170
+    }
+  ]
+}

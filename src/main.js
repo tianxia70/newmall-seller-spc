@@ -10,6 +10,7 @@ import directives from './directives'
 // 样式
 import 'vant/lib/index.css'
 import '@arco-design/web-vue/dist/arco.css';
+import "./assets/iconfont/iconfont.css";
 import './styles/skin.less'
 import './styles/index.css'
 import './styles/global.less'

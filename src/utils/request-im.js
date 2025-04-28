@@ -2,6 +2,7 @@ import axios from 'axios'
 import { getToken } from "@/utils/token-util.js";
 import i18n from "@/i18n/index.js";
 import moment from "moment-timezone";
+import { useUserStore } from "@/store";
 
 // 获取时区信息
 moment.tz.setDefault('Asia/Shanghai')
@@ -52,6 +53,7 @@ service.interceptors.request.use(config => {
 
 // 响应拦截
 service.interceptors.response.use(res => {
+  const userStore = useUserStore();
   const { msg, data, errCode} = res.data
 
   if (res.config['returnType'] === 'origin') { // 原样返回
@@ -62,6 +64,9 @@ service.interceptors.response.use(res => {
       return Promise.resolve(res.data)
     case 200000: // 正确响应
       return Promise.resolve(res.data)
+    case 400003:
+      userStore.logout()
+      break
     default: // 直接弹出消息
       return Promise.reject(msg);
   }

@@ -13,7 +13,7 @@
             <div class="leading-6">AAAAAAAA</div>
           </a-col>
           <a-col :span="6" class="flex flex-col text-center">
-            <a-image :src="siteConfig.logo" class="rounded border" />
+            <a-image :src="siteConfig.logo" :preview="false" class="rounded border" />
           </a-col>
           <a-col :span="12" class="flex items-center pl-3 pr-3">
             皮肤描述

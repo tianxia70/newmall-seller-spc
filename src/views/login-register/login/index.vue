@@ -117,7 +117,7 @@
   import tool from '@/utils/tool'
   import { useSystemStore, useUserStore, useChatStore } from '@/store'
   import { phoneAreaCodeKey, phoneAreaCodeDefalut, loginTypeKey, loginEmailKey, loginMobileKey } from '@/configs'
-  import DocumentDialog from '../components/DocumentDialog.vue'
+  import DocumentDialog from '../components/document-dialog.vue'
   import { Message } from '@arco-design/web-vue'
   import { userLogin, userLoginSeller } from '@/api/user'
 

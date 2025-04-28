@@ -5,6 +5,7 @@ import { removeToken } from '@/utils/token-util.js'
 import { navigationTo } from '@/utils'
 import useTagStore from './tag'
 import useChatStore from './chat'
+import useSystemStore from './system'
 
 const useUserStore = defineStore('seller_pc_store_user', {
   state: () => ({ 
@@ -38,13 +39,28 @@ const useUserStore = defineStore('seller_pc_store_user', {
     async getAllInfo() { // 获取全部信息
       await this.getUserInfo()
       await this.getSellerInfo()
-      await this.getWalletInfo()
     },
     logout() {
+      // 系统tag
       const tagStore = useTagStore()
       tagStore.clearTags()
+
+      // 关闭im
       useChatStore().closeChatHandle()
 
+      // 关闭用户提示请求
+      useSystemStore().clearUserNotice()
+
+      // 关闭未处理订单数量请求
+      useSystemStore().clearOrderCount()
+
+      // 关闭站内信数量请求
+      useSystemStore().clearMessageCount()
+
+      // 关闭变帐通知请求
+      useSystemStore().clearMoneyReqset()
+      
+      // 清除token
       removeToken()
       navigationTo('/login')
     }

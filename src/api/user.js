@@ -30,7 +30,7 @@ export const userCurrentGet = () =>
   });
 
 /**
- * 获取usdt余额 - (没有做币种转换，已弃用)
+ * 获取usdt余额 - USD
  */
 export const userWalletGetUsdt = () =>
   request({
@@ -39,7 +39,7 @@ export const userWalletGetUsdt = () =>
   });
 
 /**
- * 获取usdt余额 - 币种切换用
+ * 获取usdt余额 - 带币种参数
  */
 export const userWalletGetMyWallet = () =>
   request({
