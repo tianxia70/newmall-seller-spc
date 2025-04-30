@@ -1537,5 +1537,8 @@ export default {
   "关闭当前标签": "Mevcut sekmeyi kapat",
   "关闭其他标签": "Diğer sekmeleri kapat",
   "访问的页面不存在": "Eriştiğiniz sayfa mevcut değil",
-  "登录中...": "Giriş yapılıyor..."
+  "登录中...": "Giriş yapılıyor...",
+  "保存": "kaydetmek",
+  "上拉加载更多": "Daha fazlasını yüklemek için yukarı çekin",
+  "没有更多了": "Daha fazla yok"
 }

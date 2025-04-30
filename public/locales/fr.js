@@ -1536,5 +1536,8 @@ export default {
   "关闭当前标签": "Fermer l'onglet actuel",
   "关闭其他标签": "Fermer les autres onglets",
   "访问的页面不存在": "La page à laquelle vous accédez n'existe pas",
-  "登录中...": "Connexion..."
+  "登录中...": "Connexion...",
+  "保存": "sauvegarder",
+  "上拉加载更多": "Tirez vers le haut pour charger plus",
+  "没有更多了": "Pas plus"
 }

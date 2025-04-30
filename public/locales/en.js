@@ -1541,5 +1541,8 @@ export default {
   "关闭当前标签": "Close the current tab",
   "关闭其他标签": "Close other tabs",
   "访问的页面不存在": "The page you are visiting does not exist",
-  "登录中...": "Logging in..."
+  "登录中...": "Logging in...",
+  "保存": "Save",
+  "上拉加载更多": "Pull up to load more",
+  "没有更多了": "No more"
 }

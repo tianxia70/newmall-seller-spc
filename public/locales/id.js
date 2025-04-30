@@ -1537,5 +1537,8 @@ export default {
   "关闭当前标签": "Tutup tab saat ini",
   "关闭其他标签": "Tutup tab lainnya",
   "访问的页面不存在": "Halaman yang Anda akses tidak ada",
-  "登录中...": "Masuk..."
+  "登录中...": "Masuk...",
+  "保存": "menyimpan",
+  "上拉加载更多": "Tarik ke atas untuk memuat lebih banyak",
+  "没有更多了": "Tidak ada lagi"
 }

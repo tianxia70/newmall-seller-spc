@@ -1536,5 +1536,8 @@ export default {
   "关闭当前标签": "Schließen Sie den aktuellen Tab",
   "关闭其他标签": "Andere Tabs schließen",
   "访问的页面不存在": "Die Seite, auf die Sie zugreifen, existiert nicht",
-  "登录中...": "Anmelden..."
+  "登录中...": "Anmelden...",
+  "保存": "speichern",
+  "上拉加载更多": "Zum Laden nach oben ziehen",
+  "没有更多了": "Nicht mehr"
 }

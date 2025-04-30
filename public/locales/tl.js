@@ -1536,5 +1536,8 @@ export default {
   "关闭当前标签": "Isara ang kasalukuyang tab",
   "关闭其他标签": "Isara ang iba pang mga tab",
   "访问的页面不存在": "Ang page na iyong ina-access ay wala",
-  "登录中...": "Nagla-log in..."
+  "登录中...": "Nagla-log in...",
+  "保存": "iligtas",
+  "上拉加载更多": "Hilahin pataas para mag-load pa",
+  "没有更多了": "Wala na"
 }

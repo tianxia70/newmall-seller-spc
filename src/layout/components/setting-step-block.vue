@@ -32,6 +32,7 @@
               :after-read="(file) => afterRead(file, 'avatar')"
               :max-count="1"
               :readonly="false"
+              :preview-full-image="false"
               :max-size="10 * 1024 * 1024"
               @oversize="onOversize"
             />
@@ -68,6 +69,7 @@
                 :max-count="1"
                 :after-read="(file) => afterRead(file, item.key)"
                 :max-size="10 * 1024 * 1024"
+                :preview-full-image="false"
                 @oversize="onOversize"
               />
               <p>{{ t(item.title) }}</p>
@@ -210,7 +212,7 @@
     const sellerSettingFlag = Number(sellerInfo.value.sellerSettingFlag)
     const sellerKycFlag = Number(sellerInfo.value.sellerKycFlag)
 
-    const needSet = ['argos', 'oufan', 'tiktok6', 'tiktok7',  'tiktok10', 'family-wholesale-group'].includes(appName)
+    const needSet = ['oufan', 'tiktok6', 'tiktok7',  'tiktok10', 'family-wholesale-group'].includes(appName)
 
     if (needSet && !sellerKycFlag && !sellerSettingFlag) {
       systemStore.getCountryListHandle()

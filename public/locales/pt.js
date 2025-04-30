@@ -1537,5 +1537,8 @@ export default {
   "关闭当前标签": "Feche o separador atual",
   "关闭其他标签": "Fechar outras abas",
   "访问的页面不存在": "A página que está a aceder não existe",
-  "登录中...": "Efetuando login..."
+  "登录中...": "Efetuando login...",
+  "保存": "salvar",
+  "上拉加载更多": "Puxe para cima para carregar mais",
+  "没有更多了": "Não mais"
 }

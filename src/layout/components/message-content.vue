@@ -89,70 +89,84 @@
         case 'inbox_finish_order':
           item.title = 'One order finished'
           item.content = t(item.title + ' content', varObj)
+          item.title = t(item.title)
           break;
         case 'inbox_freeze_seller_money':
           item.title = 'Freeze seller because of violation'
           item.content = t(item.title + ' content', varObj)
+          item.title = t(item.title)
           break;
         case 'inbox_new_order_submitted':
           item.title = 'New Order'
           item.content = t('新订单内容')
+          item.title = t(item.title)
           break;
         case 'inbox_order_shipped_overtime':
           item.title = 'Order overtime'
           item.content = t(item.content)
+          item.title = t(item.title)
           break;
         case 'inbox_reply_buyer_im':
           item.title = 'Buyer Consult from Customer Service'
           item.content = t(item.content)
+          item.title = t(item.title)
           break;
         case 'inbox_seller_credit_updated':
           item.title = 'Your Seller-Credit updated'
           item.content = t(item.title + ' content', varObj)
+          item.title = t(item.title)
           break;
         case 'inbox_unfreeze_seller_money':
           item.title = 'UnFreeze seller'
           item.content = t(item.title + ' content', varObj)
+          item.title = t(item.title)
           break;
         case 'inbox_withdraw_success':
           item.title = 'Withdraw Success Notify'
           item.content = t(item.title + ' content', varObj)
+          item.title = t(item.title)
           break;
         case 'inbox_recharge_success':
           item.title = 'Recharge Pass Notify'
           item.content = t(item.title + ' content', varObj)
+          item.title = t(item.title)
           break;
         case 'inbox_store_audit_success':
           item.title = 'Store certification passed'
           item.content = t(item.title + ' content', varObj)
+          item.title = t(item.title)
           break;
         case 'inbox_store_audit_fail':
           item.title = 'Store authentication failed'
           item.content = t(item.title + ' content', varObj)
+          item.title = t(item.title)
           break;
         case 'inbox_order_purchased_overtime':
           item.title = 'Order purchase overtime'
           item.content = t(item.title + ' content', varObj)
+          item.title = t(item.title)
           break;
         case 'inbox_store_compliant_success':
           item.title = 'Store complaint notification'
           item.content = t(item.title + ' content', varObj)
+          item.title = t(item.title)
           break;
         case 'inbox_bonus_success':
           item.title = 'Bonus Notification'
           item.content = t(item.title + ' content', varObj)
+          item.title = t(item.title)
           break;
         case 'inbox_recharge_audit_fail':
           item.title = 'Deposit failure notification'
           item.content = t(item.title + ' content', varObj)
+          item.title = t(item.title)
           break;
         case 'inbox_withdrawal_audit_fail':
           item.title = 'Withdrawal failure notification'
           item.content = t(item.title + ' content', varObj)
+          item.title = t(item.title)
           break;
       }
-
-      item.title = t(item.title)
 
       // 订单采购超时提醒、通知
       if (item.bizType === 'inbox_notify_order_purchas') {

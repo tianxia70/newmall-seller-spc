@@ -1539,5 +1539,8 @@ export default {
   "关闭当前标签": "Đóng tab hiện tại",
   "关闭其他标签": "Đóng các tab khác",
   "访问的页面不存在": "Trang bạn đang truy cập không tồn tại",
-  "登录中...": "Đang đăng nhập..."
+  "登录中...": "Đang đăng nhập...",
+  "保存": "cứu",
+  "上拉加载更多": "Kéo lên để tải thêm",
+  "没有更多了": "Không còn nữa"
 }

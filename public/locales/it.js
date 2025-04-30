@@ -1536,5 +1536,8 @@ export default {
   "关闭当前标签": "Chiudi la scheda corrente",
   "关闭其他标签": "Chiudi altre schede",
   "访问的页面不存在": "La pagina a cui stai accedendo non esiste",
-  "登录中...": "Accesso in corso..."
+  "登录中...": "Accesso in corso...",
+  "保存": "salva",
+  "上拉加载更多": "Tira su per caricare altro",
+  "没有更多了": "Non più"
 }

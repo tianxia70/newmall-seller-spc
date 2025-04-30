@@ -1537,5 +1537,8 @@ export default {
   "关闭当前标签": "Cerrar la pestaña actual",
   "关闭其他标签": "Cerrar otras pestañas",
   "访问的页面不存在": "La página a la que estás accediendo no existe",
-  "登录中...": "Iniciando sesión..."
+  "登录中...": "Iniciando sesión...",
+  "保存": "ahorrar",
+  "上拉加载更多": "Tire hacia arriba para cargar más",
+  "没有更多了": "No más"
 }

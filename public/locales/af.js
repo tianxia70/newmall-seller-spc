@@ -1538,5 +1538,8 @@ export default {
   "关闭当前标签": "Maak die huidige oortjie toe",
   "关闭其他标签": "Maak ander oortjies toe",
   "访问的页面不存在": "Die bladsy waartoe jy toegang verkry, bestaan ​​nie",
-  "登录中...": "Meld tans aan..."
+  "登录中...": "Meld tans aan...",
+  "保存": "stoor",
+  "上拉加载更多": "Trek op om meer te laai",
+  "没有更多了": "Nie meer nie"
 }

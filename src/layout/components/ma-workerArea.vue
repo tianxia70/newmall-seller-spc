@@ -1,6 +1,6 @@
 <template>
   <a-layout-content class="work-area customer-scrollbar relative">
-    <div class="h-full" :class="{ 'p-3': $route.path.indexOf('maIframe') === -1 }">
+    <div :class="{ 'p-3': $route.path.indexOf('maIframe') === -1 }" style="min-height: 100%;">
       <setting-step-block></setting-step-block>
       
       <router-view v-slot="{ Component }">

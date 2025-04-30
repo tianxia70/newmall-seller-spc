@@ -198,3 +198,31 @@ export const getType = (obj) => {
   const type = typeStr.slice(8, -1); // 截取 "[object Xxx]" 中的 "Xxx"
   return type.toLowerCase()
 }
+
+
+export const getImageSize = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.readAsDataURL(file);
+
+    reader.onload = function () {
+      const img = new Image()
+      img.src = reader.result;
+
+      img.onload = function () {
+        resolve({
+          width: img.width,
+          height: img.height
+        });
+      };
+
+      img.onerror = function (err) {
+        reject(err);
+      };
+    };
+
+    reader.onerror = function (err) {
+      reject(err);
+    }
+  })
+}
