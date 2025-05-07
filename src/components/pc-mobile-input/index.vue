@@ -34,7 +34,7 @@
 
 <script setup>
   import { ref, computed, onMounted, watch } from 'vue'
-  import { cloneDeep } from 'lodash'
+  import { cloneDeep } from 'lodash-es'
   import { countries } from './config'
   import { useI18n } from 'vue-i18n'
   import tool from '@/utils/tool'

@@ -9,7 +9,10 @@
               :after-read="(file) => afterRead(file, 'avatar')"
               :max-count="1"
               :readonly="false"
-              :preview-full-image="false"
+              :preview-options="{
+                closeOnClickOverlay: true,
+                closeable: true
+              }"
               :max-size="10 * 1024 * 1024"
               @oversize="onOversize"
             />
@@ -74,7 +77,7 @@
   import { sellerUpdate } from '@/api/seller'
   import { useI18n } from 'vue-i18n'
   import { useUserStore } from '@/store'
-  import { cloneDeep } from 'lodash'
+  import { cloneDeep } from 'lodash-es'
 
   const { t } = useI18n()
   const userStore = useUserStore()

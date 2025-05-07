@@ -924,7 +924,7 @@ export default {
   "words": "palavras",
   "You": "Você",
   "You have a new customer inquiry.": "Você tem novas consultas de clientes.",
-  "You have an order that has not been shipped over time，which has violated the platform‘s merchant rules，please deal with it as soon as possible！": "Você tem uma ordem que não é enviada dentro do prazo, que viola as regras do comerciante da plataforma.Por favor, lide o mais rápido possível.",
+  "You have an order that has not been shipped over time，which has violated the platform's merchant rules，please deal with it as soon as possible！": "Você tem uma ordem que não é enviada dentro do prazo, que viola as regras do comerciante da plataforma.Por favor, lide o mais rápido possível.",
   "Your Seller-Credit updated": "Sua pontuação de crédito de comerciante foi atualizada",
   "Your Seller-Credit updated content": "Prezado comerciante, como seu pedido não é processado há muito tempo, ele afetou os direitos e interesses do comprador, então decidimos deduzir {creditScore} pontos de crédito como punição. Por favor, mantenha a reputação da loja para não afetá-la e restaure seus pontos de reputação o mais rápido possível.",
   "新订单内容": "Há um novo pedido em sua loja.Por favor, lide com o pedido no tempo.",
@@ -1540,5 +1540,16 @@ export default {
   "登录中...": "Efetuando login...",
   "保存": "salvar",
   "上拉加载更多": "Puxe para cima para carregar mais",
-  "没有更多了": "Não mais"
+  "没有更多了": "Não mais",
+  "请上传头像": "Por favor, carregue seu avatar",
+  "实名认证": "Verificação de identidade",
+  "点击认证": "Clique para verificar",
+  "认证状态": "Estado de verificação",
+  "请您完善店铺信息，以保证顾客能正常访问到您的店铺": "Por favor, complete as informações da sua loja para garantir que os clientes possam aceder à sua loja normalmente",
+  "请完善您的身份认证信息，以保证顾客能正常访问到您的店铺": "Por favor, complete as informações de verificação de identidade para garantir que os clientes possam aceder à sua loja normalmente",
+  "您的身份认证信息正在审核中，请您耐心等待": "As informações de verificação de identidade estão a ser verificadas. Por favor, aguarde",
+  "您的身份认证信息审核失败，请您重新认证": "As informações de verificação de identidade não foram aprovadas. Por favor, verifique novamente",
+  "您店铺中上架商品数量不足，请前往添加": "O número de produtos na sua loja é insuficiente. Por favor, adicione mais produtos",
+  "立即认证": "Verificar agora",
+  "重新认证": "Verificar novamente"
 }

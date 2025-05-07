@@ -78,3 +78,31 @@ export const kycApply = (params) =>
     method: 'post',
     params
   });
+
+/**
+ * 获取实名认证信息
+ */
+export const kycGetInfo = () =>
+  request({
+    url: '/user/kyc/get',
+    method: 'get'
+  });
+
+/**
+ * 修改用户头像
+ */
+export const refreshAvatar = (data) =>
+  request({
+    url: '/user/refreshAvatar',
+    method: 'post',
+    data
+  });
+
+/**
+ * 商品利润比例
+ */
+export const sellerGetGoodsProfit = () =>
+  request({
+    url: '/user/seller/getGoodsProfit',
+    method: 'get'
+  });

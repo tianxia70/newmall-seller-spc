@@ -924,7 +924,7 @@ export default {
   "words": "단어",
   "You": "너",
   "You have a new customer inquiry.": "새로운 고객 문의가 있습니다.",
-  "You have an order that has not been shipped over time，which has violated the platform‘s merchant rules，please deal with it as soon as possible！": "시간 제한 내에 배송되지 않는 주문이있어 플랫폼 판매자의 규칙을 위반합니다.가능한 빨리 처리하십시오.",
+  "You have an order that has not been shipped over time，which has violated the platform's merchant rules，please deal with it as soon as possible！": "시간 제한 내에 배송되지 않는 주문이있어 플랫폼 판매자의 규칙을 위반합니다.가능한 빨리 처리하십시오.",
   "Your Seller-Credit updated": "가맹점 신용 점수가 업데이트되었습니다",
   "Your Seller-Credit updated content": "판매자님, 고객님의 주문이 오랫동안 처리되지 않아 구매자의 권익에 영향을 미쳐 {creditScore} 크레딧 포인트를 벌칙으로 차감하기로 결정하였습니다. 상점에 영향을 미치지 않도록 상점의 평판을 유지하고 가능한 한 빨리 평판 포인트를 회복하십시오.",
   "新订单内容": "상점에는 새로운 주문이 있습니다.주문을 제 시간에 처리하십시오.",
@@ -1538,5 +1538,16 @@ export default {
   "登录中...": "로그인 중...",
   "保存": "구하다",
   "上拉加载更多": "더 많은 것을 로드하려면 위로 당기세요",
-  "没有更多了": "더 이상은 없다"
+  "没有更多了": "더 이상은 없다",
+  "请上传头像": "프로필 사진을 업로드하세요",
+  "实名认证": "실명 인증",
+  "点击认证": "클릭하여 인증하세요",
+  "认证状态": "인증 상태",
+  "请您完善店铺信息，以保证顾客能正常访问到您的店铺": "매장 정보를 완료하여 고객이 정상적으로 매장에 접속할 수 있도록 해주세요",
+  "请完善您的身份认证信息，以保证顾客能正常访问到您的店铺": "신분 인증 정보를 완료하여 고객이 정상적으로 매장에 접속할 수 있도록 해주세요",
+  "您的身份认证信息正在审核中，请您耐心等待": "신분 인증 정보가 검토 중입니다. 잠시만 기다려주세요",
+  "您的身份认证信息审核失败，请您重新认证": "신분 인증 정보가 검토에 실패했습니다. 다시 인증해주세요",
+  "您店铺中上架商品数量不足，请前往添加": "매장에 올린 상품 수가 부족합니다. 추가해주세요",
+  "立即认证": "지금 인증",
+  "重新认证": "다시 인증"
 }

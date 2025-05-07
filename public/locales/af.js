@@ -924,7 +924,7 @@ export default {
   "words": "woorde",
   "You": "Julle",
   "You have a new customer inquiry.": "U het nuwe kliënte -navrae.",
-  "You have an order that has not been shipped over time，which has violated the platform‘s merchant rules，please deal with it as soon as possible！": "U het 'n bevel wat nie binne die tydsbeperking gestuur word nie, wat die reëls van die platformhandelaar oortree.Hanteer dit asseblief so gou as moontlik.",
+  "You have an order that has not been shipped over time，which has violated the platform's merchant rules，please deal with it as soon as possible！": "U het 'n bevel wat nie binne die tydsbeperking gestuur word nie, wat die reëls van die platformhandelaar oortree.Hanteer dit asseblief so gou as moontlik.",
   "Your Seller-Credit updated": "U handelaarskrediet is opgedateer",
   "Your Seller-Credit updated content": "Geagte handelaar, aangesien jou bestelling vir 'n lang tyd nie verwerk is nie, het dit die koper se regte en belange beïnvloed, daarom het ons besluit om {creditScore} kredietpunte as straf af te trek. Handhaaf asseblief die reputasie van die winkel, sodat dit nie jou winkel beïnvloed nie, en herstel asseblief jou reputasiepunte so gou as moontlik.",
   "新订单内容": "Daar is 'n nuwe bestelling in u winkel.Hanteer die bestelling betyds.",
@@ -1541,5 +1541,16 @@ export default {
   "登录中...": "Meld tans aan...",
   "保存": "stoor",
   "上拉加载更多": "Trek op om meer te laai",
-  "没有更多了": "Nie meer nie"
+  "没有更多了": "Nie meer nie",
+  "请上传头像": "Laai asseblief jou profiel foto op",
+  "实名认证": "Identiteitsverifikasie",
+  "点击认证": "Klik om te verifieer",
+  "认证状态": "Verifikasiestatus",
+  "请您完善店铺信息，以保证顾客能正常访问到您的店铺": "Voer asseblief die winkelinligting in om die klant te stoor",
+  "请完善您的身份认证信息，以保证顾客能正常访问到您的店铺": "Voer asseblief die identiteitsverifikasieinligting in om die klant te stoor",
+  "您的身份认证信息正在审核中，请您耐心等待": "Die identiteitsverifikasieinligting word tans geverifieer, wacht asseblief",
+  "您的身份认证信息审核失败，请您重新认证": "Die identiteitsverifikasieinligting het misluk, stel asseblief terug",
+  "您店铺中上架商品数量不足，请前往添加": "Die aantal produkte wat in jou winkel geproduseer is nie voldoende nie, gaan asseblief na die produkte byvoeg",
+  "立即认证": "Verifieer asseblief",
+  "重新认证": "Verifieer asseblief"
 }

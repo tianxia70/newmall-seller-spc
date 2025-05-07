@@ -1540,5 +1540,16 @@ export default {
   "登录中...": "Log masuk...",
   "保存": "jimat",
   "上拉加载更多": "Tarik ke atas untuk memuatkan lebih banyak",
-  "没有更多了": "Tiada lagi"
+  "没有更多了": "Tiada lagi",
+  "请上传头像": "Sila muat naik gambar profil anda",
+  "实名认证": "Pengesahan Identiti",
+  "点击认证": "Klik untuk memverifikasi",
+  "认证状态": "Status Pengesahan",
+  "请您完善店铺信息，以保证顾客能正常访问到您的店铺": "Sila lengkapkan maklumat kedai anda untuk memastikan pelanggan dapat mengakses kedai anda dengan normal",
+  "请完善您的身份认证信息，以保证顾客能正常访问到您的店铺": "Sila lengkapkan maklumat pengesahan identiti anda untuk memastikan pelanggan dapat mengakses kedai anda dengan normal",
+  "您的身份认证信息正在审核中，请您耐心等待": "Maklumat pengesahan identiti anda sedang diperiksa, sila tunggu",
+  "您的身份认证信息审核失败，请您重新认证": "Maklumat pengesahan identiti anda tidak lulus, sila ulangi pengesahan",
+  "您店铺中上架商品数量不足，请前往添加": "Jumlah produk di kedai anda tidak mencukupi, sila tambahkan produk",
+  "立即认证": "Pengesahan Sekarang",
+  "重新认证": "Pengesahan Ulang"
 }

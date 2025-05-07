@@ -1540,5 +1540,16 @@ export default {
   "登录中...": "Iniciando sesión...",
   "保存": "ahorrar",
   "上拉加载更多": "Tire hacia arriba para cargar más",
-  "没有更多了": "No más"
+  "没有更多了": "No más",
+  "请上传头像": "Por favor, suba su foto de perfil",
+  "实名认证": "Verificación de identidad",
+  "点击认证": "Haga clic para verificar",
+  "认证状态": "Estado de verificación",
+  "请您完善店铺信息，以保证顾客能正常访问到您的店铺": "Por favor, complete la información de su tienda para garantizar que los clientes puedan acceder a su tienda normalmente",
+  "请完善您的身份认证信息，以保证顾客能正常访问到您的店铺": "Por favor, complete la información de su verificación de identidad para garantizar que los clientes puedan acceder a su tienda normalmente",
+  "您的身份认证信息正在审核中，请您耐心等待": "La información de su verificación de identidad está siendo revisada, por favor, espere",
+  "您的身份认证信息审核失败，请您重新认证": "La información de su verificación de identidad no ha sido aprobada, por favor, vuelva a verificar",
+  "您店铺中上架商品数量不足，请前往添加": "El número de productos en su tienda es insuficiente, por favor, agregue más productos",
+  "立即认证": "Verificar ahora",
+  "重新认证": "Verificar de nuevo"
 }

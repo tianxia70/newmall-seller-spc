@@ -952,7 +952,7 @@ export default {
   "words": "words",
   "You": "You",
   "You have a new customer inquiry.": "您有新的客户咨询。",
-  "You have an order that has not been shipped over time，which has violated the platform‘s merchant rules，please deal with it as soon as possible！": "您有订单超时未发货，违反了平台商家规则，请尽快处理！",
+  "You have an order that has not been shipped over time，which has violated the platform's merchant rules，please deal with it as soon as possible！": "您有订单超时未发货，违反了平台商家规则，请尽快处理！",
   "Your Seller-Credit updated": "您的商家信用分已更新",
   "Your Seller-Credit updated content": "尊敬的商家，由于您的订单长时间未处理，对买家的权益造成了影响，因此我们决定扣除{creditScore}分信誉积分作为惩戒。请保持店铺的信誉，以免对您的店铺造成影响，并请尽快恢复您的信誉积分。",
   "新订单内容": "您的店铺有新订单，请及时处理订单。",
@@ -1539,5 +1539,16 @@ export default {
   "登录中...": "登录中...",
   "保存": "保存",
   "上拉加载更多": "上拉加载更多",
-  "没有更多了": "没有更多了"
+  "没有更多了": "没有更多了",
+  "请上传头像": "请上传头像",
+  "实名认证": "实名认证",
+  "点击认证": "点击认证",
+  "认证状态": "认证状态",
+  "请您完善店铺信息，以保证顾客能正常访问到您的店铺": "请您完善店铺信息，以保证顾客能正常访问到您的店铺",
+  "请完善您的身份认证信息，以保证顾客能正常访问到您的店铺": "请完善您的身份认证信息，以保证顾客能正常访问到您的店铺",
+  "您的身份认证信息正在审核中，请您耐心等待": "您的身份认证信息正在审核中，请您耐心等待",
+  "您的身份认证信息审核失败，请您重新认证": "您的身份认证信息审核失败，请您重新认证",
+  "您店铺中上架商品数量不足，请前往添加": "您店铺中上架商品数量不足，请前往添加",
+  "立即认证": "立即认证",
+  "重新认证": "重新认证"
 }

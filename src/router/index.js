@@ -31,6 +31,8 @@ router.beforeEach(async (to, from, next) => {
     if (!userStore.userInfo) {
       // 用户信息
       await userStore.getAllInfo()
+      // 店铺商品总数量
+      userStore.getSaleGoodsNum()
 
       next({ path: to.path, query: to.query })
     } else {

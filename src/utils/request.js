@@ -2,7 +2,7 @@ import axios from "axios";
 import i18n from "@/i18n";
 import { Notification } from '@arco-design/web-vue';
 import { getToken } from "@/utils/token-util.js";
-import { isEmpty } from "lodash";
+import { isEmpty } from "lodash-es";
 import moment from "moment-timezone";
 import { Message } from '@arco-design/web-vue'
 import { useUserStore } from "@/store";
@@ -121,6 +121,8 @@ function createService() {
           title: i18n.global.t('错误'),
           content: i18n.global.t(resInfo.msg, resInfo.data) || 'Error',
         })
+
+        return Promise.reject('error');
       } else {
         return Promise.resolve(data);
       }

@@ -275,6 +275,8 @@
     setToken(token)
     await userStore.getAllInfo()
 
+    await userStore.getSaleGoodsNum()
+
     // 保存用户信息
     const storeName = currentType.value == 0 ? loginEmailKey : loginMobileKey
     const storeValue = currentType.value == 0 ? formData.value.email : formData.value.phone

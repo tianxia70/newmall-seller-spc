@@ -1540,5 +1540,16 @@ export default {
   "登录中...": "Giriş yapılıyor...",
   "保存": "kaydetmek",
   "上拉加载更多": "Daha fazlasını yüklemek için yukarı çekin",
-  "没有更多了": "Daha fazla yok"
+  "没有更多了": "Daha fazla yok",
+  "请上传头像": "Lütfen profil resminizi yükleyin",
+  "实名认证": "Kimlik doğrulaması",
+  "点击认证": "Kimlik doğrulaması",
+  "认证状态": "Kimlik doğrulaması durumu",
+  "请您完善店铺信息，以保证顾客能正常访问到您的店铺": "Lütfen mağaza bilgilerinizi tamamlayarak müşterilerinizin mağazanıza normal erişebileceğini sağlayın",
+  "请完善您的身份认证信息，以保证顾客能正常访问到您的店铺": "Lütfen kimlik bilgilerinizi tamamlayarak müşterilerinizin mağazanıza normal erişebileceğini sağlayın",
+  "您的身份认证信息正在审核中，请您耐心等待": "Kimlik bilgilerinizin doğrulanması sürecinde, lütfen bekleyin",
+  "您的身份认证信息审核失败，请您重新认证": "Kimlik bilgilerinizin doğrulanması başarısız oldu, lütfen tekrar doğrulayın",
+  "您店铺中上架商品数量不足，请前往添加": "Mağazanızda ürün sayısı yetersiz, lütfen ekleme yapın",
+  "立即认证": "Hemen doğrula",
+  "重新认证": "Tekrar doğrula"
 }

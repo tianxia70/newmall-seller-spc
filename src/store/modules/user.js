@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
-import { userCurrentGet, userWalletGetMyWallet } from '@/api/user'
+import { userCurrentGet, userWalletGetMyWallet, sellerGetGoodsProfit } from '@/api/user'
+import { sellerGoodsList } from '@/api/goods'
 import { sellerInfo as sellerInfoApi } from '@/api/seller'
 import { removeToken } from '@/utils/token-util.js'
 import { navigationTo } from '@/utils'
@@ -11,7 +12,12 @@ const useUserStore = defineStore('seller_pc_store_user', {
   state: () => ({ 
     userInfo: null,
     sellerInfo: null,
-    walletInfo: null
+    walletInfo: null,
+    goodsProfit: {
+      sysParaMin: 0,
+      sysParaMax: 0
+    },
+    saleGoodsNum: 10
   }),
 
   getters: {
@@ -39,6 +45,25 @@ const useUserStore = defineStore('seller_pc_store_user', {
     async getAllInfo() { // 获取全部信息
       await this.getUserInfo()
       await this.getSellerInfo()
+    },
+    async getGoodsProfit() { // 获取商品利润比例
+      await sellerGetGoodsProfit().then(res => {
+        if (res) {
+          const { sysParaMin, sysParaMax } = res
+          this.goodsProfit = {
+            sysParaMin: Number(sysParaMin),
+            sysParaMax: Number(sysParaMax)
+          }
+        }
+      })
+    },
+    async getSaleGoodsNum() {
+      await sellerGoodsList({
+        pageNum: 1,
+        pageSize: 10
+      }).then(res => {
+        this.saleGoodsNum = res.sellerGoodsNum || 0
+      })
     },
     logout() {
       // 系统tag

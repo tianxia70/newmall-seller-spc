@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import tool from '@/utils/tool'
-import { cloneDeep } from 'lodash'
+import { cloneDeep } from 'lodash-es'
 
 const defaultTag = [ { name: 'dashboard', title: '仪表盘', path: '/dashboard', affix: true } ]
 const useTagStore = defineStore('seller_pc_store_tag', {

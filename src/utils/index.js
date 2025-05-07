@@ -1,6 +1,7 @@
 import Compressor from 'compressorjs'
 import router from '@/router';
 import i18n from '@/i18n'
+import { useCurrencyStore } from '@/store'
 
 export const loadSiteConfig = async (siteName = 'argos') => {
   try {
@@ -144,13 +145,6 @@ export const compressImage = (file) => {
   }
 
   return new Promise((resolve, reject) => {
-    // 打印压缩前的信息
-    console.log('压缩前:', {
-      size: (file.size / 1024 / 1024).toFixed(2) + 'MB',
-      name: file.name,
-      type: file.type
-    })
-
     new Compressor(file, {
       quality: getQuality(file.size),
       maxWidth: 3000,
@@ -161,15 +155,6 @@ export const compressImage = (file) => {
         const compressedFile = new File([result], file.name, {
           type: file.type,
           lastModified: new Date().getTime()
-        })
-
-        // 打印压缩后的信息
-        console.log('压缩后:', {
-          size: (compressedFile.size / 1024 / 1024).toFixed(2) + 'MB',
-          name: compressedFile.name,
-          type: compressedFile.type,
-          quality: getQuality(file.size),
-          压缩率: ((1 - compressedFile.size / file.size) * 100).toFixed(2) + '%'
         })
 
         // 如果压缩后比原图还大，则使用原图

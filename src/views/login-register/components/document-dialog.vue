@@ -35,7 +35,7 @@
   import { computed } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { agreeData } from "./config.js"
-  import { cloneDeep } from 'lodash'
+  import { cloneDeep } from 'lodash-es'
 
   const { t } = useI18n()
   const appName = import.meta.env.VITE_APP

@@ -8,11 +8,19 @@
           <a-step>{{ t('上架商品') }}</a-step>
         </a-steps>
       </div>
-      <div class="step-info">{{ t('请您完善店铺信息以保证顾客能正常访问到您') }}</div>
+      <div v-if="currentStep === 1" class="step-info">{{ t('请您完善店铺信息，以保证顾客能正常访问到您的店铺') }}</div>
+      <div v-if="currentStep === 2" class="step-info">
+        <template v-if="kycStatus === 0">{{ t('请完善您的身份认证信息，以保证顾客能正常访问到您的店铺') }}</template>
+        <template v-if="kycStatus === 1">{{ t('您的身份认证信息正在审核中，请您耐心等待') }}</template>
+        <template v-if="kycStatus === 3">{{ t('您的身份认证信息审核失败，请您重新认证') }}</template>
+      </div>
+      <div v-if="currentStep === 3" class="step-info">{{ t('您店铺中上架商品数量不足，请前往添加') }}</div>
 
-      <a-button v-if="currentStep === 1" type="primary">{{ t('立即设置') }}</a-button>
-      <a-button v-if="currentStep === 2" type="primary">{{ t('查看认证') }}</a-button>
-      <a-button v-if="currentStep === 3" type="primary">{{ t('上架商品') }}</a-button>
+      <a-button v-if="currentStep === 1" type="primary" @click="handleSetting(true, false)">{{ t('立即设置') }}</a-button>
+      <a-button v-if="currentStep === 2" type="primary" @click="handleSetting(true, true)">
+        {{ kycStatus === 0 ? t('立即认证') : kycStatus === 1 ? t('查看认证') : t('重新认证') }}
+      </a-button>
+      <a-button v-if="currentStep === 3" type="primary" @click="handleSetting(false)">{{ t('上架商品') }}</a-button>
     </div>
 
     <a-modal
@@ -32,7 +40,10 @@
               :after-read="(file) => afterRead(file, 'avatar')"
               :max-count="1"
               :readonly="false"
-              :preview-full-image="false"
+              :preview-options="{
+                  closeOnClickOverlay: true,
+                  closeable: true
+                }"
               :max-size="10 * 1024 * 1024"
               @oversize="onOversize"
             />
@@ -69,7 +80,10 @@
                 :max-count="1"
                 :after-read="(file) => afterRead(file, item.key)"
                 :max-size="10 * 1024 * 1024"
-                :preview-full-image="false"
+                :preview-options="{
+                  closeOnClickOverlay: true,
+                  closeable: true
+                }"
                 @oversize="onOversize"
               />
               <p>{{ t(item.title) }}</p>
@@ -117,14 +131,17 @@
   import { useUserStore, useSystemStore } from '@/store'
   import { Uploader } from 'vant'
   import { Message } from '@arco-design/web-vue'
-  import { compressImage } from '@/utils'
+  import { compressImage, navigationTo } from '@/utils'
   import { imageUpload } from '@/api/system'
   import { sellerUpdate } from '@/api/seller'
   import { kycApply } from '@/api/user'
-  import { cloneDeep } from 'lodash'
+  import { cloneDeep } from 'lodash-es'
+  import { useRoute } from 'vue-router'
 
   const { t } = useI18n()
   const appName = import.meta.env.VITE_APP
+
+  const route = useRoute()
 
   // 认证图
   const kycImg1 = new URL('@/assets/images/verify/kyc1.png', import.meta.url)
@@ -175,6 +192,9 @@
   const userStore = useUserStore()
   const systemStore = useSystemStore()
   const sellerInfo = computed(() => userStore.sellerInfo)
+  const userInfo = computed(() => userStore.userInfo)
+  const saleGoodsNum = computed(() => userStore.saleGoodsNum)
+  const kycStatus = computed(() => userInfo.value.kyc_status || 0)
 
   const countrySelectData = computed(() => {
     const data = cloneDeep(systemStore.countryList)
@@ -208,7 +228,6 @@
 
 
   const currentStep = computed(() => {
-    const sellerGoodsNum = sellerInfo.value.sellerGoodsNum ? Number(sellerInfo.value.sellerGoodsNum) : 0
     const sellerSettingFlag = Number(sellerInfo.value.sellerSettingFlag)
     const sellerKycFlag = Number(sellerInfo.value.sellerKycFlag)
 
@@ -220,7 +239,7 @@
     }
 
     let step = 4
-    if (!sellerGoodsNum) {
+    if (!Number(saleGoodsNum.value)) {
       step = 3
     }
 
@@ -388,6 +407,24 @@
       dialogVisible.value = false
     }
   }
+
+  const handleSetting = (flag = false, cert = false) => {
+    const { path } = route
+    if (flag) {
+      if (path !== '/other/shop-setting') {
+        const href = cert ? `/other/shop-setting?cert=1` : '/other/shop-setting'
+        navigationTo(href)
+      } else {
+        if (cert) {
+          window.dispatchEvent(new Event('triggerShopSettingCert'))
+        }
+      }
+    } else {
+      if (path !== '/goods/library') {
+        navigationTo('/goods/library')
+      }
+    }
+  }
 </script>
 
 <style lang="less" scoped>
@@ -451,6 +488,7 @@
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
+      margin-top: 5px;
     }
     > img {
       width: 80%;

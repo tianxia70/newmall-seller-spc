@@ -38,12 +38,10 @@
 <script setup>
   import { ref, computed } from 'vue'
   import { Message } from '@arco-design/web-vue'
-  import { compressImage } from '@/utils'
-  import { imageUpload } from '@/api/system'
   import { sellerUpdate } from '@/api/seller'
   import { useI18n } from 'vue-i18n'
   import { useUserStore } from '@/store'
-  import { cloneDeep } from 'lodash'
+  import { cloneDeep } from 'lodash-es'
 
   const { t } = useI18n()
   const userStore = useUserStore()

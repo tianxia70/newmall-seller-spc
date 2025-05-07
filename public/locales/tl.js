@@ -1539,5 +1539,16 @@ export default {
   "登录中...": "Nagla-log in...",
   "保存": "iligtas",
   "上拉加载更多": "Hilahin pataas para mag-load pa",
-  "没有更多了": "Wala na"
+  "没有更多了": "Wala na",
+  "请上传头像": "Paki-upload ang iyong larawan ng profile",
+  "实名认证": "Pag-verify ng tunay na pangalan",
+  "点击认证": "I-click upang mag-verify",
+  "认证状态": "Pag-verify ng tunay na pangalan",
+  "请您完善店铺信息，以保证顾客能正常访问到您的店铺": "Paki-update ang impormasyon ng tindahan mo upang ma-access ng mga kliyente",
+  "请完善您的身份认证信息，以保证顾客能正常访问到您的店铺": "Paki-update ang impormasyon ng iyong tunay na pangalan upang ma-access ng mga kliyente",
+  "您的身份认证信息正在审核中，请您耐心等待": "Ang pag-verify ng iyong tunay na pangalan ay nasa proseso, mangyaring mag-wait",
+  "您的身份认证信息审核失败，请您重新认证": "Nabigo ang pag-verify ng iyong tunay na pangalan, mangyaring mag-verify muli",
+  "您店铺中上架商品数量不足，请前往添加": "Hindi sapat na mga produkto sa tindahan mo, mangyaring pumunta sa pag-add",
+  "立即认证": "Mag-verify ngayon",
+  "重新认证": "Mag-verify muli"
 }

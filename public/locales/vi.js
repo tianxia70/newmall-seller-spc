@@ -1542,5 +1542,16 @@ export default {
   "登录中...": "Đang đăng nhập...",
   "保存": "cứu",
   "上拉加载更多": "Kéo lên để tải thêm",
-  "没有更多了": "Không còn nữa"
+  "没有更多了": "Không còn nữa",
+  "请上传头像": "Vui lòng tải lên hình ảnh hồ sơ của bạn",
+  "实名认证": "Xác thực danh tính",
+  "点击认证": "Nhấp để xác thực",
+  "认证状态": "Trạng thái xác thực",
+  "请您完善店铺信息，以保证顾客能正常访问到您的店铺": "Vui lòng hoàn thành thông tin cửa hàng của bạn để đảm bảo khách hàng có thể truy cập vào cửa hàng của bạn bình thường",
+  "请完善您的身份认证信息，以保证顾客能正常访问到您的店铺": "Vui lòng hoàn thành thông tin xác thực danh tính của bạn để đảm bảo khách hàng có thể truy cập vào cửa hàng của bạn bình thường",
+  "您的身份认证信息正在审核中，请您耐心等待": "Thông tin xác thực danh tính của bạn đang được kiểm tra, vui lòng chờ đợi",
+  "您的身份认证信息审核失败，请您重新认证": "Xác thực danh tính của bạn không thành công, vui lòng xác thực lại",
+  "您店铺中上架商品数量不足，请前往添加": "Số lượng sản phẩm trong cửa hàng của bạn không đủ, vui lòng điền thêm",
+  "立即认证": "Xác thực ngay",
+  "重新认证": "Xác thực lại"
 }
