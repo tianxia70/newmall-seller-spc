@@ -106,3 +106,13 @@ export const sellerGetGoodsProfit = () =>
     url: '/user/seller/getGoodsProfit',
     method: 'get'
   });
+
+/**
+ * 设置资金密码
+ */
+export const setSafewordReg = (params) =>
+  request({
+    url: '/user/setSafewordReg',
+    method: 'post',
+    params
+  });

@@ -1553,5 +1553,6 @@ export default {
   "您的身份认证信息审核失败，请您重新认证": "Xác thực danh tính của bạn không thành công, vui lòng xác thực lại",
   "您店铺中上架商品数量不足，请前往添加": "Số lượng sản phẩm trong cửa hàng của bạn không đủ, vui lòng điền thêm",
   "立即认证": "Xác thực ngay",
-  "重新认证": "Xác thực lại"
+  "重新认证": "Xác thực lại",
+  "确认支付密码": "Xác nhận mật khẩu thanh toán"
 }

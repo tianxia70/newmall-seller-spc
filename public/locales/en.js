@@ -1555,5 +1555,6 @@ export default {
   "您的身份认证信息审核失败，请您重新认证": "Your identity verification information has failed, please re-verify",
   "您店铺中上架商品数量不足，请前往添加": "The number of products in your store is insufficient, please add more",
   "立即认证": "Verify now",
-  "重新认证": "Re-verify"
+  "重新认证": "Re-verify",
+  "确认支付密码": "Confirm payment password"
 }

@@ -1551,5 +1551,6 @@ export default {
   "您的身份认证信息审核失败，请您重新认证": "Kimlik bilgilerinizin doğrulanması başarısız oldu, lütfen tekrar doğrulayın",
   "您店铺中上架商品数量不足，请前往添加": "Mağazanızda ürün sayısı yetersiz, lütfen ekleme yapın",
   "立即认证": "Hemen doğrula",
-  "重新认证": "Tekrar doğrula"
+  "重新认证": "Tekrar doğrula",
+  "确认支付密码": "Ödeme şifresini doğrula"
 }

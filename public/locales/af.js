@@ -1552,5 +1552,6 @@ export default {
   "您的身份认证信息审核失败，请您重新认证": "Die identiteitsverifikasieinligting het misluk, stel asseblief terug",
   "您店铺中上架商品数量不足，请前往添加": "Die aantal produkte wat in jou winkel geproduseer is nie voldoende nie, gaan asseblief na die produkte byvoeg",
   "立即认证": "Verifieer asseblief",
-  "重新认证": "Verifieer asseblief"
+  "重新认证": "Verifieer asseblief",
+  "确认支付密码": "Bevestig betaalwagwoord"
 }

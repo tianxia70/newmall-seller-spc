@@ -1551,5 +1551,6 @@ export default {
   "您的身份认证信息审核失败，请您重新认证": "Informasi verifikasi identitas Anda tidak lulus, silakan ulangi verifikasi",
   "您店铺中上架商品数量不足，请前往添加": "Jumlah produk di toko Anda tidak cukup, silakan tambahkan produk",
   "立即认证": "Verifikasi Sekarang",
-  "重新认证": "Verifikasi Ulang"
+  "重新认证": "Verifikasi Ulang",
+  "确认支付密码": "Konfirmasi kata sandi pembayaran"
 }

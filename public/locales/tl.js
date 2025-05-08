@@ -1550,5 +1550,6 @@ export default {
   "您的身份认证信息审核失败，请您重新认证": "Nabigo ang pag-verify ng iyong tunay na pangalan, mangyaring mag-verify muli",
   "您店铺中上架商品数量不足，请前往添加": "Hindi sapat na mga produkto sa tindahan mo, mangyaring pumunta sa pag-add",
   "立即认证": "Mag-verify ngayon",
-  "重新认证": "Mag-verify muli"
+  "重新认证": "Mag-verify muli",
+  "确认支付密码": "Kumpirmahin ang password ng pagbabayad"
 }

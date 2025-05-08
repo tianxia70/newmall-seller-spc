@@ -1,5 +1,20 @@
 <template>
   <div>
+    <!-- 确认弹窗 -->
+    <pc-confirm-dialog
+      v-if="showConfirmDialog"
+      v-model:visible="showConfirmDialog"
+      :message="t('您还没有通过商家认证，无法参与活动。')"
+      :confirmText="t('查看认证进度')"
+      @confirm="confirmDone"
+    ></pc-confirm-dialog>
+
+    <!-- 设置支付密码 -->
+    <safe-password-setting
+      v-if="showSafewordDialog"
+      v-model:visible="showSafewordDialog"
+    ></safe-password-setting>
+
     <div class="audio-content">
       <audio ref="chatAudioDD">
         <source src="https://imgtest1.s3.amazonaws.com/audio/order.mp3" type="audio/mpeg">
@@ -74,13 +89,17 @@
   import { CountTo } from 'vue3-count-to'
   import { useSystemStore, useUserStore } from '@/store'
   import { useI18n } from 'vue-i18n'
+  import { useRoute } from 'vue-router'
   import { userWalletGetUsdt } from '@/api/user'
   import { sysconfigGetSysParaSign } from '@/api/system'
   import tool from '@/utils/tool'
+  import { navigationTo } from '@/utils'
   import { isTruthy } from '@/utils'
   import pdfSignDialog from './components/pdf-sign-dialog.vue'
 
   const { t } = useI18n()
+  const route = useRoute()
+
   const systemStore = useSystemStore()
   const userStore = useUserStore()
 
@@ -89,6 +108,7 @@
   const getNotieAfter = computed(() => systemStore.get_user_notice_after)
   const orderCount = computed(() => systemStore.order_count)
   const hasMoneyIn = computed(() => systemStore.has_money_in)
+  const userInfo = computed(() => userStore.userInfo)
 
   const signPdfUrl = computed(() => userStore.sellerInfo?.signPdfUrl)
 
@@ -151,8 +171,32 @@
     })
   }
 
-  const intoPay = () => {
+  const showConfirmDialog = ref(false)
+  const confirmDone = () => {
+    closeActive()
+    const { path } = route
+    if (path !== '/other/shop-setting') {
+      const href = `/other/shop-setting?cert=1`
+      navigationTo(href)
+    } else {
+      window.dispatchEvent(new Event('triggerShopSettingCert'))
+    }
+  }
 
+  const showSafewordDialog = ref(false)
+
+  const intoPay = () => {
+    const {kyc_status, safeword} = userInfo.value
+    if (kyc_status !== 2) {
+      showConfirmDialog.value = true
+      return
+    }
+
+    if (!safeword) {
+      showSafewordDialog.value = true
+      return
+    }
+    console.log('userInfo', userInfo.value);
   }
 
   const chatAudioDD = ref()
