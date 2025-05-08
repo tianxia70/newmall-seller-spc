@@ -58,3 +58,6 @@ export const userAvatarData = [
   new URL('@/assets/images/avatar/20.png', import.meta.url),
   new URL('@/assets/images/avatar/21.png', import.meta.url)
 ]
+
+// 测试环境地址
+export const TEST_URL = 'https://www.sjiepc.com'

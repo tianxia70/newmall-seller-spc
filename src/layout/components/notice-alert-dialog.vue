@@ -96,8 +96,10 @@
   import { navigationTo } from '@/utils'
   import { isTruthy } from '@/utils'
   import pdfSignDialog from './components/pdf-sign-dialog.vue'
+  import { Notification } from '@arco-design/web-vue'
 
   const { t } = useI18n()
+  const appName = import.meta.env.VITE_APP
   const route = useRoute()
 
   const systemStore = useSystemStore()
@@ -196,7 +198,22 @@
       showSafewordDialog.value = true
       return
     }
-    console.log('userInfo', userInfo.value);
+
+    if (['flipkart', 'selfridges', 'harrods', 'targetShop', 'globease', 'tiktok8', 'tiktok9'].includes(appName)) {
+      Notification.info({
+        title: t('提示'),
+        content: t('请联系客服')
+      })
+      if (systemStore.customer_service_url) {
+        window.open(systemStore.customer_service_url)
+      } else {
+        im_create_iframe_client && im_create_iframe_client.open();
+      }
+      closeActive()
+    } else {
+      navigationTo('/wallet/recharge')
+      closeActive()
+    }
   }
 
   const chatAudioDD = ref()

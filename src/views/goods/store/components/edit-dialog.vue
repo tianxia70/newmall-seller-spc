@@ -24,6 +24,7 @@
             :precision="2"
             :step="0.01"
             :placeholder="t('填写售价')"
+            :hide-button="true"
             style="width: 100%"
           >
             <template #prefix>{{ currencyUnit }}</template>

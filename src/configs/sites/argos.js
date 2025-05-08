@@ -6,6 +6,6 @@ export default {
   logo,
   favicon,
   phoneAreaCodeKey: 44,
-  themeColor: '#F53F3F',
-  themeMode: 'light'
+  themeColor: '#F77234',
+  themeMode: 'dark'
 }

@@ -124,7 +124,16 @@ function createService() {
 
         return Promise.reject('error');
       } else {
-        return Promise.resolve(data);
+        if (response.data.total || response.data.total === 0) {
+          return Promise.resolve({
+            pageList: data,
+            pageInfo: {
+              totalElements: response.data.total
+            }
+          });
+        } else {
+          return Promise.resolve(data);
+        }
       }
     },
     (error) => {

@@ -116,3 +116,41 @@ export const setSafewordReg = (params) =>
     method: 'post',
     params
   });
+
+/**
+ * 余额宝信息
+ */
+export const sellerInvestInfo = () =>
+  request({
+    url: '/user/seller/invest/info',
+    method: 'get'
+  });
+
+/**
+ * 余额宝配置信息
+ */
+export const sellerInvestConfig = () =>
+  request({
+    url: '/user/seller/invest/config',
+    method: 'get'
+  });
+
+/**
+ * 余额宝转入-转出
+ */
+export const sellerInvestTransfer = (data) =>
+  request({
+    url: '/user/seller/invest/transfer',
+    method: 'post',
+    data
+  });
+
+/**
+ * 余额宝收益记录
+ */
+export const sellerInvestList = (params) =>
+  request({
+    url: '/user/seller/invest/list',
+    method: 'get',
+    params
+  });

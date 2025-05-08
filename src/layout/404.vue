@@ -4,7 +4,7 @@
       <img src="@/assets/images/verify/404.svg" />
       <div class="mt-2">{{ t('访问的页面不存在') }}</div>
     </div>
-    <div class="mt-5"><a-button type="primary" @click="navigationTo('/')">{{ t('返回首页') }}</a-button></div>
+    <div class="mt-5"><a-button type="primary" @click="navigationTo('/dashboard')">{{ t('返回首页') }}</a-button></div>
   </div>
 </template>
 
