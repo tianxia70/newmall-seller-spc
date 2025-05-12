@@ -1554,5 +1554,9 @@ export default {
   "确认支付密码": "Kumpirmahin ang password ng pagbabayad",
   "充值限额": "Limitasyong pag-recharge",
   "请先绑定绑定提现地址": "Paki-bind ang address ng pag-withdrawal",
-  "使用已绑定提现地址": "Gamitin ang address ng pag-withdrawal na nakalagay"
+  "使用已绑定提现地址": "Gamitin ang address ng pag-withdrawal na nakalagay",
+  "绑定成功": "Pagsasama-sama na matagumpay",
+  "资金类型": "Tipo de fondo",
+  "入账时间": "Tempo de recebimento",
+  "筛选": "Filtrar"
 }

@@ -1555,5 +1555,9 @@ export default {
   "确认支付密码": "Konfirmasi kata laluan pembayaran",
   "充值限额": "Batas Isi Ulang",
   "请先绑定绑定提现地址": "Silakan terlebih dahulu mengikat alamat penarikan",
-  "使用已绑定提现地址": "Gunakan alamat penarikan yang sudah terikat"
+  "使用已绑定提现地址": "Gunakan alamat penarikan yang sudah terikat",
+  "绑定成功": "Pengikatan berhasil",
+  "资金类型": "Jenis dana",
+  "入账时间": "Waktu masuk",
+  "筛选": "Filter"
 }

@@ -1554,5 +1554,9 @@ export default {
   "确认支付密码": "Conferma la password di pagamento",
   "充值限额": "Limite di ricarica",
   "请先绑定绑定提现地址": "Collega prima l'indirizzo di prelievo",
-  "使用已绑定提现地址": "Usa l'indirizzo di prelievo già collegato"
+  "使用已绑定提现地址": "Usa l'indirizzo di prelievo già collegato",
+  "绑定成功": "Collegamento riuscito",
+  "资金类型": "Tipo di fondo",
+  "入账时间": "Tempo di ingresso",
+  "筛选": "Filtro"
 }

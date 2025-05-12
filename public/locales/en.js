@@ -1559,5 +1559,9 @@ export default {
   "确认支付密码": "Confirm payment password",
   "充值限额": "Recharge limit",
   "请先绑定绑定提现地址": "Please bind the withdrawal address first",
-  "使用已绑定提现地址": "Use the already bound withdrawal address"
+  "使用已绑定提现地址": "Use the already bound withdrawal address",
+  "绑定成功": "Binding successful",
+  "资金类型": "Fund type",
+  "入账时间": "Income time",
+  "筛选": "Filter"
 }

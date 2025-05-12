@@ -1555,5 +1555,9 @@ export default {
   "确认支付密码": "Ödeme şifresini doğrula",
   "充值限额": "Yükleme limiti",
   "请先绑定绑定提现地址": "Lütfen önce para çekme adresini bağlayın",
-  "使用已绑定提现地址": "Bağlı para çekme adresini kullan"
+  "使用已绑定提现地址": "Bağlı para çekme adresini kullan",
+  "绑定成功": "Bağlantı başarılı",
+  "资金类型": "Fondstipe",
+  "入账时间": "Inboeking tyd",
+  "筛选": "Filtre"
 }

@@ -1557,5 +1557,9 @@ export default {
   "确认支付密码": "Xác nhận mật khẩu thanh toán",
   "充值限额": "Giới hạn nạp tiền",
   "请先绑定绑定提现地址": "Vui lòng liên kết địa chỉ rút tiền trước",
-  "使用已绑定提现地址": "Sử dụng địa chỉ rút tiền đã liên kết"
+  "使用已绑定提现地址": "Sử dụng địa chỉ rút tiền đã liên kết",
+  "绑定成功": "Liên kết thành công",
+  "资金类型": "Loại tiền",
+  "入账时间": "Thời gian nhận tiền",
+  "筛选": "Lọc"
 }

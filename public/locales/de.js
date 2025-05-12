@@ -1553,5 +1553,9 @@ export default {
   "确认支付密码": "Bestätigen Sie das Zahlungskennwort",
   "充值限额": "Aufladebegrenzung",
   "请先绑定绑定提现地址": "Bitte geben Sie das Auszahlungsadresse ein",
-  "使用已绑定提现地址": "Verwenden Sie das bereits gebundene Auszahlungsadresse"
+  "使用已绑定提现地址": "Verwenden Sie das bereits gebundene Auszahlungsadresse",
+  "绑定成功": "Bindung erfolgreich",
+  "资金类型": "Fondstipe",
+  "入账时间": "Inboeking tyd",
+  "筛选": "Filter"
 }

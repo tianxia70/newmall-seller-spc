@@ -1556,5 +1556,9 @@ export default {
   "确认支付密码": "Bevestig betaalwagwoord",
   "充值限额": "Herlaaibedrag",
   "请先绑定绑定提现地址": "Voer asseblief die uitbetalingsadres in",
-  "使用已绑定提现地址": "Gebruik die ingebonden uitbetalingsadres"
+  "使用已绑定提现地址": "Gebruik die ingebonden uitbetalingsadres",
+  "绑定成功": "Binding suksesvol",
+  "资金类型": "Fondstipe",
+  "入账时间": "Inboeking tyd",
+  "筛选": "Filter"
 }

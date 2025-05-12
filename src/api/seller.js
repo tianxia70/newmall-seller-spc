@@ -18,3 +18,23 @@ export const sellerUpdate = (params) =>
     method: 'post',
     params
   });
+
+/**
+ * 商家端报表头部
+ */
+export const sellerReportHead = (data) =>
+  request({
+    url: '/user/seller/report/head',
+    method: 'post',
+    data
+  });
+
+/**
+ * 报表列表
+ */
+export const sellerReportList = (params) =>
+  request({
+    url: '/user/seller/report/list',
+    method: 'post',
+    params
+  });

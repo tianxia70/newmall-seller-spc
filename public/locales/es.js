@@ -1555,5 +1555,9 @@ export default {
   "确认支付密码": "Confirmar contraseña de pago",
   "充值限额": "Límite de recarga",
   "请先绑定绑定提现地址": "Por favor, enlace el dirección de retiro",
-  "使用已绑定提现地址": "Usar la dirección de retiro ya enlazada"
+  "使用已绑定提现地址": "Usar la dirección de retiro ya enlazada",
+  "绑定成功": "Enlace exitoso",
+  "资金类型": "Tipo de fondo",
+  "入账时间": "Tiempo de ingreso",
+  "筛选": "Filtrar"
 }

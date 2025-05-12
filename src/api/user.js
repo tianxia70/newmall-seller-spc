@@ -299,3 +299,13 @@ export const withdrawApply = (params) =>
     method: 'post',
     params
   });
+
+/**
+* 资金记录
+*/
+export const pageListMoneyLog = (params) =>
+  request({
+    url: '/user/pageListMoneyLog',
+    method: 'get',
+    params
+  });
