@@ -10,10 +10,8 @@
     :style="{ zIndex: 3000 }"
     @ok="handleConfirm"
     @cancel="handleCancel"
-    
   >
     <template #title>{{ t(title) }}</template>
-    
     <p>{{ message }}</p>
   </a-modal>
 </template>
@@ -46,10 +44,11 @@ const props = defineProps({
   }
 })
 
-const emits = defineEmits(['update:visible', 'confirm'])
+const emits = defineEmits(['update:visible', 'confirm', 'cancel'])
 
 const handleCancel = () => {
   emits('update:visible', false)
+  emits('cancel')
 }
 
 const handleConfirm = () => {

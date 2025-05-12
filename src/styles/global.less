@@ -183,6 +183,9 @@ html, body {
 
   .ma-content-block {
     background-color: var(--color-bg-2); border-radius: 2px;
+    &.min-height {
+      min-height: calc(100vh - 122px);
+    }
   }
 }
 
@@ -287,4 +290,12 @@ html, body {
 
 .main-color {
   color: rgb(var(--primary-6));
+}
+
+.arco-carousel-indicator-wrapper-bottom {
+  background: transparent;
+}
+
+.arco-form-item-extra {
+  width: 100%;
 }

@@ -26,6 +26,7 @@
             :placeholder="t('填写售价')"
             :hide-button="true"
             style="width: 100%"
+            model-event="input"
           >
             <template #prefix>{{ currencyUnit }}</template>
           </a-input-number>

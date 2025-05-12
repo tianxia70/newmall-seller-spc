@@ -16,6 +16,9 @@ export const loginTypeKey = 'seller_pc_login_type'
 export const loginEmailKey = 'seller_pc_login_email'
 export const loginMobileKey = 'seller_pc_login_mobile'
 
+// 银行信息存储标识
+export const bankInfoKey = 'seller_pc_bank_info'
+
 /**
  * ---- 存储标识 -----
  */

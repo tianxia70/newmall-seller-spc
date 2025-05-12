@@ -1551,5 +1551,8 @@ export default {
   "您店铺中上架商品数量不足，请前往添加": "Hindi sapat na mga produkto sa tindahan mo, mangyaring pumunta sa pag-add",
   "立即认证": "Mag-verify ngayon",
   "重新认证": "Mag-verify muli",
-  "确认支付密码": "Kumpirmahin ang password ng pagbabayad"
+  "确认支付密码": "Kumpirmahin ang password ng pagbabayad",
+  "充值限额": "Limitasyong pag-recharge",
+  "请先绑定绑定提现地址": "Paki-bind ang address ng pag-withdrawal",
+  "使用已绑定提现地址": "Gamitin ang address ng pag-withdrawal na nakalagay"
 }

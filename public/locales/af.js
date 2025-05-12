@@ -1553,5 +1553,8 @@ export default {
   "您店铺中上架商品数量不足，请前往添加": "Die aantal produkte wat in jou winkel geproduseer is nie voldoende nie, gaan asseblief na die produkte byvoeg",
   "立即认证": "Verifieer asseblief",
   "重新认证": "Verifieer asseblief",
-  "确认支付密码": "Bevestig betaalwagwoord"
+  "确认支付密码": "Bevestig betaalwagwoord",
+  "充值限额": "Herlaaibedrag",
+  "请先绑定绑定提现地址": "Voer asseblief die uitbetalingsadres in",
+  "使用已绑定提现地址": "Gebruik die ingebonden uitbetalingsadres"
 }

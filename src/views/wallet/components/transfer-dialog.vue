@@ -35,6 +35,7 @@
                 :step="100"
                 :min="0"
                 :hide-button="true"
+                model-event="input"
               ></a-input-number>
               <p @click="allHandle">{{ t('全部') }}</p>
             </div>
@@ -82,11 +83,8 @@ import { Message } from '@arco-design/web-vue'
 import { sellerInvestConfig, sellerInvestTransfer } from '@/api/user'
 import { numberStrFormat } from '@/utils'
 import tool from '@/utils/tool'
-import { useCurrencyStore } from '@/store'
 
 const { t } = useI18n()
-const currencyStore = useCurrencyStore()
-const currencyUnit = computed(() => currencyStore.currencyUnit)
 
 const props = defineProps({
   visible: {

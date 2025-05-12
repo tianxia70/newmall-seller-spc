@@ -1551,5 +1551,8 @@ export default {
   "您店铺中上架商品数量不足，请前往添加": "Le nombre de produits dans votre magasin est insuffisant, veuillez ajouter plus de produits",
   "立即认证": "Vérifier maintenant",
   "重新认证": "Vérifier à nouveau",
-  "确认支付密码": "Confirmer le mot de passe de paiement"
+  "确认支付密码": "Confirmer le mot de passe de paiement",
+  "充值限额": "Limite de recharge",
+  "请先绑定绑定提现地址": "Veuillez lier l'adresse de retrait",
+  "使用已绑定提现地址": "Utiliser l'adresse de retrait déjà liée"
 }

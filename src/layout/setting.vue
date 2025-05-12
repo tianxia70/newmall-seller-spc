@@ -55,7 +55,7 @@
         <a-switch v-model="form.menuCollapse" @change="handleMenuCollapse" />
       </a-form-item>
       <a-form-item v-if="form.layout !== 'banner'" label="菜单宽度" help="设置左侧菜单的显示宽度">
-        <a-input-number v-model="form.menuWidth" :hide-button="true" mode="button" @change="handleMenuWidth" />
+        <a-input-number v-model="form.menuWidth" model-event="input" :hide-button="true" mode="button" @change="handleMenuWidth" />
       </a-form-item>
     </a-form>
   </a-drawer>

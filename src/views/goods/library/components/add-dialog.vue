@@ -10,7 +10,7 @@
     <div class="dialog-content">
       <a-form ref="formRef" :model="formState" :rules="formRules" layout="vertical">
         <a-form-item :label="t('利润比例')" field="profitRatio">
-          <a-input-number v-model="formState.profitRatio" :min="0" :max="100" :hide-button="true" :placeholder="t('请输入利润比例')">
+          <a-input-number v-model="formState.profitRatio" model-event="input" :min="0" :max="100" :hide-button="true" :placeholder="t('请输入利润比例')">
             <template #suffix>%</template>
           </a-input-number>
           <template #extra>
@@ -44,6 +44,7 @@
               :disabled="!formState.discountDate || formState.discountDate.length === 0"
               :hide-button="true"
               style="width: 100%"
+              model-event="input"
             >
               <template #suffix>%</template>
             </a-input-number>

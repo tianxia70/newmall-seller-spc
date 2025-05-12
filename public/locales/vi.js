@@ -1554,5 +1554,8 @@ export default {
   "您店铺中上架商品数量不足，请前往添加": "Số lượng sản phẩm trong cửa hàng của bạn không đủ, vui lòng điền thêm",
   "立即认证": "Xác thực ngay",
   "重新认证": "Xác thực lại",
-  "确认支付密码": "Xác nhận mật khẩu thanh toán"
+  "确认支付密码": "Xác nhận mật khẩu thanh toán",
+  "充值限额": "Giới hạn nạp tiền",
+  "请先绑定绑定提现地址": "Vui lòng liên kết địa chỉ rút tiền trước",
+  "使用已绑定提现地址": "Sử dụng địa chỉ rút tiền đã liên kết"
 }

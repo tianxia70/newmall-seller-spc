@@ -19,9 +19,16 @@
     <transfer-dialog
       v-model:visible="showTransferDialog"
       :is-in="transferIn"
-      :yue-balance="investInfo.balance"
+      :yue-balance="investInfo.balance || 0"
       @done="transferDone"
     ></transfer-dialog>
+
+    <!-- 邀请好友活动弹窗 -->
+    <invite-dialog
+      :invite-data="inviteFriends"
+      :invite-condition="inviteCondition"
+      v-model:visible="showInviteDialog"
+    ></invite-dialog>
 
     <a-row :gutter="20">
       <a-col :xs="24" :sm="24" :md="24" :lg="headerSpanLg" :xl="headerSpan" :xxl="headerSpan">
@@ -51,8 +58,8 @@
             
             <div class="item-button">
               <a-button v-if="loanShow" type="outline" status="success" size="small" @click="handleLoan">{{ t('信贷服务') }}</a-button>
-              <a-button type="outline" size="small" @click="walletHandle(false)">{{ withdrawTxt }}</a-button>
-              <a-button type="primary" size="small" @click="walletHandle(true)">{{ rechargeTxt }}</a-button>
+              <a-button type="outline" size="small" @click="walletHandle(false)">{{ diyText ? t('提领') : t('提现') }}</a-button>
+              <a-button type="primary" size="small" @click="walletHandle(true)">{{ diyText ? t('加值') : t('充值') }}</a-button>
             </div>
           </div>
         </div>
@@ -76,20 +83,89 @@
         </div>
       </a-col>
     </a-row>
+
+    <a-carousel
+      v-if="inviteFriends.length || (syspara.length && [0, 1].includes(Number(sellerInfo.rechargeBonusStatus)))"
+      class="mb-3"
+      :current="carouselCurrent"
+      :style="{
+        width: '100%',
+        height: '160px',
+      }"
+      :auto-play="{
+        interval: 5000
+      }"
+      indicator-type="dot"
+      show-arrow="always"
+    >
+      <a-carousel-item v-if="inviteFriends.length">
+        <div class="swiper-item" :style="{'background-image': `url(${inviteBgImg.href})`}" @click.stop="showInviteDialogHandle">
+          <h3 v-html="t('邀请好友开店 <span class=highlight>豪礼</span>相送')"></h3>
+          <p>{{
+            t("累计领取{_$1},可领取{_$2}", {
+              _$1: numberStrFormat(sellerInfo.inviteReceivedReward || 0),
+              _$2: numberStrFormat(sellerInfo.inviteAmountReward || 0)
+            })
+          }}</p>
+          <div class="btn-content">
+            <a-button v-if="Number(sellerInfo.inviteAmountReward) && hasCerted" :loading="inviteRewardLoading" @click.stop="getInviteReward">{{ t('领取') }}</a-button>
+            <a-button v-if="!Number(sellerInfo.inviteAmountReward)" @click.stop="showInviteDialogHandle">{{ t('邀请') }}</a-button>
+          </div>
+        </div>
+      </a-carousel-item>
+      <a-carousel-item v-if="syspara.length && [0, 1].includes(Number(sellerInfo.rechargeBonusStatus))">
+        <div class="swiper-item" :style="{'background-image': `url(${firstChargeBg.href})`}">
+          <h3><span class="yellow pr-2">{{ diyText ? t('首次加值') : t('首充') }}</span>{{ t('活动奖励') }}</h3>
+          <div class="first-charge-desc">
+            <div v-for="(item,index) in syspara" :key="index">
+              <div v-html="item.content"></div>
+              <div v-html="index !== syspara.length - 1 ? '，' : ''"></div>
+            </div>
+          </div>
+          <div class="btn-content">
+            <a-button
+              v-if="Number(sellerInfo.rechargeBonusStatus) === 1"
+              :loading="receiveBonusLoading"
+              @click.stop="getReceiveBonus"
+            >{{ t('领取') }}</a-button>
+            <a-button
+              v-if="Number(sellerInfo.rechargeBonusStatus) === 0"
+              @click.stop="walletHandle(true)"
+            >{{ t('去充值') }}</a-button>
+          </div>
+        </div>
+      </a-carousel-item>
+    </a-carousel>
+
+    <div class="ma-content-block p-4 mb-3">
+      <a-tabs v-model:activeKey="activeKey">
+        <a-tab-pane :key="1" :title="diyText ? t('提领') : t('提现')">
+          <record-withdraw-list></record-withdraw-list>
+        </a-tab-pane>
+        <a-tab-pane :key="2" :title="diyText ? t('加值') : t('充值')">
+          <record-recharge-list></record-recharge-list>
+        </a-tab-pane>
+      </a-tabs>
+    </div>
   </div>
 </template>
 
-<script setup>
-  import { ref, computed, onMounted } from 'vue'
+<script setup name="wallet">
+  import { ref, computed, onMounted, onUnmounted } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useSystemStore, useUserStore } from '@/store'
-  import { sellerInvestInfo } from '@/api/user'
+  import { sellerInvestInfo, receiveInviteRewards, beforeReceiveBonus, receiveBonus } from '@/api/user'
   import { getToken } from '@/utils/token-util'
   import { TEST_URL } from '@/configs'
+  import { Message } from '@arco-design/web-vue'
   import TransferDialog from './components/transfer-dialog.vue'
   import { Notification } from '@arco-design/web-vue'
   import dayjs from 'dayjs'
-  import { navigationTo } from '@/utils'
+  import { navigationTo, numberStrFormat } from '@/utils'
+  import RecordWithdrawList from './components/record-withdraw-list.vue'
+  import RecordRechargeList from './components/record-recharge-list.vue'
+  import { sysConfigGetSyspara } from '@/api/system'
+  import inviteDialog from './components/invite-dialog.vue'
 
   const { t, locale } = useI18n()
 
@@ -103,6 +179,7 @@
 
   const walletInfo = computed(() => userStore.walletInfo)
   const userInfo = computed(() => userStore.userInfo)
+  const sellerInfo = computed(() => userStore.sellerInfo)
   const hasSafeword = computed(() => userInfo.value.safeword)
   const hasCerted = computed(() => userInfo.value.kyc_status === 2)
 
@@ -136,12 +213,8 @@
     return span
   })
 
-  const rechargeTxt = computed(() => {
-    return ['hive', 'aliExpress-wholesale'].includes(appName) ? t('加值') : t('充值')
-  })
-
-  const withdrawTxt = computed(() => {
-    return ['hive', 'aliExpress-wholesale'].includes(appName) ? t('提领') : t('提现')
+  const diyText = computed(() => {
+    return ['hive', 'aliExpress-wholesale'].includes(appName)
   })
 
   const investInfo = ref({
@@ -209,7 +282,7 @@
     }
     
     if (flag) {
-      if (['argos', 'flipkart', 'selfridges', 'harrods', 'targetShop', 'globease', 'tiktok8', 'tiktok9'].includes(appName)) {
+      if (['flipkart', 'selfridges', 'harrods', 'targetShop', 'globease', 'tiktok8', 'tiktok9'].includes(appName)) {
         Notification.info({
           title: t('提示'),
           content: t('请联系客服')
@@ -223,7 +296,7 @@
         navigationTo('/wallet/recharge')
       }
     } else {
-      if (['argos', 'selfridges', 'harrods', 'targetShop', 'globease'].includes(appName)) {
+      if (['selfridges', 'harrods', 'targetShop', 'globease'].includes(appName)) {
         Notification.info({
           title: t('提示'),
           content: t('请联系客服')
@@ -239,9 +312,95 @@
     }
   }
 
+  const inviteBgImg = new URL('@/assets/images/wallet/invite_bg.png', import.meta.url)
+  const firstChargeBg = new URL('@/assets/images/wallet/first_charge.png', import.meta.url)
+
+  const syspara = ref([])
+  const inviteFriends = ref([])
+  const inviteCondition = ref(0)
+
+  const getBannerInfo = () => {
+    sysConfigGetSyspara({code: 'mall_first_recharge_rewards,mall_first_invite_recharge_rewards,valid_recharge_amount_for_first_recharge_bonus'}).then(res => {
+      syspara.value = res.mall_first_recharge_rewards ? JSON.parse(res.mall_first_recharge_rewards) : []
+
+      syspara.value.forEach(item => {
+        item.content = t("存{_$1}赠送{_$2}", {
+          _$1: `<span class="yellow">$${item[1]}</span>`,
+          _$2: `<span class="yellow">$${item[0]}</span>`
+        })
+      })
+
+      inviteFriends.value = res.mall_first_invite_recharge_rewards ? JSON.parse(res.mall_first_invite_recharge_rewards) : []
+
+      inviteCondition.value = res.valid_recharge_amount_for_first_recharge_bonus || 0
+    })
+  }
+
+  const inviteRewardLoading = ref(false)
+  const getInviteReward = () => {
+    inviteRewardLoading.value = true
+    receiveInviteRewards().then(async () => {
+      await userStore.getSellerInfo()
+      await userStore.getWalletInfo()
+      Message.success(t('领取成功'))
+      inviteRewardLoading.value = false
+    }).catch(() => {
+      inviteRewardLoading.value = false
+    })
+  }
+
+  const showInviteDialog = ref(false)
+  const showInviteDialogHandle = () => {
+    if (!hasCerted.value) {
+      showConfirmDialog.value = true
+      return
+    }
+    
+    showInviteDialog.value = true
+  }
+
+  const carouselCurrent = ref()
+  const receiveBonusLoading = ref(false)
+
+  const getReceiveBonus = () => {
+    receiveBonusLoading.value = true
+    receiveBonus({
+      sellerId: sellerInfo.value.id
+    }).then(async () => {
+      carouselCurrent.value = 1
+      await userStore.getSellerInfo()
+      await userStore.getWalletInfo()
+      Message.success(t('领取成功'))
+      receiveBonusLoading.value = false
+    }).catch(() => {
+      receiveBonusLoading.value = false
+    })
+  }
+
+  const activeKey = ref(1)
+
+  const changeActiveKey = (key) => {
+    activeKey.value = key
+  }
+
   onMounted(async () => {
+    window.addEventListener('rechargeSuccess', () => {
+      changeActiveKey(2)
+    })
+    window.addEventListener('withdrawSuccess', () => {
+      changeActiveKey(1)
+    })
+    
     getInvestInfo()
+    getBannerInfo()
+
+    beforeReceiveBonus()
     await userStore.getWalletInfo()
+  })
+
+  onUnmounted(() => {
+    window.removeEventListener('rechargeSuccess', () => {})
+    window.removeEventListener('withdrawSuccess', () => {})
   })
 </script>
 <style lang="less" scoped>
@@ -270,6 +429,96 @@
       margin-top: 10px;
       gap: 10px;
       flex-wrap: wrap;
+    }
+  }
+
+  .swiper-item {
+    width: 100%;
+    height: 160px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    > h3 {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 38px;
+      text-align: center;
+      margin-bottom: 18px;
+      color: #fff;
+
+      .yellow {
+        color: #FFD331;
+      }
+    }
+    > p {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 32px;
+      line-height: 32px;
+      color: #FFD331;
+      text-align: center;
+      text-shadow: 1px 0px rgba(0,0,0,.7);
+      &.recharge {
+        font-weight: normal !important;
+        color: #fff;
+        .yellow {
+          color: #f46903;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .first-charge-desc {
+      padding: 0 150px;
+      font-weight: 400;
+      font-size: 28px;
+      line-height: 32px;
+      color: #FFD331;
+      text-align: center;
+      text-shadow: 1px 0px rgba(0,0,0,.7);
+      font-weight: normal !important;
+      color: #fff;
+      :deep(.yellow ){
+        color: #f46903;
+        font-weight: bold;
+      }
+
+      div {
+        display: inline-block;
+      }
+    }
+
+    > .btn-content {
+      position: absolute;
+      right: 50px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      gap: 10px;
+      .arco-btn {
+        min-width: 150px;
+        height: 40px;
+        text-align: center;
+        border-radius: 40px;
+        background: #fff;
+        color: #1552f0;
+        min-width: 150px;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        border: none;
+        transition: all 0.3s ease;
+        &:hover {
+          background: rgba(255, 255, 255, 0.8);
+        }
+      }
     }
   }
 </style>

@@ -1552,5 +1552,8 @@ export default {
   "您店铺中上架商品数量不足，请前往添加": "Mağazanızda ürün sayısı yetersiz, lütfen ekleme yapın",
   "立即认证": "Hemen doğrula",
   "重新认证": "Tekrar doğrula",
-  "确认支付密码": "Ödeme şifresini doğrula"
+  "确认支付密码": "Ödeme şifresini doğrula",
+  "充值限额": "Yükleme limiti",
+  "请先绑定绑定提现地址": "Lütfen önce para çekme adresini bağlayın",
+  "使用已绑定提现地址": "Bağlı para çekme adresini kullan"
 }

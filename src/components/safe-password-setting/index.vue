@@ -6,7 +6,7 @@
     :esc-to-close="false"
     :style="{ zIndex: 3000 }"
     :footer="false"
-    :on-before-cancel="handleCancel"
+    :on-before-cancel="beforeCancel"
   >
     <template #title>{{ isConfirm ? t('确认支付密码') : t('设置支付密码') }}</template>
     
@@ -50,10 +50,15 @@ const props = defineProps({
   }
 })
 
-const emits = defineEmits(['update:visible'])
+const emits = defineEmits(['update:visible', 'cancel'])
 
 const handleCancel = () => {
   emits('update:visible', false)
+}
+
+const beforeCancel = () => {
+  handleCancel()
+  emits('cancel')
 }
 
 const isConfirm = ref(false)

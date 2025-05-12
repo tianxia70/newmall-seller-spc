@@ -7,5 +7,5 @@ export default {
   favicon,
   phoneAreaCodeKey: 44,
   themeColor: '#F77234',
-  themeMode: 'dark'
+  themeMode: 'light'
 }

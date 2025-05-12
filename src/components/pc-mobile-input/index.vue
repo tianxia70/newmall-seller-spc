@@ -118,10 +118,19 @@
       immediate: true
     }
   )
+
+  watch(
+    () => props.areaCode,
+    () => {
+      dataInit()
+    },
+    {
+      immediate: true
+    }
+  )
   
   onMounted(async () => {
     siteConfig.value = await loadSiteConfig(appName)
-
     dataInit()
   })
 </script>

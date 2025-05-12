@@ -93,7 +93,7 @@
 
           <div v-if="showOtherInfo" class="block-title mt-6">{{ t('其他信息') }}</div>
           <a-form-item v-if="showIncome" field="annualIncome" :label="t('年收入')" >
-            <a-input-number :placeholder="$t('请输入')" v-model="formState.annualIncome" :hide-button="true" allow-clear />
+            <a-input-number :placeholder="$t('请输入')" model-event="input" v-model="formState.annualIncome" :hide-button="true" allow-clear />
           </a-form-item>
           <a-form-item v-if="showOpenAmount" field="openAmount" :label="t('预计开店金额')">
             <a-select
@@ -109,7 +109,7 @@
                 :value="item"
               />
             </a-select>
-            <a-input-number v-else :placeholder="$t('请输入')" v-model="formState.openAmount" :hide-button="true" allow-clear />
+            <a-input-number v-else :placeholder="$t('请输入')" model-event="input" v-model="formState.openAmount" :hide-button="true" allow-clear />
           </a-form-item>
           <a-form-item v-if="showWhatsapp" field="whatsApp" label="WhatsApp" >
             <a-input :placeholder="$t('请输入')" v-model="formState.whatsApp" allow-clear />

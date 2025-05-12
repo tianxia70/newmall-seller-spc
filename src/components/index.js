@@ -7,6 +7,7 @@ import PcNumber from './pc-number/index.vue';
 import PcConfirmDialog from './pc-confirm-dialog/index.vue';
 import SafePasswordSetting from './safe-password-setting/index.vue';
 import SafePasswordInput from './safe-password-input/index.vue';
+import PcCheckPicker from './pc-check-picker/index.vue';
 
 export default {
   install(Vue) {
@@ -18,6 +19,7 @@ export default {
     Vue.component('PcNumber', PcNumber),
     Vue.component('PcConfirmDialog', PcConfirmDialog),
     Vue.component('SafePasswordSetting', SafePasswordSetting),
-    Vue.component('SafePasswordInput', SafePasswordInput)
+    Vue.component('SafePasswordInput', SafePasswordInput),
+    Vue.component('PcCheckPicker', PcCheckPicker)
   }
 };

@@ -52,7 +52,7 @@ export const userCurrentGet = () =>
   });
 
 /**
- * 获取usdt余额 - USD
+ * 获取usdt余额 - USDT
  */
 export const userWalletGetUsdt = () =>
   request({
@@ -152,5 +152,150 @@ export const sellerInvestList = (params) =>
   request({
     url: '/user/seller/invest/list',
     method: 'get',
+    params
+  });
+
+/**
+ * 提现记录
+ */
+export const withdrawPageList = (params) =>
+  request({
+    url: '/user/withdraw/pagelist',
+    method: 'post',
+    params
+  });
+
+/**
+ * 充值记录
+ */
+export const rechargePageList = (params) =>
+  request({
+    url: '/user/recharge/pagelist',
+    method: 'post',
+    params
+  });
+
+/**
+ * 领取邀请好友奖励
+ */
+export const receiveInviteRewards = () =>
+  request({
+    url: '/user/seller/receiveInviteRewards',
+    method: 'post'
+  });
+
+/**
+ * 更新活动状态
+ */
+export const beforeReceiveBonus = () =>
+  request({
+    url: '/user/seller/beforeReceiveBonus',
+    method: 'post'
+  });
+
+/**
+ * 推广-邀请链接
+ */
+export const sellerMyPromotional = () =>
+  request({
+    url: '/user/seller/myPromotional',
+    method: 'post'
+  });
+
+/**
+ * 领取礼金
+ */
+export const receiveBonus = (params) =>
+  request({
+    url: '/user/seller/receiveBonus',
+    method: 'post',
+    params
+  });
+
+/**
+ * 获取可充值的币种
+ */
+export const channelBlockchainList = () =>
+  request({
+    url: '/user/channelBlockchain/list',
+    method: 'post'
+  });
+
+/**
+ * 充值 首次进入页面，传递session_token
+ */
+export const rechargeOpen = (data) =>
+  request({
+    url: '/user/recharge/open',
+    method: 'post',
+    data
+  });
+
+/**
+ * 汇率
+ */
+export const rechargeFee = (params) =>
+  request({
+    url: '/user/recharge/fee',
+    method: 'post',
+    params
+  });
+
+/**
+ * 充值申请
+ */
+export const rechargeApply = (params) =>
+  request({
+    url: '/user/recharge/apply',
+    method: 'post',
+    params
+  });
+
+/**
+ * 提取提现相关的限制配置信息
+ */
+export const withdrawLimitConfig = (params) =>
+  request({
+    url: '/user/withdraw/withdrawLimitConfig',
+    method: 'post',
+    params
+  });
+
+/**
+ * 提现 - session_token
+ */
+export const withdrawOpen = () =>
+  request({
+    url: '/user/withdraw/withdrawOpen',
+    method: 'post'
+  });
+
+/**
+ * 提现费率
+ */
+export const withdrawFee = (params) =>
+  request({
+    url: '/user/withdraw/fee',
+    method: 'post',
+    params
+  });
+
+/**
+* 绑定提现地址
+*/
+export const bindWithdrawAddress = (params) =>
+  request({
+    url: '/user/bindWithdrawAddress',
+    method: 'post',
+    params
+  });
+
+/**
+* 提现申请
+*/
+export const withdrawApply = (params) =>
+  request({
+    url: '/user/withdraw/apply',
+    method: 'post',
     params
   });

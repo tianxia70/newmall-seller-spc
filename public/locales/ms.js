@@ -1552,5 +1552,8 @@ export default {
   "您店铺中上架商品数量不足，请前往添加": "Jumlah produk di kedai anda tidak mencukupi, sila tambahkan produk",
   "立即认证": "Pengesahan Sekarang",
   "重新认证": "Pengesahan Ulang",
-  "确认支付密码": "Konfirmasi kata laluan pembayaran"
+  "确认支付密码": "Konfirmasi kata laluan pembayaran",
+  "充值限额": "Batas Isi Ulang",
+  "请先绑定绑定提现地址": "Silakan terlebih dahulu mengikat alamat penarikan",
+  "使用已绑定提现地址": "Gunakan alamat penarikan yang sudah terikat"
 }

@@ -6,7 +6,7 @@
   >
     <span v-if="currency">{{ currencyUnit }}</span>
     <span v-if="extra">{{ extra }}</span>
-    <count-to :start-val="0" :end-val="data" :decimals="2" :duration="1000" />
+    <count-to :start-val="0" :end-val="data" :decimals="decimals" :duration="1000" />
     <span v-if="suffix">{{ suffix }}</span>
   </div>
 </template>
@@ -48,6 +48,10 @@
     size: {
       type: Number,
       default: 14
+    },
+    decimals: {
+      type: Number,
+      default: 2
     }
   })
 
