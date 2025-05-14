@@ -17,7 +17,7 @@
       :loading="tableLoading"
     >
       <template #systemPrice="{ record }">
-        <pc-number :data="record.systemPrice" :color="true" />
+        <pc-number :data="record.systemPrice" />
       </template>
       <template #sellingPrice="{ record }">
         <pc-number :data="record.sellingPrice" :color="true" />
@@ -66,7 +66,7 @@ const columnsData = [
   {
     title: t('采购价格'), 
     dataIndex: 'systemPrice',
-    slotName: 'poster',
+    slotName: 'systemPrice',
     width: 120
   },
   {

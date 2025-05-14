@@ -99,3 +99,34 @@ export const sellerGoodsSkuInfo = (params) =>
     method: 'post',
     params
   });
+
+
+/**
+ * 退货列表
+ */
+export const orderRefundPagelist = (params) =>
+  request({
+    url: '/user/order/refund/pagelist',
+    method: 'post',
+    params
+  });
+
+/**
+ * 订单商品
+ */
+export const orderListGoods = (orderId, params) =>
+  request({
+    url: `/user/order/listGoods/${orderId}`,
+    method: 'get',
+    params
+  });
+
+/**
+ * 评论列表
+ */
+export const evaluationPagelist = (data) =>
+  request({
+    url: '/user/seller/evaluation/pagelist',
+    method: 'post',
+    data
+  });
