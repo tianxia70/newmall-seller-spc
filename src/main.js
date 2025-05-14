@@ -16,6 +16,7 @@ import './styles/index.css'
 import './styles/global.less'
 
 // 全局组件
+import 'virtual:svg-icons-register'
 import globalComponents from "@/components";
 
 // 盘口配置

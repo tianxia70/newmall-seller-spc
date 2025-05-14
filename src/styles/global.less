@@ -304,3 +304,24 @@ html, body {
 .arco-form-item-extra {
   width: 100%;
 }
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+.arco-table-col-fixed-right {
+  border-left: 1px solid var(--color-border-2);
+}
+
+.arco-dropdown-option-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}

@@ -1558,5 +1558,14 @@ export default {
   "绑定成功": "Pagsasama-sama na matagumpay",
   "资金类型": "Tipo de fondo",
   "入账时间": "Tempo de recebimento",
-  "筛选": "Filtrar"
+  "筛选": "Filtrar",
+  "商品已下架，无法进行其他操作": "El producto ha sido eliminado, y no se puede realizar ninguna otra acción",
+  "确定删除该商品？": "¿Está seguro de querer eliminar el producto?",
+  "删除成功": "Eliminación exitosa",
+  "上架成功": "Listado exitoso",
+  "下架成功": "Eliminación exitosa",
+  "确定批量上架所选商品吗？": "¿Está seguro de querer listar los productos seleccionados?",
+  "确定批量下架所选商品吗？": "¿Está seguro de querer eliminar los productos seleccionados?",
+  "确定批量修改所选商品吗？": "¿Está seguro de querer modificar los productos seleccionados?",
+  "确定批量删除所选商品吗？": "¿Está seguro de querer eliminar los productos seleccionados?"
 }

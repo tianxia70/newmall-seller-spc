@@ -10,7 +10,7 @@ import { debounce } from 'lodash-es'
  * @param {Number} debounceTime - 防抖时间(ms)
  * @returns {Object} 表格相关数据和方法
  */
-export function useTableList(ajaxFn, params = {}, immediate = true, debounceTime = 300) {
+export function useTableList(ajaxFn, params = {}, immediate = true, debounceTime = 300, extraFields = {}) {
   const tableRef = ref()
   const currentParams = ref() // 当前搜索项
   const pageNum = ref(1)
@@ -68,7 +68,11 @@ export function useTableList(ajaxFn, params = {}, immediate = true, debounceTime
       const argObj = mergeParams(arg)
       const res = await ajaxFn(argObj, { signal: controller.signal })
 
-      tableData.value = res.pageList || []
+      const dataArr = res.pageList || []
+      tableData.value = dataArr.map(item => ({
+        ...item,
+        ...extraFields
+      }))
       pageTotal.value = res?.pageInfo?.totalElements || 0
       currentParams.value = argObj
     } catch (err) {

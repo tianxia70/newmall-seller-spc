@@ -45,7 +45,8 @@
           <p>{{ t('二、乙方责任') }}</p>
           <p> {{ t('1.乙方需提供商品成本、维护商城买家（客户关系）。') }}</p>
           <p>{{ t('2.乙方保证良好的个人信用。') }}</p>
-          <p>{{ t("3.乙方需{0}天内及时处理订单。", [handleDays]) }}</p>
+          <p v-if="isDayHandle">{{ t("3.乙方需{0}天内及时处理订单。", [handleDays]) }}</p>
+          <p v-else>{{ t('3.乙方需n小时内及时处理订单。', {n: handleHours}) }}</p>
 
           <p>{{ t('三、违约条款') }}</p>
           <p>{{ t('1.如有特殊情况，经双方协商协议解决。') }}</p>
@@ -111,17 +112,29 @@
 
   const nowTime = computed(() => dayjs().format('YYYY-MM-DD'))
 
+  const isDayHandle = computed(() => {
+    return ['family-wholesale-group'].includes(appName)
+  })
+
   const handleDays = computed(() => {
-    let day = 24
+    let day = 1
     if (['family-wholesale-group'].includes(appName)) {
       day = 3
     }
 
+    return day
+  })
+
+  const handleHours = computed(() => {
+    let hour = 24
     if (['oufan', 'tiktok6', 'whale'].includes(appName)) {
       day = 48
     }
+    if (['tiktok4'].includes(appName)) {
+      day = 72
+    }
 
-    return day
+    return hour
   })
 
   const signbBadge = computed(() => {

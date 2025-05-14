@@ -1563,5 +1563,14 @@ export default {
   "绑定成功": "Binding successful",
   "资金类型": "Fund type",
   "入账时间": "Income time",
-  "筛选": "Filter"
+  "筛选": "Filter",
+  "商品已下架，无法进行其他操作": "The product has been removed, and other operations cannot be performed",
+  "确定删除该商品？": "Are you sure you want to delete the product?",
+  "删除成功": "Delete successful",
+  "上架成功": "Listing successful",
+  "下架成功": "Unlisting successful",
+  "确定批量上架所选商品吗？": "Are you sure you want to batch list the selected products?",
+  "确定批量下架所选商品吗？": "Are you sure you want to batch unlist the selected products?",
+  "确定批量修改所选商品吗？": "Are you sure you want to batch modify the selected products?",
+  "确定批量删除所选商品吗？": "Are you sure you want to batch delete the selected products?"
 }

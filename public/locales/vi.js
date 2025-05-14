@@ -1561,5 +1561,14 @@ export default {
   "绑定成功": "Liên kết thành công",
   "资金类型": "Loại tiền",
   "入账时间": "Thời gian nhận tiền",
-  "筛选": "Lọc"
+  "筛选": "Lọc",
+  "商品已下架，无法进行其他操作": "Sản phẩm đã bị xóa, không thể thực hiện các thao tác khác",
+  "确定删除该商品？": "Bạn có chắc chắn muốn xóa sản phẩm này không?",
+  "删除成功": "Xóa thành công",
+  "上架成功": "Danh sách sản phẩm đã được cập nhật",
+  "下架成功": "Danh sách sản phẩm đã được cập nhật",
+  "确定批量上架所选商品吗？": "Bạn có chắc chắn muốn cập nhật danh sách sản phẩm đã chọn không?",
+  "确定批量下架所选商品吗？": "Bạn có chắc chắn muốn xóa danh sách sản phẩm đã chọn không?",
+  "确定批量修改所选商品吗？": "Bạn có chắc chắn muốn cập nhật danh sách sản phẩm đã chọn không?",
+  "确定批量删除所选商品吗？": "Bạn có chắc chắn muốn xóa danh sách sản phẩm đã chọn không?"
 }

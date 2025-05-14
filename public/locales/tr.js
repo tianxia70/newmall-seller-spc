@@ -1559,5 +1559,14 @@ export default {
   "绑定成功": "Bağlantı başarılı",
   "资金类型": "Fondstipe",
   "入账时间": "Inboeking tyd",
-  "筛选": "Filtre"
+  "筛选": "Filtre",
+  "商品已下架，无法进行其他操作": "Ürün kaldırıldı, diğer işlemler yapılamaz",
+  "确定删除该商品？": "Bu ürünü silmek istediğinize emin misiniz?",
+  "删除成功": "Silme işlemi başarılı",
+  "上架成功": "Listeleme işlemi başarılı",
+  "下架成功": "Silme işlemi başarılı",
+  "确定批量上架所选商品吗？": "Seçilen ürünleri listelemek istediğinize emin misiniz?",
+  "确定批量下架所选商品吗？": "Seçilen ürünleri silmek istediğinize emin misiniz?",
+  "确定批量修改所选商品吗？": "Seçilen ürünleri güncellemek istediğinize emin misiniz?",
+  "确定批量删除所选商品吗？": "Seçilen ürünleri silmek istediğinize emin misiniz?"
 }

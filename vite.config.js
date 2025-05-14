@@ -3,6 +3,7 @@ import path from 'path'
 import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 import VueSetupExtend from 'vite-plugin-vue-setup-extend'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import { APP_PROXY_PREFIX } from './src/configs/index.js'
 
 const siteName = process.env.VITE_APP || 'argos'
@@ -13,7 +14,11 @@ export default defineConfig({
     vue(),
     /** setup 语法糖导出 vue 文件name 属性，用于页面 keepAlive */
     VueSetupExtend(),
-    tailwindcss()
+    tailwindcss(),
+    createSvgIconsPlugin({
+      iconDirs: [path.resolve(process.cwd(), 'src/assets/svg')], // SVG 图标目录
+      symbolId: 'icon-[name]', // 每个图标的 symbol id
+    })
   ],
   resolve: {
     alias: {

@@ -1559,5 +1559,14 @@ export default {
   "绑定成功": "Pengikatan berhasil",
   "资金类型": "Jenis dana",
   "入账时间": "Waktu masuk",
-  "筛选": "Filter"
+  "筛选": "Filter",
+  "商品已下架，无法进行其他操作": "Produk sudah dihapus, tidak dapat melakukan operasi lain",
+  "确定删除该商品？": "Apakah Anda yakin ingin menghapus produk ini?",
+  "删除成功": "Penghapusan berhasil",
+  "上架成功": "Penampilan berhasil",
+  "下架成功": "Penghapusan berhasil",
+  "确定批量上架所选商品吗？": "Apakah Anda yakin ingin memasang produk yang dipilih?",
+  "确定批量下架所选商品吗？": "Apakah Anda yakin ingin menghapus produk yang dipilih?",
+  "确定批量修改所选商品吗？": "Apakah Anda yakin ingin memodifikasi produk yang dipilih?",
+  "确定批量删除所选商品吗？": "Apakah Anda yakin ingin menghapus produk yang dipilih?"
 }

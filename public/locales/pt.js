@@ -1559,5 +1559,14 @@ export default {
   "绑定成功": "Ligação bem sucedida",
   "资金类型": "Tipo de fundo",
   "入账时间": "Tempo de recebimento",
-  "筛选": "Filtrar"
+  "筛选": "Filtrar",
+  "商品已下架，无法进行其他操作": "O produto foi removido e não é possível realizar outras operações",
+  "确定删除该商品？": "Tem certeza de que deseja excluir o produto?",
+  "删除成功": "Exclusão bem sucedida",
+  "上架成功": "Listagem bem sucedida",
+  "下架成功": "Remoção bem sucedida",
+  "确定批量上架所选商品吗？": "Tem certeza de que deseja listar os produtos selecionados?",
+  "确定批量下架所选商品吗？": "Tem certeza de que deseja remover os produtos selecionados?",
+  "确定批量修改所选商品吗？": "Tem certeza de que deseja modificar os produtos selecionados?",
+  "确定批量删除所选商品吗？": "Tem certeza de que deseja excluir os produtos selecionados?"
 }

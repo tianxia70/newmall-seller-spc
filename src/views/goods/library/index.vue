@@ -64,9 +64,9 @@
       @page-size-change="pageSizeChange"
     >
       <template #poster="{ record }">
-        <a-image :src="record.imgUrl1 || record.imgUrl2 || record.imgUrl3 || record.imgUrl4" :width="80" :height="80">
+        <a-image :src="record.imgUrl1 || record.imgUrl2 || record.imgUrl3 || record.imgUrl4" :width="60" :height="60">
           <template #loader>
-            <div class="img-loader-animate" style="width: 80px; height: 80px;">
+            <div class="img-loader-animate" style="width: 60px; height: 60px;">
               <a-spin />
             </div>
           </template>

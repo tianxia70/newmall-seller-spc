@@ -232,3 +232,7 @@ export const downloadImage = (imgsrc, name) => {
   };
   image.src = imgsrc
 }
+
+export function isExternal(path) {
+  return /^(https?:|mailto:|tel:)/.test(path)
+}

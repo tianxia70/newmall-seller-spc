@@ -15,12 +15,12 @@
           </a-input-number>
           <template #extra>
             <div class="mt-1">{{ t('将选中的商品发布到你的店铺，并填写利润比例。') }}</div>
-            <div class="flex mt-1">
+            <div class="flex mt-1 items-center gap-1">
               {{ t('建议利润比例：') }}
               <div class="flex items-center gap-1">
-                <pc-number :data="goodsProfit.sysParaMin" :currency="false" :color="true" suffix="%"></pc-number>
+                <pc-number :data="goodsProfit.sysParaMin" :currency="false" :color="true" suffix="%" class="info-number"></pc-number>
                 <span class="main-color"> — </span>
-                <pc-number :data="goodsProfit.sysParaMax" :currency="false" :color="true" suffix="%"></pc-number>
+                <pc-number :data="goodsProfit.sysParaMax" :currency="false" :color="true" suffix="%" class="info-number"></pc-number>
               </div>
             </div>
           </template>
@@ -205,6 +205,7 @@
   watch(() => props.visible, (newVal) => {
     if (!newVal) {
       formRules.discountRatio[0].required = false
+      subLoading.value = false
 
       formRef.value.resetFields()
       formRef.value.clearValidate()
@@ -215,5 +216,9 @@
 <style lang="less" scoped>
   .dialog-content {
     min-height: 200px;
+  }
+
+  .info-number {
+    font-size: 12px !important;
   }
 </style>

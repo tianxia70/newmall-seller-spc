@@ -1557,5 +1557,14 @@ export default {
   "绑定成功": "Bindung erfolgreich",
   "资金类型": "Fondstipe",
   "入账时间": "Inboeking tyd",
-  "筛选": "Filter"
+  "筛选": "Filter",
+  "商品已下架，无法进行其他操作": "Produkt ist abgehoben, kann keine andere Aktion ausführen",
+  "确定删除该商品？": "Bevestig die verwydering van die produk?",
+  "删除成功": "Löschen erfolgreich",
+  "上架成功": "Erfolgreich eingestellt",
+  "下架成功": "Erfolgreich entfernt",
+  "确定批量上架所选商品吗？": "Bevestig die batch-aanspreek van die gekose produkte?",
+  "确定批量下架所选商品吗？": "Bevestig die batch-afhaal van die gekose produkte?",
+  "确定批量修改所选商品吗？": "Bevestig die batch-wysiging van die gekose produkte?",
+  "确定批量删除所选商品吗？": "Bevestig die batch-verwydering van die gekose produkte?"
 }
