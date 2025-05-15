@@ -14,7 +14,10 @@
         <template v-if="!menu.meta.hidden">
         <a-menu-item :key="menu.name" @click="routerPush(menu)">
           <template #icon v-if="menu.meta.icon">
-            <component :is="menu.meta.icon" :class="menu.meta.icon.indexOf('ma') > 0 ? 'icon' : ''" />
+            <svg-icon v-if="menu.meta.icon.indexOf('new') > -1" :name="menu.meta.icon"/>
+            <i v-else-if="menu.meta.icon.indexOf('&#') > -1" class="iconfont" v-html="menu.meta.icon"></i>
+            <component v-else :is="menu.meta.icon" :class="menu.meta.icon.indexOf('ma') > 0 ? 'icon' : ''" />
+            <!-- <component :is="menu.meta.icon" :class="menu.meta.icon.indexOf('ma') > 0 ? 'icon' : ''" /> -->
           </template>
           {{ appStore.i18n ? ( $t(`menus.${menu.name}`).indexOf('.') > 0 ? menu.meta.title : $t(`menus.${menu.name}`) ) : menu.meta.title }}
         </a-menu-item>

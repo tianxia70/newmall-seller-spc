@@ -62,5 +62,16 @@ export const userAvatarData = [
   new URL('@/assets/images/avatar/21.png', import.meta.url)
 ]
 
+// 店铺等级
+export const sellerLogoData = {
+  'A': new URL('@/assets/images/level/a.png', import.meta.url),
+  'B': new URL('@/assets/images/level/b.png', import.meta.url),
+  'C': new URL('@/assets/images/level/c.png', import.meta.url),
+  'D': new URL('@/assets/images/level/d.png', import.meta.url),
+  'S': new URL('@/assets/images/level/s.png', import.meta.url),
+  'SS': new URL('@/assets/images/level/ss.png', import.meta.url),
+  'SSS': new URL('@/assets/images/level/sss.png', import.meta.url)
+}
+
 // 测试环境地址
 export const TEST_URL = 'https://www.sjiepc.com'

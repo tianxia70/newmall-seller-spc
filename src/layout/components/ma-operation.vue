@@ -3,6 +3,7 @@
     <div class="flex items-center gap-5">
       <div v-if="systemNotice" class="notice-content">
         <notice-bar
+          :key="noticeKey"
           left-icon="volume-o"
           scrollable
           :text="systemNotice"
@@ -11,6 +12,7 @@
       <message-content></message-content>
       <language-picker></language-picker>
       <currency-picker></currency-picker>
+      <theme-mode @change="changeThemeMode"></theme-mode>
       <div class="user-content">
         <van-image
           fit="cover"
@@ -96,6 +98,11 @@
     }
     return username
   })
+
+  const noticeKey = ref(0)
+  const changeThemeMode = () => {
+    noticeKey.value++
+  }
 
   const rootView = ref(false)
 

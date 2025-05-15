@@ -9,6 +9,7 @@ import SafePasswordSetting from './safe-password-setting/index.vue';
 import SafePasswordInput from './safe-password-input/index.vue';
 import PcCheckPicker from './pc-check-picker/index.vue';
 import SvgIcon from './svg-icon/index.vue';
+import ThemeMode from './theme-mode/index.vue';
 
 export default {
   install(Vue) {
@@ -22,6 +23,7 @@ export default {
     Vue.component('SafePasswordSetting', SafePasswordSetting),
     Vue.component('SafePasswordInput', SafePasswordInput),
     Vue.component('PcCheckPicker', PcCheckPicker),
-    Vue.component('SvgIcon', SvgIcon)
+    Vue.component('SvgIcon', SvgIcon),
+    Vue.component('ThemeMode', ThemeMode)
   }
 };

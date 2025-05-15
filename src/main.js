@@ -51,7 +51,10 @@ async function bootstrap() {
     appStore.changeColor(config.themeColor)
   }
   // 主题模式
-  if (config.themeMode) {
+  const setThemeMode = localStorage.getItem('seller_pc_store_app_theme_mode')
+  if (setThemeMode) {
+    appStore.toggleMode(setThemeMode)
+  } else if (config.themeMode) {
     appStore.toggleMode(config.themeMode)
   }
 }

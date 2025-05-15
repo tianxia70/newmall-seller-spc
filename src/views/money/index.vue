@@ -65,7 +65,7 @@
         <pc-number :data="record.amountBefore || 0" />
       </template>
       <template #amountAfter="{ record }">
-        <pc-number :data="record.amountAfter || 0" />
+        <pc-number :data="record.amountAfter || 0" :color="true" />
       </template>
       <template #createTimeStr="{ record }">
         <span>{{ record.createTimeStr || '--' }}</span>

@@ -4,7 +4,7 @@ export const homePageRoutes = [
     path: '/dashboard',
     meta: {
       title: '仪表盘',
-      icon: 'icon-dashboard'
+      icon: 'new-dashboard'
     },
     component: () => import('@/views/dashboard/index.vue')
   },
@@ -13,7 +13,7 @@ export const homePageRoutes = [
     path: '/order',
     meta: {
       title: '店铺订单',
-      icon: 'icon-dashboard'
+      icon: 'new-order'
     },
     component: () => import('@/views/order/index.vue')
   },
@@ -22,7 +22,7 @@ export const homePageRoutes = [
     path: '/financial',
     meta: {
       title: '财务报表',
-      icon: 'icon-dashboard'
+      icon: 'new-chart'
     },
     component: () => import('@/views/financial/index.vue')
   },
@@ -31,7 +31,7 @@ export const homePageRoutes = [
     path: '/wallet',
     meta: {
       title: '我的钱包',
-      icon: 'icon-dashboard'
+      icon: 'new-wallet'
     },
     component: () => import('@/views/wallet/index.vue')
   },
@@ -67,7 +67,7 @@ export const homePageRoutes = [
     path: '/money',
     meta: {
       title: '资金记录',
-      icon: 'icon-dashboard'
+      icon: 'new-card'
     },
     component: () => import('@/views/money/index.vue')
   },
@@ -76,7 +76,7 @@ export const homePageRoutes = [
     path: '/goods',
     meta: {
       title: '商品管理',
-      icon: 'icon-dashboard'
+      icon: 'new-price'
     },
     redirect: '/goods/store',
     children: [
@@ -85,7 +85,7 @@ export const homePageRoutes = [
         path: '/goods/store',
         meta: {
           title: '店铺商品',
-          icon: 'icon-dashboard'
+          icon: 'new-folder-check'
         },
         component: () => import('@/views/goods/store/index.vue')
       },
@@ -94,7 +94,7 @@ export const homePageRoutes = [
         path: '/goods/refund',
         meta: {
           title: '退款请求',
-          icon: 'icon-dashboard'
+          icon: 'new-file'
         },
         component: () => import('@/views/goods/refund/index.vue')
       },
@@ -103,7 +103,7 @@ export const homePageRoutes = [
         path: '/goods/comment',
         meta: {
           title: '商品评论',
-          icon: 'icon-dashboard'
+          icon: 'new-chat'
         },
         component: () => import('@/views/goods/comment/index.vue')
       },
@@ -112,7 +112,7 @@ export const homePageRoutes = [
         path: '/goods/library',
         meta: {
           title: '商品库',
-          icon: 'icon-dashboard'
+          icon: 'new-folder-cloud'
         },
         component: () => import('@/views/goods/library/index.vue')
       }
@@ -123,7 +123,7 @@ export const homePageRoutes = [
     path: '/other',
     meta: {
       title: '其他',
-      icon: 'icon-dashboard',
+      icon: 'new-compiling',
     },
     redirect: '/other/shop-setting',
     children: [
@@ -132,7 +132,7 @@ export const homePageRoutes = [
         path: '/other/shop-setting',
         meta: {
           title: '店铺设置',
-          icon: 'icon-dashboard'
+          icon: 'new-setting'
         },
         component: () => import('@/views/other/shop-setting/index.vue')
       },
@@ -141,7 +141,7 @@ export const homePageRoutes = [
         path: '/other/promotion',
         meta: {
           title: '创业联盟',
-          icon: 'icon-dashboard'
+          icon: 'new-flag'
         },
         component: () => import('@/views/other/promotion/index.vue')
       }
@@ -152,7 +152,7 @@ export const homePageRoutes = [
     path: '/marketing',
     meta: {
       title: '营销工具',
-      icon: 'icon-dashboard'
+      icon: 'new-box'
     },
     redirect: '/marketing/car',
     children: [
@@ -161,7 +161,7 @@ export const homePageRoutes = [
         path: '/marketing/car',
         meta: {
           title: '店铺直通车',
-          icon: 'icon-dashboard'
+          icon: 'new-direction'
         },
         component: () => import('@/views/marketing/car/index.vue')
       },
@@ -170,7 +170,7 @@ export const homePageRoutes = [
         path: '/marketing/buy-history',
         meta: {
           title: '购买历史',
-          icon: 'icon-dashboard'
+          icon: 'new-time'
         },
         component: () => import('@/views/marketing/buy-history/index.vue')
       },
@@ -179,7 +179,7 @@ export const homePageRoutes = [
         path: '/marketing/level',
         meta: {
           title: '卖家等级',
-          icon: 'icon-dashboard'
+          icon: 'new-sketch'
         },
         component: () => import('@/views/marketing/level/index.vue')
       }

@@ -29,6 +29,16 @@ export const goBack = () => {
   router.back();
 };
 
+//获取origin
+export function getOrigin() {
+  let hostname = location.hostname, prefx;
+  if (hostname == "localhost" || hostname == "127.0.0.1") {
+    prefx = "https://www.sjiepc.com";
+  } else {
+    prefx = location.origin;
+  }
+  return prefx;
+}
 
 /**
  * 获取字符串中所有的数字

@@ -8,7 +8,9 @@
           @click="routerPush(menu)"
         >
           <template #icon v-if="menu.meta.icon">
-            <component :is="menu.meta.icon" :class="menu.meta.icon.indexOf('ma') > 0 ? 'icon' : ''" />
+            <svg-icon v-if="menu.meta.icon.indexOf('new') > -1" :name="menu.meta.icon"/>
+            <i v-else-if="menu.meta.icon.indexOf('&#') > -1" class="iconfont" v-html="menu.meta.icon"></i>
+            <component v-else :is="menu.meta.icon" :class="menu.meta.icon.indexOf('ma') > 0 ? 'icon' : ''" />
           </template>
           <a-badge v-if="menu.path === '/order'" :count="orderCount" :offset="[15, 0]">
             {{ t(menu.meta.title) }}
@@ -17,7 +19,9 @@
         </a-menu-item>
         <a-sub-menu v-else :key="menu.name || menu.meta.name">
           <template #icon v-if="menu.meta.icon">
-            <component :is="menu.meta.icon" :class="menu.meta.icon.indexOf('ma') > 0 ? 'icon' : ''" />
+            <svg-icon v-if="menu.meta.icon.indexOf('new') > -1" :name="menu.meta.icon"/>
+            <i v-else-if="menu.meta.icon.indexOf('&#') > -1" class="iconfont" v-html="menu.meta.icon"></i>
+            <component v-else :is="menu.meta.icon" :class="menu.meta.icon.indexOf('ma') > 0 ? 'icon' : ''" />
           </template>
           <template #title @click="routerPush(menu.path)">
             {{ t(menu.meta.title) }}
@@ -73,6 +77,15 @@
     :deep(.arco-menu-pop-header) {
       padding-right: 12px !important;
     }
+  }
+  svg {
+    font-size: 18px;
+  }
+  .svg-icon {
+    font-size: 20px;
+  }
+  .iconfont {
+    font-size: 14px;
   }
 }
 .arco-menu-selected .icon {

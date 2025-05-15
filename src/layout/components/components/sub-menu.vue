@@ -4,13 +4,17 @@
       {{ appStore.i18n ? ($t(`menus.${menuInfo.name}`).indexOf('.') > 0 ? menuInfo.meta.title : $t(`menus.${menuInfo.name}`)) : menuInfo.meta.title }}
     </template>
     <template #icon v-if="menuInfo.meta.icon">
-      <component :is="menuInfo.meta.icon" :class="menuInfo.meta.icon.indexOf('ma') > 0 ? 'icon' : ''" />
+      <svg-icon v-if="menuInfo.meta.icon.indexOf('new') > -1" :name="menuInfo.meta.icon"/>
+      <i v-else-if="menuInfo.meta.icon.indexOf('&#') > -1" class="iconfont" v-html="menuInfo.meta.icon"></i>
+      <component v-else :is="menuInfo.meta.icon" :class="menuInfo.meta.icon.indexOf('ma') > 0 ? 'icon' : ''" />
     </template>
     <template v-for="item in menuInfo.children" :key="item.id">
       <template v-if="!item.children || item.children.length === 0">
         <a-menu-item :key="item.name" @click="routerPush(item)">
           <template #icon v-if="item.meta.icon">
-            <component :is="item.meta.icon" :class="menuInfo.meta.icon.indexOf('ma') > 0 ? 'icon' : ''" />
+            <svg-icon v-if="item.meta.icon.indexOf('new') > -1" :name="item.meta.icon"/>
+            <i v-else-if="item.meta.icon.indexOf('&#') > -1" class="iconfont" v-html="item.meta.icon"></i>
+            <component v-else :is="item.meta.icon" :class="item.meta.icon.indexOf('ma') > 0 ? 'icon' : ''" />
           </template>
           {{ appStore.i18n ? ($t(`menus.${item.name}`).indexOf('.') > 0 ? item.meta.title : $t(`menus.${item.name}`)) : item.meta.title }}
         </a-menu-item>

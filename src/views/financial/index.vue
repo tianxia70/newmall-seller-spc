@@ -49,7 +49,7 @@
           <pc-number :data="record.totalSales || 0" />
         </template>
         <template #totalProfit="{ record }">
-          <pc-number :data="record.totalProfit || 0" />
+          <pc-number :data="record.totalProfit || 0"  :color="true" />
         </template>
       </a-table>
     </div>

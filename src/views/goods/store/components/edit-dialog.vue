@@ -4,7 +4,7 @@
     :width="500"
     :mask-closable="false"
     :esc-to-close="false"
-    :closable="false"
+    :on-before-cancel="handleCancel"
   >
     <template #title>{{ dialogTitle }}</template>
     <div class="dialog-content">

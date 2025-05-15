@@ -3,7 +3,7 @@
     <div class="invite-pop-content">
       <img :src="invitePopImg.href" class="invite-pop-content-image" alt="">
 
-      <div class="icon-close" @click="handleCancel">
+      <div class="icon-close-btn" @click="handleCancel">
         <icon-close />
       </div>
 
@@ -192,7 +192,7 @@ const handleCopy = async () => {
     height: auto;
     flex-shrink: 0;
 
-    .icon-close {
+    .icon-close-btn {
       position: absolute;
       top: 12px;
       right: 12px;

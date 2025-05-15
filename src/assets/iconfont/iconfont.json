@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "29113077",
+      "name": "暗黑模式",
+      "font_class": "anheimoshi",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "43511073",
+      "name": "light_mode",
+      "font_class": "a-Frame48",
+      "unicode": "e866",
+      "unicode_decimal": 59494
+    },
+    {
       "icon_id": "41706092",
       "name": "闭眼睛",
       "font_class": "biyanjing",
