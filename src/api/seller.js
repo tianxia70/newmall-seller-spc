@@ -77,3 +77,32 @@ export const mallCategoryGoodCount = (params) =>
     method: 'post',
     params
   });
+
+/**
+ * 直通车列表
+ */
+export const comboList = () =>
+  request({
+    url: '/user/seller/combo/list',
+    method: 'post'
+  });
+
+/**
+ * 直通车购买
+ */
+export const comboBuy = (params) =>
+  request({
+    url: '/user/seller/combo/buy',
+    method: 'post',
+    params
+  });
+
+/**
+ * 直通车历史
+ */
+export const comboHistory = (params) =>
+  request({
+    url: '/user/seller/combo/pagelistBuy',
+    method: 'post',
+    params
+  });

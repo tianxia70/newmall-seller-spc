@@ -203,6 +203,16 @@ export const sellerMyPromotional = () =>
   });
 
 /**
+ * 推广-我的下级
+ */
+export const sellerTeamLevel = (params) =>
+  request({
+    url: '/user/seller/teamLevel',
+    method: 'post',
+    params
+  });
+
+/**
  * 领取礼金
  */
 export const receiveBonus = (params) =>
