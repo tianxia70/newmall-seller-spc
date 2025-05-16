@@ -1568,5 +1568,6 @@ export default {
   "确定批量上架所选商品吗？": "Seçilen ürünleri listelemek istediğinize emin misiniz?",
   "确定批量下架所选商品吗？": "Seçilen ürünleri silmek istediğinize emin misiniz?",
   "确定批量修改所选商品吗？": "Seçilen ürünleri güncellemek istediğinize emin misiniz?",
-  "确定批量删除所选商品吗？": "Seçilen ürünleri silmek istediğinize emin misiniz?"
+  "确定批量删除所选商品吗？": "Seçilen ürünleri silmek istediğinize emin misiniz?",
+  "订单商品": "Sipariş ürünleri"
 }

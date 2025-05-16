@@ -232,6 +232,7 @@
       if (old < val) {
         if (userClick.value && chatAudioDD.value) {
           chatAudioDD.value.play()
+          window.dispatchEvent(new Event('triggerOrderReload'))
         }
       }
     }

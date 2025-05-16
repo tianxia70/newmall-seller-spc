@@ -111,7 +111,7 @@ const orderListGoods = (params) => {
   });
 }
 
-const { tableData, tableLoading, getTableData, searchReset, tableRef, pageObj, pageChange, pageSizeChange } = useTableList(orderListGoods, {}, false)
+const { tableData, tableLoading, getTableData, tableRef, pageObj, pageChange, pageSizeChange } = useTableList(orderListGoods, {}, false)
 
 const tableDataRef = computed(() => {
   return tableData.value.map(item => {
@@ -131,6 +131,9 @@ const tableDataRef = computed(() => {
 watch(() => props.visible, (val) => {
   if (val) {
     getTableData(true)
+  } else {
+    tableLoading.value = false
+    tableData.value = []
   }
 })
 </script>

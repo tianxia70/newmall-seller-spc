@@ -151,3 +151,23 @@ export const getCountryList = (parentId) =>
     url: `/user/area/list/${parentId}`,
     method: 'get'
   });
+
+/**
+ * 商家端从订单给用户发起聊天前，检查会话是否存在 0：会话不存在 1：会话存在
+ */
+export const messageCheck = (params) =>
+  request({
+    url: `/user/message/check`,
+    method: 'get',
+    params
+  });
+
+/**
+ * 商家端从订单给用户发起聊天, 如果不存在会话, 则创建会话
+ */
+export const messageFirst = (data) =>
+  request({
+    url: `/user/message/first`,
+    method: 'post',
+    data
+  });

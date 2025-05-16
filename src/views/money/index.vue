@@ -105,8 +105,8 @@
     if (data.createTime && data.createTime.length) {
       data.beginTime = `${data.createTime[0]} 00:00:00`
       data.endTime = `${data.createTime[1]} 23:59:59`
-      delete data.createTime
     }
+    delete data.createTime
     getTableData(data)
   }
 

@@ -1572,5 +1572,6 @@ export default {
   "确定批量上架所选商品吗？": "Are you sure you want to batch list the selected products?",
   "确定批量下架所选商品吗？": "Are you sure you want to batch unlist the selected products?",
   "确定批量修改所选商品吗？": "Are you sure you want to batch modify the selected products?",
-  "确定批量删除所选商品吗？": "Are you sure you want to batch delete the selected products?"
+  "确定批量删除所选商品吗？": "Are you sure you want to batch delete the selected products?",
+  "订单商品": "Order products"
 }

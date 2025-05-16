@@ -1570,5 +1570,6 @@ export default {
   "确定批量上架所选商品吗？": "Bạn có chắc chắn muốn cập nhật danh sách sản phẩm đã chọn không?",
   "确定批量下架所选商品吗？": "Bạn có chắc chắn muốn xóa danh sách sản phẩm đã chọn không?",
   "确定批量修改所选商品吗？": "Bạn có chắc chắn muốn cập nhật danh sách sản phẩm đã chọn không?",
-  "确定批量删除所选商品吗？": "Bạn có chắc chắn muốn xóa danh sách sản phẩm đã chọn không?"
+  "确定批量删除所选商品吗？": "Bạn có chắc chắn muốn xóa danh sách sản phẩm đã chọn không?",
+  "订单商品": "Sản phẩm đơn hàng"
 }

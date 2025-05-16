@@ -1567,5 +1567,6 @@ export default {
   "确定批量上架所选商品吗？": "Sei sicuro di voler elencare i prodotti selezionati?",
   "确定批量下架所选商品吗？": "Sei sicuro di voler eliminare i prodotti selezionati?",
   "确定批量修改所选商品吗？": "Sei sicuro di voler modificare i prodotti selezionati?",
-  "确定批量删除所选商品吗？": "Sei sicuro di voler eliminare i prodotti selezionati?"
+  "确定批量删除所选商品吗？": "Sei sicuro di voler eliminare i prodotti selezionati?",
+  "订单商品": "Prodotti dell'ordine"
 }

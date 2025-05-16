@@ -1569,5 +1569,6 @@ export default {
   "确定批量上架所选商品吗？": "Bevestig die batch-aanspreek van die gekose produkte?",
   "确定批量下架所选商品吗？": "Bevestig die batch-afhaal van die gekose produkte?",
   "确定批量修改所选商品吗？": "Bevestig die batch-wysiging van die gekose produkte?",
-  "确定批量删除所选商品吗？": "Bevestig die batch-verwydering van die gekose produkte?"
+  "确定批量删除所选商品吗？": "Bevestig die batch-verwydering van die gekose produkte?",
+  "订单商品": "Bestelprodukte"
 }

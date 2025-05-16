@@ -24,8 +24,8 @@ export function useTableList(ajaxFn, params = {}, immediate = true, debounceTime
   const error = ref(null)
   let controller = null
 
-  if (params?.size) {
-    pageSize.value = params.size
+  if (params?.pageSize) {
+    pageSize.value = params.pageSize
   }
 
   // 取消请求

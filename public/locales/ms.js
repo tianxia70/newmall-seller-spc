@@ -1568,5 +1568,6 @@ export default {
   "确定批量上架所选商品吗？": "Apakah Anda yakin ingin memasang produk yang dipilih?",
   "确定批量下架所选商品吗？": "Apakah Anda yakin ingin menghapus produk yang dipilih?",
   "确定批量修改所选商品吗？": "Apakah Anda yakin ingin memodifikasi produk yang dipilih?",
-  "确定批量删除所选商品吗？": "Apakah Anda yakin ingin menghapus produk yang dipilih?"
+  "确定批量删除所选商品吗？": "Apakah Anda yakin ingin menghapus produk yang dipilih?",
+  "订单商品": "Produk Pesanan"
 }
