@@ -106,3 +106,22 @@ export const comboHistory = (params) =>
     method: 'post',
     params
   });
+
+/**
+ * 获取卖家等级列表
+ */
+export const sellerListMallLevel = () =>
+  request({
+    url: '/user/seller/listMallLevel',
+    method: 'get'
+  });
+
+/**
+ * 购买卖家等级
+ */
+export const sellerBuyLevel = (params) =>
+  request({
+    url: '/user/level/buy',
+    method: 'post',
+    params
+  });

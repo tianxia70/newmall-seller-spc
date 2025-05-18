@@ -1569,5 +1569,7 @@ export default {
   "确定批量下架所选商品吗？": "Apakah Anda yakin ingin menghapus produk yang dipilih?",
   "确定批量修改所选商品吗？": "Apakah Anda yakin ingin memodifikasi produk yang dipilih?",
   "确定批量删除所选商品吗？": "Apakah Anda yakin ingin menghapus produk yang dipilih?",
-  "订单商品": "Produk Pesanan"
+  "订单商品": "Produk Pesanan",
+  "等级进度": "Progres Level",
+  "等级介绍": "Deskripsi Level"
 }

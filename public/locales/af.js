@@ -1570,5 +1570,7 @@ export default {
   "确定批量下架所选商品吗？": "Bevestig die batch-afhaal van die gekose produkte?",
   "确定批量修改所选商品吗？": "Bevestig die batch-wysiging van die gekose produkte?",
   "确定批量删除所选商品吗？": "Bevestig die batch-verwydering van die gekose produkte?",
-  "订单商品": "Bestelprodukte"
+  "订单商品": "Bestelprodukte",
+  "等级进度": "Level prog",
+  "等级介绍": "Level beskrywing"
 }

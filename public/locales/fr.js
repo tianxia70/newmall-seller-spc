@@ -1568,5 +1568,7 @@ export default {
   "确定批量下架所选商品吗？": "Êtes-vous sûr de vouloir désactiver les produits sélectionnés ?",
   "确定批量修改所选商品吗？": "Êtes-vous sûr de vouloir modifier les produits sélectionnés ?",
   "确定批量删除所选商品吗？": "Êtes-vous sûr de vouloir supprimer les produits sélectionnés ?",
-  "订单商品": "Produits de commande"
+  "订单商品": "Produits de commande",
+  "等级进度": "Progrès du niveau",
+  "等级介绍": "Description du niveau"
 }
