@@ -1578,5 +1578,10 @@ export default {
   "请输入确认密码": "Vui lòng nhập mật khẩu xác nhận",
   "修改资金密码": "Sửa mật khẩu quỹ",
   "确认修改": "Xác nhận sửa đổi",
-  "当前账号有余额": "Tài khoản hiện tại có số dư"
+  "当前账号有余额": "Tài khoản hiện tại có số dư",
+  "为了保障您的账号安全，请{0}": "Để đảm bảo an toàn tài khoản của bạn, vui lòng {0}",
+  "设置邮箱": "Cài đặt email",
+  "设置手机号": "Cài đặt số điện thoại",
+  "修改手机号": "Sửa số điện thoại",
+  "信息验证": "Xác thực thông tin"
 }

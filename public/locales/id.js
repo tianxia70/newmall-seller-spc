@@ -1576,5 +1576,10 @@ export default {
   "请输入确认密码": "Silakan masukkan kata sandi konfirmasi",
   "修改资金密码": "Mengubah kata sandi dana",
   "确认修改": "Konfirmasi perubahan",
-  "当前账号有余额": "Saldo akun saat ini adalah"
+  "当前账号有余额": "Saldo akun saat ini adalah",
+  "为了保障您的账号安全，请{0}": "Untuk memastikan keamanan akun Anda, silakan {0}",
+  "设置邮箱": "Atur email",
+  "设置手机号": "Atur nomor telepon",
+  "修改手机号": "Ubah nomor telepon",
+  "信息验证": "Verifikasi informasi"
 }

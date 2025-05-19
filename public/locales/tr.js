@@ -1576,5 +1576,10 @@ export default {
   "请输入确认密码": "Lütfen onay şifresini girin",
   "修改资金密码": "Fon şifresini değiştir",
   "确认修改": "Değişikliği onayla",
-  "当前账号有余额": "Şu anki hesapta bakiye var"
+  "当前账号有余额": "Şu anki hesapta bakiye var",
+  "为了保障您的账号安全，请{0}": "Hesabınızın güvenliğini sağlamak için lütfen {0}",
+  "设置邮箱": "E-posta ayarla",
+  "设置手机号": "Telefon numarası ayarla",
+  "修改手机号": "Telefon numarasını değiştir",
+  "信息验证": "Bilgi doğrulama"
 }

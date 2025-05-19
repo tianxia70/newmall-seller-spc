@@ -349,3 +349,56 @@ export const userLogoff = (params) =>
     method: 'post',
     params
   });
+
+/**
+* 手机、邮箱验证
+*/
+export const checkEmailOrPhone = (data) =>
+  request({
+    url: '/user/checkEmailOrPhone',
+    method: 'post',
+    data
+  });
+
+/**
+* 绑定用户邮箱或手机号-不收验证码
+*/
+export const userBindEmailOrPhoneSm = (params) =>
+  request({
+    url: '/user/bindEmailOrPhoneSm',
+    method: 'post',
+    params
+  });
+
+/**
+* 绑定手机号和验证码，发送验证码之前校验手机号和邮箱是否已经被绑定
+*/
+export const userCheckAccount = (params) =>
+  request({
+    url: '/user/checkAccount',
+    method: 'get',
+    params
+  });
+
+/**
+* 绑定手机号和邮箱之前校验
+*/
+export const userBeforeBind = (params) =>
+  request({
+    url: '/user/beforeBind',
+    method: 'get',
+    params
+  });
+
+/**
+* 绑定用户邮箱或手机号
+*/
+export const userBindEmailOrPhone = (data) =>
+  request({
+    url: '/user/bindEmailOrPhone',
+    method: 'post',
+    data
+  });
+
+
+

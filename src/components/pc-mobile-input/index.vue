@@ -100,7 +100,7 @@
   }
 
   const dataInit = () => {
-    const setCode = parseInt(tool.local.get(phoneAreaCodeKey) || siteConfig.value.phoneAreaCodeKey)
+    const setCode = parseInt(tool.local.get(phoneAreaCodeKey) || siteConfig.value.siteAreaCodeDefalut)
 
     areaCodeValue.value = props.areaCode ? `+${props.areaCode}` : `+${setCode}`
     mobileValue.value = props.value || ''

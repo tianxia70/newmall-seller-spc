@@ -26,7 +26,7 @@
 
   onMounted(async () => {
     siteConfig.value = await loadSiteConfig(appName)
-    currentMode.value = localStorage.getItem('seller_pc_store_app_theme_mode') || siteConfig.value?.themeMode || ''
+    currentMode.value = localStorage.getItem('seller_pc_store_app_theme_mode') || siteConfig.value?.themeMode || 'light'
   })
 </script>
 

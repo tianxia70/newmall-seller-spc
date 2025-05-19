@@ -17,6 +17,26 @@
       v-model:visible="showCancellationDialog"
     ></cancellation-dialog>
 
+    <!-- 认证手机号、邮箱弹窗 -->
+    <pe-verifed-dialog
+      v-model:visible="showPeVerifedDialog"
+      :type="currentType"
+    ></pe-verifed-dialog>
+
+    <!-- 设置\修改 手机号、邮箱弹窗-不需要验证 -->
+    <pe-set-notcode-dialog
+      v-model:visible="showSetNotcodeDialog"
+      :type="currentType"
+      :is-modify="isModify"
+    ></pe-set-notcode-dialog>
+
+    <!-- 设置\修改 手机号、邮箱弹窗-需要验证 -->
+    <pc-set-code-dialog
+      v-model:visible="showPcSetCodeDialog"
+      :type="currentType"
+      :is-modify="isModify"
+    ></pc-set-code-dialog>
+
     <a-card :title="t('个人信息')">
       <div class="user-info-content">
         <div class="item">
@@ -38,6 +58,7 @@
           <div class="flex items-center justify-end gap-2">
             <template v-if="[1, 2, 3].includes(kycStatus)">
               <div class="flex items-center gap-1 justify-end">
+                <p class="main-color mr-2">{{ kycName }}</p>
                 <van-image
                   fit="cover"
                   width="20"
@@ -51,6 +72,67 @@
             <a-link v-else @click="certDialogVisible = true">{{ t('点击认证') }}</a-link>
           </div>
         </div>
+        <div v-if="showPhoneSetting" class="item">
+          <p>{{ t('手机号') }}</p>
+          <div class="flex items-center justify-end gap-2">
+            <template v-if="phone">
+              <div class="flex items-center gap-1 justify-end">
+                <p class="main-color mr-2">{{ phone }}</p>
+                <van-image
+                  fit="cover"
+                  width="20"
+                  height="20"
+                  :src="kycStatusIcon[phoneverif ? 1 : 0].href"
+                />
+                <p>{{ phoneverif ? t('已认证') : t('待认证') }}</p>
+              </div>
+              <a-link @click="peHandle('phone', true, phoneverif)">{{ phoneverif ? t('修改') : t('认证手机号') }}</a-link>
+            </template>
+            <template v-else>
+              <div class="flex items-center gap-1 justify-end">
+                <van-image
+                  fit="cover"
+                  width="20"
+                  height="20"
+                  :src="kycStatusIcon[2].href"
+                />
+                <p>{{ t('未设置') }}</p>
+              </div>
+              <a-link @click="peHandle('phone', false)">{{ t('设置') }}</a-link>
+            </template>
+          </div>
+        </div>
+        <div v-if="showEmailSetting" class="item">
+          <p>{{ t('邮箱') }}</p>
+          <div class="flex items-center justify-end gap-2">
+            <template v-if="email">
+              <div class="flex items-center gap-1 justify-end">
+                <p class="main-color mr-2">{{ email }}</p>
+                <van-image
+                  fit="cover"
+                  width="20"
+                  height="20"
+                  :src="kycStatusIcon[emailverif ? 1 : 0].href"
+                />
+                <p>{{ emailverif ? t('已认证') : t('待认证') }}</p>
+              </div>
+              <a-link @click="peHandle('email', true, emailverif)">{{ emailverif ? t('修改') : t('认证邮箱') }}</a-link>
+            </template>
+            <template v-else>
+              <div class="flex items-center gap-1 justify-end">
+                <van-image
+                  fit="cover"
+                  width="20"
+                  height="20"
+                  :src="kycStatusIcon[2].href"
+                />
+                <p>{{ t('未设置') }}</p>
+              </div>
+              <a-link @click="peHandle('email', false)">{{ t('设置') }}</a-link>
+            </template>
+          </div>
+        </div>
+
         <div v-if="showPasswordSetting" class="item">
           <p>{{ t('资金密码') }}</p>
           <div class="flex items-center justify-end gap-2">
@@ -93,7 +175,10 @@
   import CertDialog from './cert-dialog.vue'
   import PasswordDialog from './password-dialog.vue'
   import CancellationDialog from './cancellation-dialog.vue'
-  import { navigationTo } from '@/utils'
+  import { navigationTo, isTruthy } from '@/utils'
+  import PeVerifedDialog from './pe-verifed-dialog.vue'
+  import PeSetNotcodeDialog from './pe-set-notcode-dialog.vue'
+  import PcSetCodeDialog from './pc-set-code-dialog.vue'
 
   const { t } = useI18n()
   const appName = import.meta.env.VITE_APP
@@ -104,6 +189,8 @@
   // 0-> 待认证 1-> 认证中 2-> 认证成功 3-> 认证失败
   const kycStatus = computed(() => userInfo.value.kyc_status)
 
+  const kycName = computed(() => userInfo.value.name)
+
   const hasSafeword = computed(() => userInfo.value.safeword)
 
   const signPdfUrl = computed(() => userInfo.value.signPdfUrl)
@@ -113,9 +200,58 @@
     return !['familyMart'].includes(appName)
   })
 
+  // 显示手机号
+  const showPhoneSetting = computed(() => {
+    return !['ottoGroup', 'kohls', 'familyMart'].includes(appName)
+  })
+
+  // 显示邮箱
+  const showEmailSetting = computed(() => {
+    return !['familyMart'].includes(appName)
+  })
+
+  // 手机号有值就显示已认证
+  const showPhoneDefaultVer = computed(() => {
+    return ['familyShop', 'selfridges', 'flipkart', 'tiktok2', 'matches'].includes(appName)
+  })
+
+  // 邮箱有值就显示已认证
+  const showEmailDefaultVer = computed(() => {
+    return ['sm', 'familyShop', 'selfridges', 'flipkart', 'matches'].includes(appName)
+  })
+
+  // 修改手机号不需要验证码
+  const modifyPhoneNotCode = computed(() => {
+    return ['sm', 'familyShop', 'selfridges', 'flipkart', 'tiktok2', 'matches'].includes(appName)
+  })
+
+  // 修改邮箱不需要验证码
+  const modifyEmailNotCode = computed(() => {
+    return ['flipkart', 'matches'].includes(appName)
+  })
+
   // 显示注销账号
   const showCancellation = computed(() => {
     return ['argos', 'argos2'].includes(appName)
+  })
+
+  const emailverif = computed(() => (isTruthy(userInfo.value?.emailverif || false) || showEmailDefaultVer.value))
+  const email = computed(() => {
+    const value = userInfo.value?.email || ''
+    if (value) {
+      return value.replace(/(\w{1})\w{1,}(\w{1})/, '$1****$2')
+    }
+    return ''
+  })
+
+  const phoneverif = computed(() => (isTruthy(userInfo.value?.phoneverif || false) || showPhoneDefaultVer.value))
+  const phone = computed(() => {
+    const value = userInfo.value?.phone || ''
+    if (value) {
+      const index = value.indexOf(' ');
+      return '+' + value.substring(0, index + 1) + value.substring(index, index + 4) + '****' + value.substring(value.length - 2, value.length);
+    }
+    return ''
   })
 
   const avatarDialogVisible = ref(false)
@@ -151,6 +287,36 @@
       showCancellationDialog.value = true
     } else {
       showSafewordDialog.value = true
+    }
+  }
+
+  const showPeVerifedDialog = ref(false)
+  const showSetNotcodeDialog = ref(false)
+  const showPcSetCodeDialog = ref(false)
+  const currentType = ref('phone')
+  const isModify = ref(false)
+
+  const peHandle = (type, flag, verif) => {
+    currentType.value = type
+
+    if (flag) { // 认证、修改
+      if (verif) { // 修改
+        isModify.value = true
+        if ((type === 'phone' && modifyPhoneNotCode.value) || (type === 'email' && modifyEmailNotCode.value)) { // 不需要验证码
+          showSetNotcodeDialog.value = true
+        } else { // 需要验证码
+          showPcSetCodeDialog.value = true
+        }
+      } else { // 认证
+        showPeVerifedDialog.value = true
+      }
+    } else { // 设置
+      isModify.value = false
+      if ((type === 'phone' && modifyPhoneNotCode.value) || (type === 'email' && modifyEmailNotCode.value)) { // 不需要验证码
+        showSetNotcodeDialog.value = true
+      } else { // 需要验证码
+        showPcSetCodeDialog.value = true
+      }
     }
   }
 </script>

@@ -322,7 +322,7 @@
     formData.value.email = tool.local.get(loginEmailKey) || ''
     formData.value.phone = tool.local.get(loginMobileKey) || ''
 
-    const setCode = parseInt(tool.local.get(phoneAreaCodeKey) || siteConfig.value.phoneAreaCodeKey)
+    const setCode = parseInt(tool.local.get(phoneAreaCodeKey) || siteConfig.value.siteAreaCodeDefalut)
     if (!isNaN(setCode)) {
       formData.value.areaCode = setCode
     }

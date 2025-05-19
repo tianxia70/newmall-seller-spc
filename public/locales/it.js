@@ -1575,5 +1575,10 @@ export default {
   "请输入确认密码": "Inserisci la password di conferma",
   "修改资金密码": "Modifica password del fondo",
   "确认修改": "Conferma modifica",
-  "当前账号有余额": "Il saldo del conto corrente è"
+  "当前账号有余额": "Il saldo del conto corrente è",
+  "为了保障您的账号安全，请{0}": "Per garantire la sicurezza del tuo conto, per favore {0}",
+  "设置邮箱": "Imposta email",
+  "设置手机号": "Imposta numero di telefono",
+  "修改手机号": "Modifica numero di telefono",
+  "信息验证": "Verifica delle informazioni"
 }

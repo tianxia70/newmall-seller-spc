@@ -5,7 +5,6 @@ export default {
   title: 'Argos',
   logo,
   favicon,
-  phoneAreaCodeKey: 44,
-  themeColor: '#F77234',
-  themeMode: 'light'
+  siteAreaCodeDefalut: 86,
+  themeColor: '#F77234'
 }

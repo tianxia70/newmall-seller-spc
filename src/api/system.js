@@ -171,3 +171,13 @@ export const messageFirst = (data) =>
     method: 'post',
     data
   });
+
+/**
+ * 发送验证码
+ */
+export const sendCaptchCode = (params) =>
+  request({
+    url: `/user/sendCaptchCode`,
+    method: 'post',
+    params
+  });

@@ -1577,5 +1577,10 @@ export default {
   "请输入确认密码": "Voer asseblief wagwoord in",
   "修改资金密码": "Wysig fondswagwoord",
   "确认修改": "Bevestig wysiging",
-  "当前账号有余额": "Huidige rekening het geld"
+  "当前账号有余额": "Huidige rekening het geld",
+  "为了保障您的账号安全，请{0}": "Om jou rekening veilig te hou, stel asseblief {0} in",
+  "设置邮箱": "Stel e-posadres in",
+  "设置手机号": "Stel selfoonnommer in",
+  "修改手机号": "Wysig selfoonnommer",
+  "信息验证": "Inligtingverifikasie"
 }

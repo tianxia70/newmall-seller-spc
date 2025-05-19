@@ -51,7 +51,7 @@
             </div>
             <a-input
               :placeholder="t('请输入')"
-              :max-length="8"
+              :max-length="6"
               v-model="formData.verifCode"
             >
             </a-input>
@@ -407,7 +407,7 @@
 
     siteConfig.value = await loadSiteConfig(appName)
 
-    const setCode = parseInt(tool.local.get(phoneAreaCodeKey) || siteConfig.value.phoneAreaCodeKey)
+    const setCode = parseInt(tool.local.get(phoneAreaCodeKey) || siteConfig.value.siteAreaCodeDefalut)
     if (!isNaN(setCode)) {
       formData.value.areaCode = setCode
     }

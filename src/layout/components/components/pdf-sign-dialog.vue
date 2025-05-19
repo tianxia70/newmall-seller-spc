@@ -106,7 +106,7 @@
   const appName = import.meta.env.VITE_APP
   const siteConfig = ref({})
 
-  const isDarkMode = computed(() => siteConfig.value.themeMode && siteConfig.value.themeMode === 'dark')
+  const isDarkMode = ref(false)
 
   const { t } = useI18n()
 
@@ -207,6 +207,7 @@
         imageUpload(formData).then(async (res) => {
           const signPdfUrl = res.url
           await sellerUpdateSignPdf({ signPdfUrl, token: getToken() })
+          await userStore.getUserInfo()
           await userStore.getSellerInfo()
 
           Message.success(t('签署成功'))
@@ -258,7 +259,9 @@
   onMounted(async () => {
     siteConfig.value = await loadSiteConfig(appName)
 
-    sigOption.value.penColor = siteConfig.value.themeMode && siteConfig.value.themeMode === 'dark' ? '#ffffff' : '#000000'
+    const modelType = localStorage.getItem('seller_pc_store_app_theme_mode') || siteConfig.value?.themeMode || 'light'
+    isDarkMode.value = modelType === 'dark'
+    sigOption.value.penColor = isDarkMode.value ? '#ffffff' : '#000000'
   })
 </script>
 
