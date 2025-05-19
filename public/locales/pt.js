@@ -1571,5 +1571,10 @@ export default {
   "确定批量删除所选商品吗？": "Tem certeza de que deseja excluir os produtos selecionados?",
   "订单商品": "Produtos do pedido",
   "等级进度": "Progresso do nível",
-  "等级介绍": "Descrição do nível"
+  "等级介绍": "Descrição do nível",
+  "确认密码": "Confirmar senha",
+  "请输入确认密码": "Por favor, insira a senha de confirmação",
+  "修改资金密码": "Modificar senha do fundo",
+  "确认修改": "Confirmar modificação",
+  "当前账号有余额": "O saldo da conta atual é"
 }

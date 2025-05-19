@@ -1,5 +1,22 @@
 <template>
   <div>
+    <!-- 设置支付密码 -->
+    <safe-password-setting
+      v-if="showSafewordDialog"
+      v-model:visible="showSafewordDialog"
+    ></safe-password-setting>
+
+    <!-- 修改密码弹窗 -->
+    <password-dialog
+      v-model:visible="showPasswordDialog"
+      :is-safeword="isSafeword"
+    ></password-dialog>
+
+    <!-- 注销账号弹窗 -->
+    <cancellation-dialog
+      v-model:visible="showCancellationDialog"
+    ></cancellation-dialog>
+
     <a-card :title="t('个人信息')">
       <div class="user-info-content">
         <div class="item">
@@ -34,6 +51,31 @@
             <a-link v-else @click="certDialogVisible = true">{{ t('点击认证') }}</a-link>
           </div>
         </div>
+        <div v-if="showPasswordSetting" class="item">
+          <p>{{ t('资金密码') }}</p>
+          <div class="flex items-center justify-end gap-2">
+            <a-link v-if="hasSafeword" @click="changePassword(true)">{{ t('修改') }}</a-link>
+            <a-link v-else @click="showSafewordDialog = true">{{ t('设置') }}</a-link>
+          </div>
+        </div>
+        <div v-if="showPasswordSetting" class="item">
+          <p>{{ t('登录密码') }}</p>
+          <div class="flex items-center justify-end gap-2">
+            <a-link @click="changePassword(false)">{{ t('修改') }}</a-link>
+          </div>
+        </div>
+        <div v-if="signPdfUrl" class="item">
+          <p>{{ t('电子合同') }}</p>
+          <div class="flex items-center justify-end gap-2">
+            <a-link @click="navigationTo(signPdfUrl, true)">{{ t('查看') }}</a-link>
+          </div>
+        </div>
+        <div v-if="showCancellation" class="item">
+          <p>{{ t('注销账号') }}</p>
+          <div class="flex items-center justify-end gap-2">
+            <a-link @click="openCancellationDialog">{{ t('立即注销') }}</a-link>
+          </div>
+        </div>
       </div>
     </a-card>
     <avatar-dialog v-model:visible="avatarDialogVisible" />
@@ -49,13 +91,32 @@
   import { Image as VanImage} from 'vant'
   import AvatarDialog from './avatar-dialog.vue'
   import CertDialog from './cert-dialog.vue'
+  import PasswordDialog from './password-dialog.vue'
+  import CancellationDialog from './cancellation-dialog.vue'
+  import { navigationTo } from '@/utils'
 
   const { t } = useI18n()
+  const appName = import.meta.env.VITE_APP
+
   const userStore = useUserStore()
   const userInfo = computed(() => userStore.userInfo)
 
   // 0-> 待认证 1-> 认证中 2-> 认证成功 3-> 认证失败
   const kycStatus = computed(() => userInfo.value.kyc_status)
+
+  const hasSafeword = computed(() => userInfo.value.safeword)
+
+  const signPdfUrl = computed(() => userInfo.value.signPdfUrl)
+
+  // 显示修改资金、登录密码
+  const showPasswordSetting = computed(() => {
+    return !['familyMart'].includes(appName)
+  })
+
+  // 显示注销账号
+  const showCancellation = computed(() => {
+    return ['argos', 'argos2'].includes(appName)
+  })
 
   const avatarDialogVisible = ref(false)
   const certDialogVisible = ref(false)
@@ -73,6 +134,25 @@
     }
     return userAvatarData[num].href
   })
+
+  const showSafewordDialog = ref(false)
+
+  const showPasswordDialog = ref(false)
+  const isSafeword = ref(false)
+
+  const changePassword = (flag) => {
+    isSafeword.value = flag
+    showPasswordDialog.value = true
+  }
+
+  const showCancellationDialog = ref(false)
+  const openCancellationDialog = () => {
+    if (hasSafeword.value) {
+      showCancellationDialog.value = true
+    } else {
+      showSafewordDialog.value = true
+    }
+  }
 </script>
 
 <style lang="less" scoped>

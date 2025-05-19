@@ -1571,5 +1571,10 @@ export default {
   "确定批量删除所选商品吗？": "Apakah Anda yakin ingin menghapus produk yang dipilih?",
   "订单商品": "Produk Pesanan",
   "等级进度": "Progres Level",
-  "等级介绍": "Deskripsi Level"
+  "等级介绍": "Deskripsi Level",
+  "确认密码": "Konfirmasi kata laluan",
+  "请输入确认密码": "Sila masukkan kata laluan pengesahan",
+  "修改资金密码": "Mengubah kata laluan dana",
+  "确认修改": "Konfirmasi perubahan",
+  "当前账号有余额": "Saldo akun saat ini adalah"
 }

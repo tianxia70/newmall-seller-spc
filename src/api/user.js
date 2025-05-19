@@ -319,3 +319,33 @@ export const pageListMoneyLog = (params) =>
     method: 'get',
     params
   });
+
+/**
+* 修改资金密码
+*/
+export const updateOldAndNewSafeword = (params) =>
+  request({
+    url: '/user/updateOldAndNewSafeword',
+    method: 'post',
+    params
+  });
+
+/**
+* 修改登录密码
+*/
+export const userPassword = (data) =>
+  request({
+    url: '/user/password',
+    method: 'post',
+    data
+  });
+
+/**
+* 注销账号
+*/
+export const userLogoff = (params) =>
+  request({
+    url: '/user/logoff',
+    method: 'post',
+    params
+  });

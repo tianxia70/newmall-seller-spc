@@ -1571,5 +1571,10 @@ export default {
   "确定批量删除所选商品吗？": "Seçilen ürünleri silmek istediğinize emin misiniz?",
   "订单商品": "Sipariş ürünleri",
   "等级进度": "Seviye ilerlemesi",
-  "等级介绍": "Seviye açıklaması"
+  "等级介绍": "Seviye açıklaması",
+  "确认密码": "Şifreyi onayla",
+  "请输入确认密码": "Lütfen onay şifresini girin",
+  "修改资金密码": "Fon şifresini değiştir",
+  "确认修改": "Değişikliği onayla",
+  "当前账号有余额": "Şu anki hesapta bakiye var"
 }

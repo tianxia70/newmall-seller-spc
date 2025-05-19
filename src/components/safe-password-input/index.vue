@@ -12,7 +12,7 @@
     
     <div class="p-4">
       <a-verification-code v-model="safeword" masked />
-      <a-button type="primary" :disabled="safeword.length !== 6" size="large" class="w-full !mt-8" @click="submitHnadle">{{ t('确认') }}</a-button>
+      <a-button type="primary" :disabled="safeword.length !== 6" size="large" class="w-full !mt-8" @click="submitHandle">{{ t('确认') }}</a-button>
     </div>
   </a-modal>
 </template>
@@ -39,7 +39,7 @@ const handleCancel = () => {
 
 const safeword = ref('')
 
-const submitHnadle = () => {
+const submitHandle = () => {
   if (isNaN(Number(safeword.value))) {
     Message.error(t('请输入6位数数字密码'))
     return

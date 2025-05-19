@@ -1575,5 +1575,10 @@ export default {
   "确定批量删除所选商品吗？": "Are you sure you want to batch delete the selected products?",
   "订单商品": "Order products",
   "等级进度": "Level progress",
-  "等级介绍": "Level introduction"
+  "等级介绍": "Level introduction",
+  "确认密码": "Confirm password",
+  "请输入确认密码": "Please enter the confirmation password",
+  "修改资金密码": "Modify fund password",
+  "确认修改": "Confirm modification",
+  "当前账号有余额": "The current account has a balance"
 }

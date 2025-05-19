@@ -1572,5 +1572,10 @@ export default {
   "确定批量删除所选商品吗？": "Bevestig die batch-verwydering van die gekose produkte?",
   "订单商品": "Bestelprodukte",
   "等级进度": "Level prog",
-  "等级介绍": "Level beskrywing"
+  "等级介绍": "Level beskrywing",
+  "确认密码": "Bevestig wagwoord",
+  "请输入确认密码": "Voer asseblief wagwoord in",
+  "修改资金密码": "Wysig fondswagwoord",
+  "确认修改": "Bevestig wysiging",
+  "当前账号有余额": "Huidige rekening het geld"
 }

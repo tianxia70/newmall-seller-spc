@@ -1573,5 +1573,10 @@ export default {
   "确定批量删除所选商品吗？": "Bạn có chắc chắn muốn xóa danh sách sản phẩm đã chọn không?",
   "订单商品": "Sản phẩm đơn hàng",
   "等级进度": "Tiến trình cấp độ",
-  "等级介绍": "Mô tả cấp độ"
+  "等级介绍": "Mô tả cấp độ",
+  "确认密码": "Xác nhận mật khẩu",
+  "请输入确认密码": "Vui lòng nhập mật khẩu xác nhận",
+  "修改资金密码": "Sửa mật khẩu quỹ",
+  "确认修改": "Xác nhận sửa đổi",
+  "当前账号有余额": "Tài khoản hiện tại có số dư"
 }
