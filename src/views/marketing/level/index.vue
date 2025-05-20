@@ -115,11 +115,11 @@
             </p>
             <p class="intro-txt">
               <b>{{ t('分店人数') }}: </b>
-              {{ t('直属下级中，累计充值金额超过{_$1}将视为有效人数', {_$1: ` ${numberStrFormat(limitRechargeAmount)} `}) }}
+              <p v-html="t('直属下级中，累计充值金额超过{_$1}将视为有效人数', {_$1: `<span>${numberStrFormat(limitRechargeAmount)}</span>`})"></p>
             </p>
             <p class="intro-txt">
               <b>{{ t('团队人数') }}: </b>
-              {{ t('所有下级中，累计充值金额超过{_$1}视为有效团队人数', {_$1: ` ${numberStrFormat(teamRechargeAmount)} `}) }}
+              <p v-html="t('所有下级中，累计充值金额超过{_$1}视为有效团队人数', {_$1: `<span>${numberStrFormat(teamRechargeAmount)}</span>`})"></p>
             </p>
             <p class="intro-txt">
               <b>{{ t('销售利润比例') }}: </b>
@@ -458,6 +458,14 @@
     font-size: 13px;
     margin-top: 5px;
     color: var(--color-text-2);
+    > p {
+      display: inline;
+      :deep(span) {
+        color: rgb(var(--primary-6));
+        font-weight: bold;
+        padding: 0 2px;
+      }
+    }
   }
 }
 </style>

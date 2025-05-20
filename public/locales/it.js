@@ -1580,5 +1580,6 @@ export default {
   "设置邮箱": "Imposta email",
   "设置手机号": "Imposta numero di telefono",
   "修改手机号": "Modifica numero di telefono",
-  "信息验证": "Verifica delle informazioni"
+  "信息验证": "Verifica delle informazioni",
+  "请求超时，服务器无响应！": "La richiesta ha superato il tempo di attesa! Il server non ha risposto!"
 }

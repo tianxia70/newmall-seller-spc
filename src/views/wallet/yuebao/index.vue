@@ -3,19 +3,19 @@
     <a-row :gutter="20">
       <a-col :xs="24" :sm="24" :md="8" :lg="8">
         <div class="ma-content-block p-4 mb-3 invest-item">
-          <pc-number :data="investInfo?.balance || 0" :bold="true" :size="24" :currency="false" extra="$" />
+          <pc-number :data="investInfo?.balance || 0" :bold="true" :size="24" :color="true" />
           <p>{{ t('总资产') }}</p>
         </div>
       </a-col>
       <a-col :xs="24" :sm="24" :md="8" :lg="8">
         <div class="ma-content-block p-4 mb-3 invest-item">
-          <pc-number :data="investInfo?.yesterdayProfit || 0" :bold="true" :size="24" :currency="false" extra="$" />
+          <pc-number :data="investInfo?.yesterdayProfit || 0" :bold="true" :size="24" :color="true" />
           <p>{{ t('昨日收益') }}</p>
         </div>
       </a-col>
       <a-col :xs="24" :sm="24" :md="8" :lg="8">
         <div class="ma-content-block p-4 mb-3 invest-item">
-          <pc-number :data="investInfo?.totalProfit || 0" :bold="true" :size="24" :currency="false" extra="$" />
+          <pc-number :data="investInfo?.totalProfit || 0" :bold="true" :size="24" :color="true" />
           <p>{{ t('累计收益') }}</p>
         </div>
       </a-col>
@@ -41,7 +41,7 @@
           <span>{{ t('余额宝收益') }}</span>
         </template>
         <template #income="{ record }">
-          <pc-number :data="record.income" :currency="false" extra="$" />
+          <pc-number :data="record.income" :color="true" />
         </template>
       </a-table>
     </div>

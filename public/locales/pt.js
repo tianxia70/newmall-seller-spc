@@ -1581,5 +1581,6 @@ export default {
   "设置邮箱": "Definir email",
   "设置手机号": "Definir número de telefone",
   "修改手机号": "Modificar número de telefone",
-  "信息验证": "Verificação de informações"
+  "信息验证": "Verificação de informações",
+  "请求超时，服务器无响应！": "A solicitação excedeu o tempo limite! O servidor não respondeu!"
 }

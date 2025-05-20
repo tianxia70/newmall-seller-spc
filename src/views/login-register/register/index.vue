@@ -159,7 +159,7 @@
 
   // 邮箱和手机号都必填
   const bothType = computed(() => {
-    return ['argos', 'family-wholesale-group'].includes(appName)
+    return ['family-wholesale-group'].includes(appName)
   })
 
   // 验证码

@@ -4,7 +4,7 @@
     :width="600"
     :mask-closable="false"
     :esc-to-close="false"
-    :closable="false"
+    :on-before-cancel="handleCancel"
   >
     <template #title>{{ t('实名认证') }}</template>
 

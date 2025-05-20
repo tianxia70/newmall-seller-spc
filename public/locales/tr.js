@@ -1581,5 +1581,6 @@ export default {
   "设置邮箱": "E-posta ayarla",
   "设置手机号": "Telefon numarası ayarla",
   "修改手机号": "Telefon numarasını değiştir",
-  "信息验证": "Bilgi doğrulama"
+  "信息验证": "Bilgi doğrulama",
+  "请求超时，服务器无响应！": "İstek zaman aşımına uğradı! Sunucu yanıt vermedi!"
 }

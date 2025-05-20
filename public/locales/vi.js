@@ -1583,5 +1583,6 @@ export default {
   "设置邮箱": "Cài đặt email",
   "设置手机号": "Cài đặt số điện thoại",
   "修改手机号": "Sửa số điện thoại",
-  "信息验证": "Xác thực thông tin"
+  "信息验证": "Xác thực thông tin",
+  "请求超时，服务器无响应！": "Yêu cầu đã vượt quá thời gian chờ! Server không phản hồi!"
 }

@@ -1581,5 +1581,6 @@ export default {
   "设置邮箱": "Atur email",
   "设置手机号": "Atur nomor telepon",
   "修改手机号": "Ubah nomor telepon",
-  "信息验证": "Verifikasi informasi"
+  "信息验证": "Verifikasi informasi",
+  "请求超时，服务器无响应！": "Permintaan melebihi batas waktu! Server tidak merespons!"
 }

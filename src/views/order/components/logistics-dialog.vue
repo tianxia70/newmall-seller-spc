@@ -5,7 +5,7 @@
     :mask-closable="false"
     :esc-to-close="false"
     :on-before-cancel="handleCancel"
-    :on-ok="handleCancel"
+    @ok="handleCancel"
   >
     <template #title>{{ t('物流信息') }}</template>
 

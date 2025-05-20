@@ -1585,5 +1585,6 @@ export default {
   "设置邮箱": "Set email",
   "设置手机号": "Set phone number",
   "修改手机号": "Modify phone number",
-  "信息验证": "Information verification"
+  "信息验证": "Information verification",
+  "请求超时，服务器无响应！": "Request timeout, server no response!"
 }

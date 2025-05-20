@@ -1582,5 +1582,6 @@ export default {
   "设置邮箱": "Stel e-posadres in",
   "设置手机号": "Stel selfoonnommer in",
   "修改手机号": "Wysig selfoonnommer",
-  "信息验证": "Inligtingverifikasie"
+  "信息验证": "Inligtingverifikasie",
+  "请求超时，服务器无响应！": "Die versoek het uitgetel! Server het nie gereageer nie!"
 }

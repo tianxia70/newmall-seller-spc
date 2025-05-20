@@ -45,6 +45,9 @@
         @page-change="pageChange"
         @page-size-change="pageSizeChange"
       >
+        <template #orderNum="{ record }">
+          <pc-number :data="record.orderNum || 0" :color="true" :decimals="0" :currency="false" />
+        </template>
         <template #totalSales="{ record }">
           <pc-number :data="record.totalSales || 0" />
         </template>

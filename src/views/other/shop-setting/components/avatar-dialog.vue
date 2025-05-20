@@ -4,7 +4,7 @@
     :width="670"
     :mask-closable="false"
     :esc-to-close="false"
-    :closable="false"
+    :on-before-cancel="handleCancel"
   >
     <template #title>{{ t('头像选择') }}</template>
     <div class="avatar-content">
