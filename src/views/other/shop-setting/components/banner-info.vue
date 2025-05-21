@@ -141,7 +141,7 @@
         await userStore.getSellerInfo()
         subLoading.value = false
 
-        Message.success('保存成功')
+        Message.success(t('保存成功'))
       }).catch(() => {
         subLoading.value = false
       })

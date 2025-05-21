@@ -1582,5 +1582,7 @@ export default {
   "设置手机号": "Atur nomor telepon",
   "修改手机号": "Ubah nomor telepon",
   "信息验证": "Verifikasi informasi",
-  "请求超时，服务器无响应！": "Permintaan melebihi batas waktu! Server tidak merespons!"
+  "请求超时，服务器无响应！": "Permintaan melebihi batas waktu! Server tidak merespons!",
+  "未知错误！": "Kesalahan tidak diketahui!",
+  "注销成功": "Logout berhasil!"
 }

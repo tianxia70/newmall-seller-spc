@@ -1580,5 +1580,7 @@ export default {
   "设置手机号": "Telefonnummer festlegen",
   "修改手机号": "Telefonnummer ändern",
   "信息验证": "Informationen verifizieren",
-  "请求超时，服务器无响应！": "Die Anfrage hat das Timeout überschritten! Der Server hat keine Antwort gegeben!"
+  "请求超时，服务器无响应！": "Die Anfrage hat das Timeout überschritten! Der Server hat keine Antwort gegeben!",
+  "未知错误！": "Unbekannter Fehler!",
+  "注销成功": "Erfolgreich abgemeldet"
 }

@@ -298,12 +298,29 @@
     })
   }
 
+  const validateRealName = (value, cb) => {
+    return new Promise((resolve) => {
+      const valStr = String(value).trim()
+      if (!valStr) {
+        cb(t('请输入真实姓名'))
+      }
+
+      resolve()
+    })    
+  }
+
   const formRules = reactive({
     avatar: [{ required: true, message: t('请上传店铺LOGO'), trigger: 'change'}],
     shopName: [{ required: true, message: t('请输入店铺名称'), trigger: 'blur'}],
     nationality: [{ required: true, message: t('请选择国籍'), trigger: 'change'}],
-    realName: [{ required: true, message: t('请输入真实姓名'), trigger: 'blur'}],
-    idnumber: [{ required: true, validator: validateIdNumber, trigger: 'blur'}],
+    realName: [
+      { required: true, message: t('请输入真实姓名'), trigger: 'blur' },
+      { required: true, validator: validateRealName, trigger: 'blur' }
+    ],
+    idnumber: [
+      { required: true, message: t('请输入您的证件/护照号码'), trigger: 'blur' },
+      { required: true, validator: validateIdNumber, trigger: 'blur'}
+    ],
     annualIncome: [{ required: true,
       validator: (value, cb) => validateNumber(value, cb, '年收入', '请输入'),
       trigger: 'blur'

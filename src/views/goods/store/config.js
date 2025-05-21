@@ -20,8 +20,8 @@ export const statusData = [
 export const tableColumns = [
   {
     title: t('商品ID'),
-    dataIndex: 'id',
-    slotName: 'id',
+    dataIndex: 'goodsId',
+    slotName: 'goodsId',
     width: 140
   },
   {
@@ -40,13 +40,13 @@ export const tableColumns = [
     title: t('分类'),
     dataIndex: 'categoryName',
     slotName: 'categoryName',
-    width: 110
+    width: 135
   },
   {
     title: t('二级分类'),
     dataIndex: 'secondaryCateName',
     slotName: 'secondaryCateName',
-    width: 110
+    width: 135
   },
   {
     title: t('采购价格'),
@@ -58,7 +58,7 @@ export const tableColumns = [
     title: t('标签'),
     dataIndex: 'tagHandle',
     slotName: 'tagHandle',
-    width: 140
+    width: 190
   },
   {
     title: t('销售价格'),

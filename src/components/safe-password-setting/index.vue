@@ -14,7 +14,7 @@
       <template v-if="isConfirm">
         <a-verification-code v-model="formState.re_safeword" masked />
         <div class="flex items-center justify-between !mt-8">
-          <a-button size="large" class="w-35" @click="isConfirm = false">{{ t('上一步') }}</a-button>
+          <a-button size="large" class="w-35" @click="prevHandle">{{ t('上一步') }}</a-button>
           <a-button
             type="primary"
             :disabled="formState.re_safeword.length !== 6"
@@ -67,6 +67,12 @@ const formState = ref({
   re_safeword: '',
   verifcode_type: 2
 })
+
+const prevHandle = () => {
+  isConfirm.value = false
+  formState.value.safeword = ''
+  formState.value.re_safeword = ''
+}
 
 const submitLoading = ref(false)
 const submitHnadle = () => {

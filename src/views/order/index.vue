@@ -1,5 +1,20 @@
 <template>
   <div class="ma-content-block p-4">
+    <!-- 设置支付密码 -->
+    <safe-password-setting
+      v-if="showSafewordDialog"
+      v-model:visible="showSafewordDialog"
+    ></safe-password-setting>
+
+    <!-- 确认弹窗 -->
+    <pc-confirm-dialog
+      v-if="showConfirmDialog"
+      v-model:visible="showConfirmDialog"
+      :message="t('实名认证尚未完成')"
+      :confirmText="t('查看认证进度')"
+      @confirm="navigationTo('/other/shop-setting?cert=1')"
+    ></pc-confirm-dialog>
+
     <purchase-dialog
       v-model:visible="purchaseDialogVisible"
       :data-info="currentData"
@@ -120,6 +135,8 @@
   import { payStatusData, statusData, tableColumns} from './config'
   import { cloneDeep } from 'lodash-es'
   import { navData } from './config'
+  import { useUserStore } from '@/store'
+  import { navigationTo } from '@/utils'
   import PurchaseDialog from './components/purchase-dialog.vue'
   import LogisticsDialog from './components/logistics-dialog.vue'
   import DetailsDialog from './components/details-dialog.vue'
@@ -127,6 +144,15 @@
   const appName = import.meta.env.VITE_APP
 
   const { t } = useI18n()
+
+  const userStore = useUserStore()
+  const userInfo = computed(() => userStore.userInfo)
+  const hasSafeword = computed(() => userInfo.value.safeword)
+  const hasCerted = computed(() => userInfo.value.kyc_status === 2)
+
+  const showSafewordDialog = ref(false)
+  const showConfirmDialog = ref(false)
+
   let initParams = {}
   if (['masla'].includes(appName)) {
     initParams = {
@@ -294,6 +320,16 @@
     if (type === 1) {
       detailsDialogVisible.value = true
     } else if (type === 2) {
+      if (!hasSafeword.value) {
+        showSafewordDialog.value = true
+        return
+      }
+
+      if (!hasCerted.value) {
+        showConfirmDialog.value = true
+        return
+      }
+      
       purchaseDialogVisible.value = true
     } else if (type === 3) {
       logisticsDialogVisible.value = true

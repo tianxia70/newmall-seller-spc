@@ -49,7 +49,7 @@
         <a-tag :color="evaluationColor[Number(record.evaluationType)]">{{ getTypeName(record.evaluationType) }}</a-tag>
       </template>
       <template #rating="{ record }">
-        <a-rate :default-value="Number(record.rating || 5)" readonly />
+        <a-rate :key="record.id" :default-value="Number(record.rating || 5)" readonly />
       </template>
       <template #imgUrl="{ record }">
         <a-link v-if="record.imgUrlArr.length" @click="showImageList(record.imgUrlArr)">{{ t('查看图片') }}</a-link>

@@ -1584,5 +1584,7 @@ export default {
   "设置手机号": "Cài đặt số điện thoại",
   "修改手机号": "Sửa số điện thoại",
   "信息验证": "Xác thực thông tin",
-  "请求超时，服务器无响应！": "Yêu cầu đã vượt quá thời gian chờ! Server không phản hồi!"
+  "请求超时，服务器无响应！": "Yêu cầu đã vượt quá thời gian chờ! Server không phản hồi!",
+  "未知错误！": "Lỗi không xác định!",
+  "注销成功": "Đăng xuất thành công"
 }

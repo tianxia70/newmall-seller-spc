@@ -1586,5 +1586,7 @@ export default {
   "设置手机号": "Set phone number",
   "修改手机号": "Modify phone number",
   "信息验证": "Information verification",
-  "请求超时，服务器无响应！": "Request timeout, server no response!"
+  "请求超时，服务器无响应！": "Request timeout, server no response!",
+  "未知错误！": "Unknown error!",
+  "注销成功": "Logout successful"
 }

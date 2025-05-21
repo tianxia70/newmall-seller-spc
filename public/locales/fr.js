@@ -1581,5 +1581,7 @@ export default {
   "设置手机号": "Définir le numéro de téléphone",
   "修改手机号": "Modifier le numéro de téléphone",
   "信息验证": "Vérification des informations",
-  "请求超时，服务器无响应！": "La demande a expiré ! Le serveur n'a pas répondu !"
+  "请求超时，服务器无响应！": "La demande a expiré ! Le serveur n'a pas répondu !",
+  "未知错误！": "Erreur inconnue !",
+  "注销成功": "Déconnexion réussie !"
 }

@@ -1,5 +1,20 @@
 <template>
   <div>
+    <!-- 设置支付密码 -->
+    <safe-password-setting
+      v-if="showSafewordDialog"
+      v-model:visible="showSafewordDialog"
+    ></safe-password-setting>
+
+    <!-- 确认弹窗 -->
+    <pc-confirm-dialog
+      v-if="showConfirmDialog"
+      v-model:visible="showConfirmDialog"
+      :message="t('实名认证尚未完成')"
+      :confirmText="t('查看认证进度')"
+      @confirm="navigationTo('/other/shop-setting?cert=1')"
+    ></pc-confirm-dialog>
+
     <!-- 密码输入弹窗 -->
     <safe-password-input v-model:visible="showSafePassword" @confirm="submitRequest" />
 
@@ -28,10 +43,17 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Message } from '@arco-design/web-vue'
+import { useUserStore } from '@/store'
 import { comboList, comboBuy } from '@/api/seller'
+import { navigationTo } from '@/utils'
+
+const userStore = useUserStore()
+const userInfo = computed(() => userStore.userInfo)
+const hasSafeword = computed(() => userInfo.value.safeword)
+const hasCerted = computed(() => userInfo.value.kyc_status === 2)
 
 const { t } = useI18n()
 const pageLoading = ref(false)
@@ -51,9 +73,22 @@ const getComboList = () => {
   })
 }
 
+const showSafewordDialog = ref(false)
+const showConfirmDialog = ref(false)
+
 const showSafePassword = ref(false)
 const currentItem = ref(null)
 const handleBuy = (item) => {
+  if (!hasSafeword.value) {
+    showSafewordDialog.value = true
+    return
+  }
+
+  if (!hasCerted.value) {
+    showConfirmDialog.value = true
+    return
+  }
+
   currentItem.value = item
   showSafePassword.value = true
 }

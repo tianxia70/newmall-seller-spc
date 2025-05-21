@@ -3,7 +3,7 @@ import i18n from "@/i18n";
 import { getToken } from "@/utils/token-util.js";
 import request from '@/utils/request-im';
 import { sysConfigGetSyspara } from '@/api/system'
-import { loadJs, dateFormat, loadSiteConfig } from '@/utils'
+import { loadJs, dateFormat, loadSiteConfig, numberStrFormat } from '@/utils'
 import useCurrencyStore from './currency'
 import useUserStore from './user'
 import useAppStore from './app'
@@ -216,7 +216,7 @@ const useChatStore = defineStore('seller_pc_store_chat', {
                     resolve({
                       goodsImg: data.imgUrl1,
                       currencySymbol: currencyStore.currencyUnit,
-                      goodsPrice: numberStrFormat(data.discountPrice || data.sellingPrice),
+                      goodsPrice: numberStrFormat(data.discountPrice || data.sellingPrice, 2, false, true),
                       goodsName: data.name
                     })
                   })
@@ -266,7 +266,7 @@ const useChatStore = defineStore('seller_pc_store_chat', {
                     resolve({
                       goodsImg: data.imgUrl1,
                       currencySymbol: currencyStore.currencyUnit,
-                      goodsPrice: numberStrFormat(data.discountPrice || data.sellingPrice),
+                      goodsPrice: numberStrFormat(data.discountPrice || data.sellingPrice, 2, false, true),
                       goodsName: data.name
                     })
                   })

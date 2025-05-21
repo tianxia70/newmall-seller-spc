@@ -140,8 +140,11 @@ import { orderInfo, orderPush } from '@/api/order'
 import { request } from '@/utils/request'
 import { useTableList } from '@/hooks/useTableList'
 import { goodsColumns } from './../config'
+import { useSystemStore } from '@/store'
 
 const { t } = useI18n()
+
+const systemStore = useSystemStore()
 
 const props = defineProps({
   visible: {
@@ -197,6 +200,8 @@ const submitRequest = (safeword) => {
   }).then(() => {
     Message.success(t('订单采购成功'))
     submitLoading.value = false
+
+    systemStore.getOrderCount()
     handleCancel()
     emits('done')
   }).catch(() => {

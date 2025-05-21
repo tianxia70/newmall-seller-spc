@@ -30,8 +30,8 @@
         </a-alert>
         
 
-        <a-form ref="formRef" :model="formState" layout="vertical">
-          <a-form-item field="nationality" :label="t('国籍')" :rules="[{ required: true, message: t('请选择国籍') }]">
+        <a-form ref="formRef" :model="formState" :rules="formRules" layout="vertical">
+          <a-form-item field="nationality" :label="t('国籍')">
             <a-select
               v-model="formState.nationality"
               :placeholder="t('请选择国籍')"
@@ -47,11 +47,11 @@
             </a-select>
           </a-form-item>
 
-          <a-form-item field="realName" :label="t('真实姓名')" :rules="[{ required: true, message: t('请输入真实姓名') }]">
+          <a-form-item field="realName" :label="t('真实姓名')">
             <a-input v-model="formState.realName" :disabled="certDisabled" :placeholder="t('请输入真实姓名')" />
           </a-form-item>
           
-          <a-form-item field="idNumber" :label="`${t('证件')}/${t('护照号码')}`" :rules="[{ required: true, validator: validateIdNumber, trigger: 'blur' }]">
+          <a-form-item field="idNumber" :label="`${t('证件')}/${t('护照号码')}`">
             <a-input v-model="formState.idNumber" :disabled="certDisabled" :placeholder="t('请输入您的证件/护照号码')" />
           </a-form-item>
 
@@ -87,7 +87,7 @@
 </template>
 
 <script setup>
-  import { ref, computed, watch } from 'vue'
+  import { ref, reactive, computed, watch } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { Message } from '@arco-design/web-vue'
   import { Uploader, Image as VanImage } from 'vant'
@@ -206,20 +206,44 @@
     idimg_3: []
   })
 
+  const validateRealName = (value, cb) => {
+    return new Promise((resolve) => {
+      const valStr = String(value).trim()
+      if (!valStr) {
+        cb(t('请输入真实姓名'))
+      }
+
+      resolve()
+    })    
+  }
+
   const validateIdNumber = (value, cb) => {
     return new Promise((resolve) => {
-      if (!value) {
+      const valStr = String(value).trim()
+      if (!valStr) {
         cb(t('请输入您的证件/护照号码'))
       }
 
       const reg = /^[0-9a-zA-Z]*$/;
-      if (!reg.test(value)) {
+      if (!reg.test(valStr)) {
         cb(t('证件号格式有误'))
       }
 
       resolve()
     })
   }
+
+  const formRules = reactive({
+    nationality: [{ required: true, message: t('请选择国籍'), trigger: 'change' }],
+    realName: [
+      { required: true, message: t('请输入真实姓名'), trigger: 'blur' },
+      { required: true, validator: validateRealName, trigger: 'blur' }
+    ],
+    idNumber: [
+      { required: true, message: t('请输入您的证件/护照号码'), trigger: 'blur' },
+      { required: true, validator: validateIdNumber, trigger: 'blur' }
+    ]
+  })
 
   const onOversize = () => {
     Message.error(t('图片大小不能超过{0}', ['10MB']))
