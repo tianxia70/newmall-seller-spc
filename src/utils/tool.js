@@ -1,4 +1,3 @@
-import CryptoJS from 'crypto-js'
 import Big from 'big.js';
 
 const typeColor = (type = 'default') => {
@@ -186,36 +185,6 @@ tool.groupSeparator = (num) => {
   return num.replace(/(\d)(?=(\d{3})+\.)/g, function ($0, $1) {
     return $1 + ',';
   }).replace(/\.$/, '');
-}
-
-tool.md5 = (str) => {
-  return CryptoJS.MD5(str).toString()
-}
-
-tool.base64 = {
-  encode(data) {
-    return CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(data))
-  },
-  decode(cipher) {
-    return CryptoJS.enc.Base64.parse(cipher).toString(CryptoJS.enc.Utf8)
-  }
-}
-
-tool.aes = {
-  encode(data, secretKey) {
-    const result = CryptoJS.AES.encrypt(data, CryptoJS.enc.Utf8.parse(secretKey), {
-      mode: CryptoJS.mode.ECB,
-      padding: CryptoJS.pad.Pkcs7
-    })
-    return result.toString()
-  },
-  decode(cipher, secretKey) {
-    const result = CryptoJS.AES.decrypt(cipher, CryptoJS.enc.Utf8.parse(secretKey), {
-      mode: CryptoJS.mode.ECB,
-      padding: CryptoJS.pad.Pkcs7
-    })
-    return CryptoJS.enc.Utf8.stringify(result);
-  }
 }
 
 tool.capsule = (title, info, type = 'primary') => {
