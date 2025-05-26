@@ -433,8 +433,10 @@
     Message.error(t('图片大小不能超过{0}', ['10MB']))
   }
 
+  const imgUploading = ref(false)
   const afterRead = async (file) => {
     file.status = 'uploading'
+    imgUploading.value = true
     file.message = t('上传中...')
 
     try {
@@ -456,16 +458,18 @@
         file.url = res.url
 
         formRef.value.validateField('img')
-
+        imgUploading.value = false
       }).catch(function (err) {
         file.status = 'failed'
         file.message = t('上传失败')
 
         formState.value.img = []
+        imgUploading.value = false
       })
     } catch (error) {
       console.error('Upload error:', error)
       file.status = 'failed'
+      imgUploading.value = false
     }
   }
 
@@ -473,6 +477,11 @@
   const handleSubmit = async () => {
     const valid = await formRef.value.validate()
     if (!valid) {
+      if (imgUploading.value) {
+        Message.error(t('请等待图片上传完成'))
+        return
+      }
+
       const { coin, blockchain_name, channel_address, amount, img, remark } = formState.value
       const params = {
         session_token: session_token.value,
@@ -515,6 +524,7 @@
   onUnmounted(() => {
     if (feeInterval.value) {
       clearInterval(feeInterval.value)
+      feeInterval.value = null
     }
   })
 </script>

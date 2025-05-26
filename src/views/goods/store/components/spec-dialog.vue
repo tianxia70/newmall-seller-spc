@@ -4,7 +4,7 @@
     :width="900"
     :mask-closable="false"
     :esc-to-close="false"
-    :on-before-cancel="handleCancel"
+    @ok="handleCancel"
   >
     <template #title>{{ t('商品规格') }}</template>
     

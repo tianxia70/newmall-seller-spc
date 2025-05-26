@@ -130,11 +130,14 @@
               </template>
               </a-input-number>
               <template #extra>
-                <div class="flex items-center gap-2">
-                  <a-tag color="cyan" size="small" bordered>{{ t('钱包余额') }} {{ `$${numberStrFormat(allBalance, 2, false, true)}` }}</a-tag>
-                  <a-tag v-if="amountUnitNum && currentType === 'crypt'" color="blue" size="small" bordered>
-                    ≈<pc-number :data="Number(amountUnitNum)" :decimals="precisionNum" :currency="false" class="tag-number" />{{ formState.channel }}
-                  </a-tag>
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <a-tag color="cyan" size="small" bordered>{{ t('钱包余额') }} {{ `$${numberStrFormat(allBalance, 2, false, true)}` }}</a-tag>
+                    <a-tag v-if="amountUnitNum && currentType === 'crypt'" color="blue" size="small" bordered>
+                      ≈<pc-number :data="Number(amountUnitNum)" :decimals="precisionNum" :currency="false" class="tag-number" />{{ formState.channel }}
+                    </a-tag>
+                  </div>
+                  <a-link @click="allWithdraw">{{ t('全部提现') }}</a-link>
                 </div>
               </template>
             </a-form-item>
@@ -267,7 +270,7 @@
       const expectAmountNum = Number(tool.times(valueNum, feeNum))
 
       if (!value) {
-        cb(t('请输入充值数量'))
+        cb(t('请输入提现金额'))
       }
 
       if (expectAmountNum < withdrawAmountMin.value) {
@@ -410,6 +413,8 @@
     } else {
       getFeeHandle()
     }
+
+    formState.value.amount = undefined
   }
 
   const channelChange = () => {
@@ -419,6 +424,8 @@
     } else {
       formState.value.blockchain_name = undefined
     }
+
+    formState.value.amount = undefined
   }
 
   const pageLoading = ref(true)
@@ -450,12 +457,12 @@
 
       const dataList = []
 
-      let iconName = '虚拟币'
+      let iconName = t('虚拟币')
       if (['familyShop', 'selfridges', 'sm', 'aliExpress-wholesale', 'tiktok2', 'tiktok-wholesale'].includes(appName)) {
-        iconName = '加密货币'
+        iconName = t('加密货币')
       }
       if (['argos2'].includes(appName)) {
-        iconName = '货币'
+        iconName = t('货币')
       }
 
       if (hasCryptWithdraw.value) {
@@ -509,6 +516,8 @@
         showBindDialog.value = true
         showBindTips.value = !res.chainName || !res.coinType || !res.existWithdrawAddress
         showBindVisible.value = showBindTips.value
+
+        getFeeHandle()
       } else {
         showBindDialog.value = false
         showBindVisible.value = false
@@ -569,6 +578,7 @@
       getFeeRequest()
       if (feeInterval.value) {
         clearInterval(feeInterval.value)
+        feeInterval.value = null
       }
 
       feeInterval.value = setInterval(() => {
@@ -660,6 +670,14 @@
     })
   }
 
+  const allWithdraw = () => {
+    if (formState.value.type === 'crypt') {
+      formState.value.amount = Number(amountUnitNum.value)
+    } else if (formState.value.type === 'bank') {
+      formState.value.amount = Number(allBalance.value)
+    }
+  }
+
   onMounted(async () => {
     checkCert()
     systemStore.getCountryListHandle()
@@ -669,6 +687,7 @@
   onUnmounted(() => {
     if (feeInterval.value) {
       clearInterval(feeInterval.value)
+      feeInterval.value = null
     }
   })
 

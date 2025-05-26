@@ -1583,5 +1583,11 @@ export default {
   "信息验证": "Verificación de información",
   "请求超时，服务器无响应！": "¡La solicitud ha agotado el tiempo de espera! El servidor no ha respondido.",
   "未知错误！": "¡Error desconocido!",
-  "注销成功": "¡Cierre de sesión exitoso!"
+  "注销成功": "¡Cierre de sesión exitoso!",
+  "全部提现": "Retirar todo",
+  "请等待图片上传完成": "Por favor, espere a que se completen las imágenes",
+  "虚拟币": "Kripto moneta",
+  "转出金额需大于{0}": "Ang halaga ng pag-withdraw ay dapat na mas malaki kaysa sa {0}",
+  "转出金额最大为：": "Ang maximum na halaga ng pag-withdraw ay:",
+  "服务器资源不存在": "Ang server resource ay hindi umiiral"
 }

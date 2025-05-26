@@ -299,6 +299,11 @@
     const valid = await formRef.value.validate()
     if (!valid) {
       const data = cloneDeep(formState.value)
+      if (data.idimg_1[0]?.status === 'uploading' || data.idimg_2[0]?.status === 'uploading' || data.idimg_3[0]?.status === 'uploading') {
+        Message.error(t('请等待图片上传完成'))
+        return false
+      }
+
       if (!data.idimg_1.length) {
         Message.error(t('证件正面'))
         return false

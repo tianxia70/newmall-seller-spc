@@ -1584,5 +1584,11 @@ export default {
   "信息验证": "Bilgi doğrulama",
   "请求超时，服务器无响应！": "İstek zaman aşımına uğradı! Sunucu yanıt vermedi!",
   "未知错误！": "Bilinmeyen hata!",
-  "注销成功": "Çıkış yapıldı"
+  "注销成功": "Çıkış yapıldı",
+  "全部提现": "Tüm çekim",
+  "请等待图片上传完成": "Lütfen resim yüklenmesini bekleyin",
+  "虚拟币": "Kripto para birimi",
+  "转出金额需大于{0}": "Çekim tutarı {0}'dan büyük olmalıdır",
+  "转出金额最大为：": "Çekim tutarının maksimum değeri:",
+  "服务器资源不存在": "Sunucu kaynağı yok"
 }

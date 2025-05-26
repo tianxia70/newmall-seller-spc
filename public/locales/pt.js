@@ -1584,5 +1584,11 @@ export default {
   "信息验证": "Verificação de informações",
   "请求超时，服务器无响应！": "A solicitação excedeu o tempo limite! O servidor não respondeu!",
   "未知错误！": "Erro desconhecido!",
-  "注销成功": "Logout bem sucedido!"
+  "注销成功": "Logout bem sucedido!",
+  "全部提现": "Retirar tudo",
+  "请等待图片上传完成": "Por favor, aguarde até que a imagem seja carregada",
+  "虚拟币": "Moeda criptográfica",
+  "转出金额需大于{0}": "O valor do saque deve ser maior que {0}",
+  "转出金额最大为：": "O valor máximo do saque é:",
+  "服务器资源不存在": "Recurso do servidor não existe"
 }

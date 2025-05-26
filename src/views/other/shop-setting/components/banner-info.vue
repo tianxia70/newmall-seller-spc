@@ -132,6 +132,11 @@
     const valid = await formRef.value.validate()
     if (!valid) {
       const params = cloneDeep(formState.value)
+      if (params.banner1[0].status === 'uploading' || params.banner2[0].status === 'uploading' || params.banner3[0].status === 'uploading') {
+        Message.error(t('请等待图片上传完成'))
+        return false
+      }
+
       params.banner1 = params.banner1.length ? params.banner1[0].url : ''
       params.banner2 = params.banner2.length ? params.banner2[0].url : ''
       params.banner3 = params.banner3.length ? params.banner3[0].url : ''

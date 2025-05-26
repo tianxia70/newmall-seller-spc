@@ -143,6 +143,11 @@
     const valid = await formRef.value.validate()
     if (!valid) {
       const params = cloneDeep(formState.value)
+      if (params.avatar[0].status === 'uploading') {
+        Message.error(t('请等待图片上传完成'))
+        return false
+      }
+
       if (params.avatar.length) {
         params.avatar = params.avatar[0].url
       }

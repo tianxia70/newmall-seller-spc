@@ -1588,5 +1588,11 @@ export default {
   "信息验证": "Information verification",
   "请求超时，服务器无响应！": "Request timeout, server no response!",
   "未知错误！": "Unknown error!",
-  "注销成功": "Logout successful"
+  "注销成功": "Logout successful",
+  "全部提现": "Withdraw all",
+  "请等待图片上传完成": "Please wait for the image upload to complete",
+  "虚拟币": "Cryptocurrency",
+  "转出金额需大于{0}": "The withdrawal amount must be greater than {0}",
+  "转出金额最大为：": "The maximum withdrawal amount is:",
+  "服务器资源不存在": "Server resource does not exist"
 }

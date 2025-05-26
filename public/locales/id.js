@@ -1584,5 +1584,11 @@ export default {
   "信息验证": "Verifikasi informasi",
   "请求超时，服务器无响应！": "Permintaan melebihi batas waktu! Server tidak merespons!",
   "未知错误！": "Kesalahan tidak diketahui!",
-  "注销成功": "Logout berhasil!"
+  "注销成功": "Logout berhasil!",
+  "全部提现": "Tarik semua",
+  "请等待图片上传完成": "Silakan tunggu sampai pemuatan gambar selesai",
+  "虚拟币": "Kripto mata uang",
+  "转出金额需大于{0}": "Jumlah penarikan harus lebih besar dari {0}",
+  "转出金额最大为：": "Jumlah penarikan maksimal adalah:",
+  "服务器资源不存在": "Sumber daya server tidak ada"
 }

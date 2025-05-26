@@ -1582,5 +1582,11 @@ export default {
   "信息验证": "Informationen verifizieren",
   "请求超时，服务器无响应！": "Die Anfrage hat das Timeout überschritten! Der Server hat keine Antwort gegeben!",
   "未知错误！": "Unbekannter Fehler!",
-  "注销成功": "Erfolgreich abgemeldet"
+  "注销成功": "Erfolgreich abgemeldet",
+  "全部提现": "Alle Auszahlung",
+  "请等待图片上传完成": "Bitte warten Sie, bis die Bilder hochgeladen sind",
+  "虚拟币": "Kryptowährung",
+  "转出金额需大于{0}": "Der Auszahlungsbetrag muss größer sein als {0}",
+  "转出金额最大为：": "Der maximale Auszahlungsbetrag ist:",
+  "服务器资源不存在": "Server-Ressource existiert nicht"
 }

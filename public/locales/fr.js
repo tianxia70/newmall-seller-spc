@@ -1583,5 +1583,11 @@ export default {
   "信息验证": "Vérification des informations",
   "请求超时，服务器无响应！": "La demande a expiré ! Le serveur n'a pas répondu !",
   "未知错误！": "Erreur inconnue !",
-  "注销成功": "Déconnexion réussie !"
+  "注销成功": "Déconnexion réussie !",
+  "全部提现": "Tout retirer",
+  "请等待图片上传完成": "Veuillez patienter jusqu'à ce que les images soient téléchargées",
+  "虚拟币": "Monnaie cryptographique",
+  "转出金额需大于{0}": "Le montant du retrait doit être supérieur à {0}",
+  "转出金额最大为：": "Le montant maximum du retrait est:",
+  "服务器资源不存在": "Le serveur n'existe pas"
 }

@@ -122,6 +122,11 @@
         Message.error(t('请上传头像'))
         return
       }
+
+      if (avatarIcon.value[0].status === 'uploading') {
+        Message.error(t('请等待图片上传完成'))
+        return false
+      }
     }
 
     const params = currentAvatar.value === userAvatarData.length ? {

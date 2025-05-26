@@ -362,10 +362,10 @@ const getOrderInfo = async () => {
 const getStatus = (value, returnStatus) => {
   if (Number(value) === 6) {
     const returnInfo = {
-      0: '未退款',
-      1: '退款中',
-      2: '退款成功',
-      3: '退款失败'
+      0: t('未退款'),
+      1: t('退款中'),
+      2: t('退款成功'),
+      3: t('退款失败')
     }
     return returnInfo[returnStatus] || '--'
   } else {

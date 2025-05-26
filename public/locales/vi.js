@@ -1586,5 +1586,11 @@ export default {
   "信息验证": "Xác thực thông tin",
   "请求超时，服务器无响应！": "Yêu cầu đã vượt quá thời gian chờ! Server không phản hồi!",
   "未知错误！": "Lỗi không xác định!",
-  "注销成功": "Đăng xuất thành công"
+  "注销成功": "Đăng xuất thành công",
+  "全部提现": "Rút tất cả",
+  "请等待图片上传完成": "Vui lòng chờ đợi tải lên hình ảnh",
+  "虚拟币": "Tiền điện tử",
+  "转出金额需大于{0}": "Số tiền rút phải lớn hơn {0}",
+  "转出金额最大为：": "Số tiền rút tối đa là:",
+  "服务器资源不存在": "Tài nguyên máy chủ không tồn tại"
 }

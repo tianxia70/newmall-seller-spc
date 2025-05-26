@@ -1585,5 +1585,11 @@ export default {
   "信息验证": "Inligtingverifikasie",
   "请求超时，服务器无响应！": "Die versoek het uitgetel! Server het nie gereageer nie!",
   "未知错误！": "Onbekende fout!",
-  "注销成功": "Gekanselleer suksesvol"
+  "注销成功": "Gekanselleer suksesvol",
+  "全部提现": "Alle uitbetaling",
+  "请等待图片上传完成": "Wag asseblief tot die prente opgelaaier is",
+  "虚拟币": "Kriptogeldeenheid",
+  "转出金额需大于{0}": "Die uitbetalingbedrag moet groter wees as {0}",
+  "转出金额最大为：": "Die maksimum uitbetalingbedrag is:",
+  "服务器资源不存在": "Server bron bestaan ​​nie"
 }

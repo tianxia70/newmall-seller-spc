@@ -161,6 +161,16 @@ const submitHandle = () => {
       Message.error(t('转出金额超出了当前余额宝余额'))
       return
     }
+
+    if (money <= 0) {
+      Message.error(t('转出金额需大于{0}', [0]))
+      return
+    }
+
+    if (money > transferMax.value) {
+      Message.error(t('转出金额最大为：', {txt: transferMax.value}))
+      return
+    }
   } else {
     if (money > userMoney.value) {
       Message.error(t('转入金额超出了当前余额'))
