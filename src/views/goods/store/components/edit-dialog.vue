@@ -72,6 +72,7 @@
             <a-input-number
               v-model="formState.discountRatio"
               :min="1"
+              :max="100"
               :precision="0"
               :placeholder="t('请输入折扣比例')"
               :disabled="!formState.discountDate || formState.discountDate.length === 0"
@@ -261,7 +262,7 @@
       }
       if (data.discountDate && data.discountDate.length) {
         params.startTime = `${data.discountDate[0]} 00:00:00`
-        params.endTime = `${data.discountDate[0]} 23:59:59`
+        params.endTime = `${data.discountDate[1]} 23:59:59`
         params.discount = Number(tool.div(data.discountRatio, 100)).toFixed(4)
       } else {
         params.startTime = null
@@ -270,6 +271,10 @@
       }
 
       if (props.goodsInfo) {
+        if (profitNum.value < 0) {
+          Message.error(t('设置折扣比例: {0}%，会使利润为: {1},请重新设置', [formState.value.discountRatio, profitNum.value]))
+          return false
+        }
         params.isShelf = props.goodsInfo.isShelf
         params.isCombo = props.goodsInfo.isCombo
         params.recTime = props.goodsInfo.recTime
@@ -303,7 +308,7 @@
         
         if (props.goodsInfo.discountRatio) {
           if (props.goodsInfo.discountStartTime && props.goodsInfo.discountEndTime) {
-            formState.value.discountDate = [dayjs(props.goodsInfo.discountStartTime), dayjs(props.goodsInfo.discountEndTime)]
+            formState.value.discountDate = [props.goodsInfo.discountStartTime.split(' ')[0], props.goodsInfo.discountEndTime.split(' ')[0]]
           }
           formState.value.discountRatio = Number(Number(tool.times(props.goodsInfo.discountRatio, 100)).toFixed(2))
         }

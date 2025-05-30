@@ -9,10 +9,19 @@
     <template #title>{{ dialogTitle }}</template>
     <div class="dialog-content">
       <a-form ref="formRef" :model="formState" :rules="formRules" layout="vertical">
-        <a-form-item :label="t('利润比例')" field="profitRatio">
+        <a-form-item field="profitRatio" class="label-item-flex">
           <a-input-number v-model="formState.profitRatio" model-event="input" :min="0" :max="100" :hide-button="true" :placeholder="t('请输入利润比例')">
             <template #suffix>%</template>
           </a-input-number>
+          <template #label>
+            <div class="flex items-center gap-2 justify-between flex-1">
+              <span>{{ t('利润比例') }}</span>
+              <div v-if="goodsInfo" class="flex items-center gap-1">
+                <p class="text-gray-500 text-xs">{{ t('利润')}}</p>
+                <pc-number :data="profitNum" :color="true"></pc-number>
+              </div>
+            </div>
+          </template>
           <template #extra>
             <div class="mt-1">{{ t('将选中的商品发布到你的店铺，并填写利润比例。') }}</div>
             <div class="flex mt-1 items-center gap-1">
@@ -22,6 +31,10 @@
                 <span class="main-color"> — </span>
                 <pc-number :data="goodsProfit.sysParaMax" :currency="false" :color="true" suffix="%" class="info-number"></pc-number>
               </div>
+            </div>
+            <div v-if="goodsInfo" class="flex mt-1 items-center gap-1">
+              {{ t('采购价格') }}
+              <pc-number :data="goodsInfo?.systemPrice || 0" class="info-number"></pc-number>
             </div>
           </template>
         </a-form-item>
@@ -39,6 +52,7 @@
             <a-input-number
               v-model="formState.discountRatio"
               :min="1"
+              :max="100"
               :precision="0"
               :placeholder="t('请输入折扣比例')"
               :disabled="!formState.discountDate || formState.discountDate.length === 0"
@@ -102,6 +116,23 @@
 
   const dialogTitle = computed(() => {
     return props.goodsInfo ? t('添加产品') : t('批量添加')
+  })
+
+  // 利润
+  const profitNum = computed(() => {
+    let profit = 0
+    if (props.goodsInfo) {
+      const systemPrice = Number(props.goodsInfo?.systemPrice || 0) // 成本价
+      // 销售价格 = 成本价 * (1 + 利润比例)
+      const profitRatio = Number(formState.value.profitRatio || 0)
+      const sellingPrice = tool.times(systemPrice, tool.plus(1, tool.div(profitRatio, 100))) // 销售价格
+
+      const discount = Number(tool.div(Number(formState.value.discountRatio || 0), 100)) // 折扣比例
+      // 折扣价 = 销售价格 * (1 - 折扣比例)
+      const discountPer = tool.times(Number(sellingPrice), Number(tool.minus(1, discount))) // 折扣价
+      profit = Number(tool.minus(Number(discountPer), systemPrice))
+    }
+    return profit
   })
 
   const handleCancel = () => {
@@ -174,6 +205,13 @@
   const submitHandle = async () => {
     const valid = await formRef.value.validate()
     if (!valid) {
+      if (props.goodsInfo) {
+        if (profitNum.value < 0) {
+          Message.error(t('设置折扣比例: {0}%，会使利润为: {1},请重新设置', [formState.value.discountRatio, profitNum.value]))
+          return false
+        }
+      }
+
       const data = cloneDeep(formState.value)
       const params = {
         goodsIds: props.ids.join(','),
@@ -181,7 +219,7 @@
       }
       if (data.discountDate && data.discountDate.length) {
         params.startTime = `${data.discountDate[0]} 00:00:00`
-        params.endTime = `${data.discountDate[0]} 23:59:59`
+        params.endTime = `${data.discountDate[1]} 23:59:59`
         params.discount = Number(tool.div(data.discountRatio, 100)).toFixed(4)
       } else {
         params.startTime = null

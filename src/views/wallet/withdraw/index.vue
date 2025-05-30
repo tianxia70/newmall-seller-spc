@@ -273,6 +273,10 @@
         cb(t('请输入提现金额'))
       }
 
+      if (expectAmountNum > allBalance.value) {
+        cb(t('余额不足'))
+      }
+
       if (expectAmountNum < withdrawAmountMin.value) {
         cb(t('提款范围') + ` ≥ ${withdrawAmountMin.value} ${unit}`)
       }
