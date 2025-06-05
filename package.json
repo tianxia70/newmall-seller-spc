@@ -10,6 +10,8 @@
     "build:kohls": "VITE_APP=kohls vite build",
     "dev:argos7": "VITE_APP=argos7 vite",
     "build:argos7": "VITE_APP=argos7 vite build",
+    "dev:aiMall": "VITE_APP=aiMall vite",
+    "build:aiMall": "VITE_APP=aiMall vite build",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
