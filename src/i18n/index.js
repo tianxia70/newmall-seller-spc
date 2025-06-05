@@ -4,6 +4,7 @@ import { langKey, langMessages } from '@/configs'
 
 const appName = import.meta.env.VITE_APP
 let lang = 'en'
+const messagesArr = [ 'en', 'zh-cn', 'zh-tw', 'es', 'pt', 'af', 'el', 'it', 'ru', 'tr', 'de', 'fr', 'ja', 'ko', 'ms', 'th', 'tl', 'ar', 'vi', 'hi', 'id']
 
 const i18n = createI18n({
   legacy: false,
@@ -92,19 +93,34 @@ if (langMessages.includes(storeLang)) {
     localStorage.setItem(langKey, lang)
     location.reload()
   } else {
-    getLocation().then(res => {
-      const data = res || lang
-      const type = lang === 'ar' ? 'rtl' : 'rtr'
+    // 获取浏览器当前语言
+    const browserLang = navigator.language.toLowerCase()
+    const shortLang = browserLang.split('-')[0]
 
-      lang = data
-      localStorage.setItem(langKey, data)
-      document.documentElement.setAttribute('dir', type)
+    if (messagesArr.includes(browserLang)) {
+      lang = browserLang
+    } else if (messagesArr.includes(shortLang)) {
+      lang = shortLang
+    }
+    const type = lang === 'ar' ? 'rtl' : 'rtr'
 
-      location.reload()
-    }).catch(() => {
-      localStorage.setItem(langKey, lang)
-      document.documentElement.setAttribute('dir', 'rtr')
-    })
+    localStorage.setItem(langKey, lang)
+    document.documentElement.setAttribute('dir', type)
+
+    // 通过ip获取当前语言
+    // getLocation().then(res => {
+    //   const data = res || lang
+    //   const type = lang === 'ar' ? 'rtl' : 'rtr'
+
+    //   lang = data
+    //   localStorage.setItem(langKey, data)
+    //   document.documentElement.setAttribute('dir', type)
+
+    //   location.reload()
+    // }).catch(() => {
+    //   localStorage.setItem(langKey, lang)
+    //   document.documentElement.setAttribute('dir', 'rtr')
+    // })
   }
 }
 
