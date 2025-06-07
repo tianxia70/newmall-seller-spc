@@ -1590,5 +1590,7 @@ export default {
   "虚拟币": "Kripto para birimi",
   "转出金额需大于{0}": "Çekim tutarı {0}'dan büyük olmalıdır",
   "转出金额最大为：": "Çekim tutarının maksimum değeri:",
-  "服务器资源不存在": "Sunucu kaynağı yok"
+  "服务器资源不存在": "Sunucu kaynağı yok",
+  "{0}欢迎您！": "{0}Hoşgeldiniz!",
+  "如果你没有账号，你想要现在注册一个吗？": "Hesabınız yoksa, şimdi bir hesap oluşturmak ister misiniz?"
 }

@@ -1590,5 +1590,7 @@ export default {
   "虚拟币": "Moeda criptográfica",
   "转出金额需大于{0}": "O valor do saque deve ser maior que {0}",
   "转出金额最大为：": "O valor máximo do saque é:",
-  "服务器资源不存在": "Recurso do servidor não existe"
+  "服务器资源不存在": "Recurso do servidor não existe",
+  "{0}欢迎您！": "{0}Bem-vindo!",
+  "如果你没有账号，你想要现在注册一个吗？": "Se você não tem uma conta, deseja criar uma conta agora?"
 }

@@ -1588,5 +1588,7 @@ export default {
   "虚拟币": "Kryptowährung",
   "转出金额需大于{0}": "Der Auszahlungsbetrag muss größer sein als {0}",
   "转出金额最大为：": "Der maximale Auszahlungsbetrag ist:",
-  "服务器资源不存在": "Server-Ressource existiert nicht"
+  "服务器资源不存在": "Server-Ressource existiert nicht",
+  "{0}欢迎您！": "{0}Willkommen!",
+  "如果你没有账号，你想要现在注册一个吗？": "Wenn Sie kein Konto haben, möchten Sie jetzt ein Konto erstellen?"
 }

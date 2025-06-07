@@ -1589,5 +1589,7 @@ export default {
   "虚拟币": "Moneta criptata",
   "转出金额需大于{0}": "Il saldo di prelievo deve essere maggiore di {0}",
   "转出金额最大为：": "Il saldo di prelievo massimo è:",
-  "服务器资源不存在": "Risorsa del server non esistente"
+  "服务器资源不存在": "Risorsa del server non esistente",
+  "{0}欢迎您！": "{0}Benvenuto!",
+  "如果你没有账号，你想要现在注册一个吗？": "Se non hai un account, vuoi creare un account ora?"
 }

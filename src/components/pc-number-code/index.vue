@@ -8,12 +8,22 @@
   import { ref, onMounted } from 'vue'
 
   const emits = defineEmits(['done'])
+  const props = defineProps({
+    contentWidth: {
+      type: Number,
+      default: 100
+    },
+    contentHeight: {
+      type: Number,
+      default: 42
+    }
+  })
 
   const identifyCode = ref('')
   const backgroundColorMin = ref(180)
   const backgroundColorMax = ref(240)
-  const contentWidth = ref(100)
-  const contentHeight = ref(42)
+  // const contentWidth = ref(100)
+  // const contentHeight = ref(42)
   const colorMin = ref(50)
   const colorMax = ref(160)
   const fontSizeMin = ref(32)
@@ -40,7 +50,7 @@
     ctx.textBaseline = "bottom";
     // 绘制背景
     ctx.fillStyle = randomColor(backgroundColorMin.value, backgroundColorMax.value);
-    ctx.fillRect(0, 0, contentWidth.value, contentHeight.value);
+    ctx.fillRect(0, 0, props.contentWidth, props.contentHeight);
     // 绘制文字
     for (let i = 0; i < identifyCode.value.length; i++) {
       drawText(ctx, identifyCode.value[i], i);
@@ -52,8 +62,8 @@
   const drawText = (ctx, txt, i) => {
     ctx.fillStyle = randomColor(colorMin.value, colorMax.value);
     ctx.font = randomNum(fontSizeMin.value, fontSizeMax.value) + "px SimHei";
-    let x = (i + 1) * (contentWidth.value / (identifyCode.value.length + 1));
-    let y = randomNum(fontSizeMax.value, contentHeight.value - 5);
+    let x = (i + 1) * (props.contentWidth / (identifyCode.value.length + 1));
+    let y = randomNum(fontSizeMax.value, props.contentHeight - 5);
     var deg = randomNum(-15, 15);
     // 修改坐标原点和旋转角度
     ctx.translate(x, y);
@@ -73,12 +83,12 @@
       );
       ctx.beginPath();
       ctx.moveTo(
-        randomNum(0, contentWidth.value),
-        randomNum(0, contentHeight.value)
+        randomNum(0, props.contentWidth),
+        randomNum(0, props.contentHeight)
       );
       ctx.lineTo(
-        randomNum(0, contentWidth.value),
-        randomNum(0, contentHeight.value)
+        randomNum(0, props.contentWidth),
+        randomNum(0, props.contentHeight)
       );
       ctx.stroke();
     }
@@ -90,8 +100,8 @@
       ctx.fillStyle = randomColor(0, 100);
       ctx.beginPath();
       ctx.arc(
-        randomNum(0, contentWidth.value),
-        randomNum(0, contentHeight.value),
+        randomNum(0, props.contentWidth),
+        randomNum(0, props.contentHeight),
         1,
         0,
         2 * Math.PI

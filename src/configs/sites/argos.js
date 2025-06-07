@@ -6,5 +6,6 @@ export default {
   logo,
   favicon,
   siteAreaCodeDefalut: 86,
-  themeColor: '#F77234'
+  themeColor: '#F77234',
+  loginRegistTemp: 'temp-default'
 }

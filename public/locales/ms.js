@@ -1590,5 +1590,7 @@ export default {
   "虚拟币": "Kripto mata uang",
   "转出金额需大于{0}": "Jumlah penarikan harus lebih besar dari {0}",
   "转出金额最大为：": "Jumlah penarikan maksimal adalah:",
-  "服务器资源不存在": "Sumber daya server tidak ada"
+  "服务器资源不存在": "Sumber daya server tidak ada",
+  "{0}欢迎您！": "{0}Selamat datang!",
+  "如果你没有账号，你想要现在注册一个吗？": "Jika Anda tidak memiliki akun, apakah Anda ingin membuat akun sekarang?"
 }
