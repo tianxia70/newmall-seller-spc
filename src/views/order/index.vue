@@ -6,6 +6,9 @@
       v-model:visible="showSafewordDialog"
     ></safe-password-setting>
 
+    <!-- 密码输入弹窗 -->
+    <safe-password-input v-model:visible="showSafePassword" @confirm="submitRequest" />
+
     <!-- 确认弹窗 -->
     <pc-confirm-dialog
       v-if="showConfirmDialog"
@@ -69,8 +72,20 @@
       </a-form>
     </div>
 
+    <div class="mb-4 flex items-center gap-2">
+      <a-button :loading="batchLoading" type="primary" class="flex items-center gap-1" @click="batchHandle">
+        {{ t('批量采购') }}
+        <span v-if="selectedMoney">({{ numberStrFormat(selectedMoney) }})</span>
+        <a-tooltip :content="t('最多批量操作{0}条数据', [100])">
+          <icon-exclamation-circle-fill />
+        </a-tooltip>
+      </a-button>
+      <a-button v-if="selectedKeys.length" @click="selectedKeys = []">{{ t('取消') }}</a-button>
+    </div>
+
     <a-table
       ref="tableRef"
+      row-key="id"
       page-position="bottom"
       :columns="tableColumnsRef"
       :data="tableData"
@@ -81,8 +96,11 @@
         showTotal: true,
         showPageSize: true
       }"
+      :row-selection="rowSelection"
+      v-model:selectedKeys="selectedKeys"
       @page-change="pageChange"
       @page-size-change="pageSizeChange"
+      @selection-change="selectionChange"
     >
       <template #contacts="{ record }">
         <span>{{ formatContacts(record.contacts) }}</span>
@@ -128,23 +146,27 @@
 </template>
 
 <script setup>
-  import { ref, onMounted, computed, watch, onUnmounted } from 'vue'
+  import { ref, reactive, onMounted, computed, watch, onUnmounted } from 'vue'
   import { useI18n } from 'vue-i18n'
+  import { Message } from '@arco-design/web-vue'
   import { useTableList } from '@/hooks/useTableList'
-  import { orderPagelist } from '@/api/order'
+  import { orderPagelist, orderPush } from '@/api/order'
   import { payStatusData, statusData, tableColumns} from './config'
   import { cloneDeep } from 'lodash-es'
   import { navData } from './config'
   import { useUserStore } from '@/store'
-  import { navigationTo } from '@/utils'
+  import { navigationTo, numberStrFormat } from '@/utils'
+  import tool from '@/utils/tool'
   import PurchaseDialog from './components/purchase-dialog.vue'
   import LogisticsDialog from './components/logistics-dialog.vue'
   import DetailsDialog from './components/details-dialog.vue'
+  import { useSystemStore } from '@/store'
 
   const appName = import.meta.env.VITE_APP
 
   const { t } = useI18n()
 
+  const systemStore = useSystemStore()
   const userStore = useUserStore()
   const userInfo = computed(() => userStore.userInfo)
   const hasSafeword = computed(() => userInfo.value.safeword)
@@ -214,6 +236,10 @@
 
   watch(() => tableData.value, (val) => {
     clearAllInterval()
+    selectedKeys.value = []
+    selectedMoney.value = 0
+    orderIds.value = ''
+
     if (val && val.length) {
       for (let i = 0; i < tableData.value.length; i++) {
         if ((tableData.value[i].purchStatus == 0)&&tableData.value[i].payStatus == 1&&tableData.value[i].status===1) {
@@ -335,6 +361,63 @@
       logisticsDialogVisible.value = true
     }
   }
+
+  const selectedKeys = ref([])
+  const rowSelection = reactive({
+    type: 'checkbox',
+    showCheckedAll: true,
+    onlyCurrent: false
+  })
+  const selectedMoney = ref(0)
+
+  const selectionChange = (selectedRowKeys) => {
+    const dataArr = tableData.value.filter(item => selectedRowKeys.includes(item.id))
+    const passArr = dataArr.filter(item => item.purchStatus === 0)
+    const total = passArr.map(item => (item.sellerDiscountPrice || 0)).reduce((total, num) => {
+      return Number(tool.plus(total, num))
+    }, 0);
+    selectedMoney.value = total
+  }
+
+
+  const orderIds = ref('')
+  const showSafePassword = ref(false)
+  const batchLoading = ref(false)
+  const batchHandle = () => {
+    const dataArr = tableData.value.filter(item => selectedKeys.value.includes(item.id))
+    const passArr = dataArr.filter(item => item.purchStatus === 0)
+
+    if (!passArr.length) {
+      Message.error(t('没有需要采购的订单'))
+      return false
+    }
+
+    if (passArr.length > 100) {
+      Message.error(t('最多批量操作{0}条数据', [100]))
+      return false
+    }
+
+    orderIds.value = passArr.map(item => item.id).join(',')
+    showSafePassword.value = true
+  }
+
+  const submitRequest = (safeword) => {
+    batchLoading.value = true
+
+    orderPush({
+      orderId: orderIds.value,
+      safeword
+    }).then(() => {
+      Message.success(t('订单采购成功'))
+      batchLoading.value = false
+
+      systemStore.getOrderCount()
+      searchHandle()
+    }).catch(() => {
+      batchLoading.value = false
+    })
+  }
+  
 
   onMounted(() => {
     searchHandle()

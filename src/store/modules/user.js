@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import router from '../../router'
 import { userCurrentGet, userWalletGetMyWallet, sellerGetGoodsProfit } from '@/api/user'
 import { sellerGoodsList } from '@/api/goods'
 import { sellerInfo as sellerInfoApi } from '@/api/seller'
@@ -62,7 +63,7 @@ const useUserStore = defineStore('seller_pc_store_user', {
         pageNum: 1,
         pageSize: 10
       }).then(res => {
-        this.saleGoodsNum = res.sellerGoodsNum || 0
+        this.saleGoodsNum = res?.sellerGoodsNum || 0
       })
     },
     logout() {
@@ -87,7 +88,12 @@ const useUserStore = defineStore('seller_pc_store_user', {
       
       // 清除token
       removeToken()
-      navigationTo('/login')
+
+      // 获取当前路由，如果不是login页面就进入login
+      const currentRouteName = router.currentRoute.value.name
+      if (currentRouteName && currentRouteName !== 'login' && currentRouteName !== 'register') {
+        navigationTo('/login')
+      }
     }
   }
 })

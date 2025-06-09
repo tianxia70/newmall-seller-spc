@@ -23,20 +23,21 @@ router.beforeEach(async (to, from, next) => {
   
   // 登录状态下
   if (token) {
+    // 如果是登录状态访问登录页面，先清除之前的登录数据，然后重新登录
     if (to.name === 'login') {
-      next({ path: '/' })
-      return
-    }
-
-    if (!userStore.userInfo) {
-      // 用户信息
-      await userStore.getAllInfo()
-      // 店铺商品总数量
-      userStore.getSaleGoodsNum()
-
-      next({ path: to.path, query: to.query })
-    } else {
+      userStore.logout()
       next()
+    } else {
+      if (!userStore.userInfo) {
+        // 用户信息
+        await userStore.getAllInfo()
+        // 店铺商品总数量
+        userStore.getSaleGoodsNum()
+  
+        next({ path: to.path, query: to.query })
+      } else {
+        next()
+      }
     }
   } else {
     // 未登录的情况下允许访问的路由

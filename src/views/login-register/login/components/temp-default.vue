@@ -290,14 +290,16 @@
   const freeLoading = ref(false)
   const loginFreeHandle = (token) => {
     freeLoading.value = true
-    userLoginSeller({
-      freeToken: token
-    }).then(async (res) => {
-      await loginSuccess(res.token)
-      freeLoading.value = false
-    }).catch(() => {
-      freeLoading.value = false
-    })
+    setTimeout(() => {
+      userLoginSeller({
+        freeToken: token
+      }).then(async (res) => {
+        await loginSuccess(res.token)
+        freeLoading.value = false
+      }).catch(() => {
+        freeLoading.value = false
+      })
+    }, 5000)
   }
 
   const forgetPasswordHandle = () => {
