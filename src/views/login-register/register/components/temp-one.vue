@@ -135,7 +135,8 @@
   import { Message } from '@arco-design/web-vue'
   import { sellerV2Register, sendCaptchCodeNoneLogin } from '@/api/user'
   import { sysConfigGetSyspara } from '@/api/system'
-
+  import { useRoute } from 'vue-router'
+  
   const { t } = useI18n()
   const appName = import.meta.env.VITE_APP
   const siteConfig = ref({})
@@ -148,6 +149,8 @@
   const chatStore = useChatStore()
 
   // 只允许邮箱注册
+  const route = useRoute()
+
   const registerOnlyEmail = computed(() => {
     return ['aiMall'].includes(appName)
   })
@@ -405,6 +408,12 @@
     const setCode = parseInt(tool.local.get(phoneAreaCodeKey) || siteConfig.value.siteAreaCodeDefalut)
     if (!isNaN(setCode)) {
       formData.value.areaCode = setCode
+    }
+
+    // 获取路由参数
+    const code = route.query.usercode
+    if (code) {
+      formData.value.userCode = code
     }
   })
 </script>

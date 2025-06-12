@@ -131,6 +131,7 @@
 <script setup>
   import { ref, onMounted, computed } from 'vue'
   import { useI18n } from 'vue-i18n'
+  import { useRoute } from 'vue-router'
   import { loadSiteConfig, navigationTo, isTruthy } from '@/utils'
   import { setToken } from "@/utils/token-util.js";
   import tool from '@/utils/tool'
@@ -151,6 +152,8 @@
 
   const userStore = useUserStore()
   const chatStore = useChatStore()
+
+  const route = useRoute()
 
   // 只允许邮箱注册
   const registerOnlyEmail = computed(() => {
@@ -410,6 +413,12 @@
     const setCode = parseInt(tool.local.get(phoneAreaCodeKey) || siteConfig.value.siteAreaCodeDefalut)
     if (!isNaN(setCode)) {
       formData.value.areaCode = setCode
+    }
+
+    // 获取路由参数
+    const code = route.query.usercode
+    if (code) {
+      formData.value.userCode = code
     }
   })
 </script>

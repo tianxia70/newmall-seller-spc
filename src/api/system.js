@@ -181,3 +181,12 @@ export const sendCaptchCode = (params) =>
     method: 'post',
     params
   });
+
+/**
+ * 获取抽奖信息接口
+ */
+export const getCurrentActivity = () =>
+  request({
+    url: `/user/activity/getCurrentActivity`,
+    method: 'get'
+  });
