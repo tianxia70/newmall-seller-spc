@@ -35,7 +35,13 @@
     />
 
     <a-tabs v-model:activeKey="activeKey" @change="tabChange">
-      <a-tab-pane v-for="item in navData" :key="item.key" :title="item.name"></a-tab-pane>
+      <a-tab-pane v-for="item in navData" :key="item.key" :title="item.name">
+        <template #title>
+          <a-badge :count="item.key === '2' ? orderCount : 0" dot :offset="[5, 0]">
+            {{ item.name }}
+          </a-badge>
+        </template>
+      </a-tab-pane>
     </a-tabs>
 
     <div class="search-form-content">
@@ -51,7 +57,7 @@
           </a-select>
         </a-form-item>
         <a-form-item :label="t('物流状态')" field="status">
-          <a-select v-model="searchParams.status" :placeholder="t('请选择')">
+          <a-select v-model="searchParams.status" :disabled="activeKey !== '1'" :placeholder="t('请选择')">
             <a-option v-for="item in statusData" :key="item.value" :value="item.value">
               {{ t(item.label) }}
             </a-option>
@@ -154,13 +160,12 @@
   import { payStatusData, statusData, tableColumns} from './config'
   import { cloneDeep } from 'lodash-es'
   import { navData } from './config'
-  import { useUserStore } from '@/store'
+  import { useUserStore, useSystemStore } from '@/store'
   import { navigationTo, numberStrFormat } from '@/utils'
   import tool from '@/utils/tool'
   import PurchaseDialog from './components/purchase-dialog.vue'
   import LogisticsDialog from './components/logistics-dialog.vue'
   import DetailsDialog from './components/details-dialog.vue'
-  import { useSystemStore } from '@/store'
 
   const appName = import.meta.env.VITE_APP
 
@@ -171,6 +176,8 @@
   const userInfo = computed(() => userStore.userInfo)
   const hasSafeword = computed(() => userInfo.value.safeword)
   const hasCerted = computed(() => userInfo.value.kyc_status === 2)
+
+  const orderCount = computed(() => systemStore.order_count)
 
   const showSafewordDialog = ref(false)
   const showConfirmDialog = ref(false)
@@ -276,6 +283,11 @@
 
   const tabChange = (key) => {
     activeKey.value = key
+    
+    const obj = navData.find(item => item.key === key)
+    if (obj) {
+      searchParams.value.status = obj.status
+    }
     searchHandle()
   }
 
@@ -290,7 +302,6 @@
     const obj = navData.find(item => item.key === activeKey.value)
     if (obj) {
       data.purchStatus = obj.purchStatus
-      data.status = obj.status
     }
     getTableData(data)
   }
