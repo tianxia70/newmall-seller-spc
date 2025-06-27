@@ -176,7 +176,7 @@
 
   // 邀请码选填
   const noRequriedUserCode = computed(() => {
-    return ['tiktok4', 'tiktok8', 'argos7'].includes(appName)
+    return ['tiktok4', 'tiktok8', 'tiktok11'].includes(appName)
   })
 
   const agreeStatus = ref(false)

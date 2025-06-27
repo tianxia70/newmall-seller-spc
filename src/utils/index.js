@@ -1,6 +1,7 @@
 import Compressor from 'compressorjs'
 import router from '@/router';
 import i18n from '@/i18n'
+import tool from '@/utils/tool'
 import { useCurrencyStore } from '@/store'
 
 export const loadSiteConfig = async (siteName = 'argos') => {
@@ -63,7 +64,8 @@ export const numberStrFormat = (number, decimal = 2, flag = false, hideUnit = fa
   if (!isNaN(amount)) {
     // **手动截断小数**
     const factor = Math.pow(10, decimal)
-    const truncatedAmount = Math.floor(Math.abs(amount) * factor) / factor
+    const total = Math.floor((Number(tool.times(Math.abs(amount), factor))))
+    const truncatedAmount = tool.div(total, factor)
 
     // **格式化数字**
     resStr = flag
