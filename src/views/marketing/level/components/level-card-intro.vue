@@ -87,10 +87,10 @@
                 <i v-else class="iconfont error">&#xe787;</i>
               </div>
             </div>
-            <div v-if="showSuppliers" class="item">
-              <div class="name-content"><i class="iconfont">&#xe784;</i><span>{{ t('成为供货商') }}</span></div>
+            <div class="item">
+              <div class="name-content"><i class="iconfont">&#xe6bd;</i><span>{{ t('成为供货商') }}</span></div>
               <div class="value-content">
-                <i v-if="item.level === 'SS'" class="iconfont success">&#xe785;</i>
+                <i v-if="item.isSupplier" class="iconfont success">&#xe785;</i>
                 <i v-else class="iconfont error">&#xe787;</i>
               </div>
             </div>
@@ -175,10 +175,6 @@
 
   const showInfoTxt = computed(() => {
     return ['tiktok7'].includes(appName)
-  })
-
-  const showSuppliers = computed(() => {
-    return ['familyShop', 'selfridges'].includes(appName)
   })
 
   const showRecommend = computed(() => {

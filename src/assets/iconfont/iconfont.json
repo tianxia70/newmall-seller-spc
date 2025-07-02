@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "817769",
+      "name": "供货商",
+      "font_class": "gonghuoshang",
+      "unicode": "e6bd",
+      "unicode_decimal": 59069
+    },
+    {
       "icon_id": "29113077",
       "name": "暗黑模式",
       "font_class": "anheimoshi",
