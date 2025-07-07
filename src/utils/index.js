@@ -65,7 +65,7 @@ export const numberStrFormat = (number, decimal = 2, flag = false, hideUnit = fa
     // **手动截断小数**
     const factor = Math.pow(10, decimal)
     const total = Math.floor((Number(tool.times(Math.abs(amount), factor))))
-    const truncatedAmount = tool.div(total, factor)
+    const truncatedAmount = Number(tool.div(total, factor))
 
     // **格式化数字**
     resStr = flag
