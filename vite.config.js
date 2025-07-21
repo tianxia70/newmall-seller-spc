@@ -27,7 +27,28 @@ export default defineConfig({
   },
   build: {
     outDir: `dist/${siteName}`, // 输出目录名
-    emptyOutDir: false
+    emptyOutDir: true,
+    // 代码分割和优化配置
+    rollupOptions: {
+      output: {
+        // 手动代码分割
+        manualChunks: {
+          // 第三方库分离
+          'vendor-vue': ['vue', 'vue-router', 'pinia'],
+          'vendor-arco': ['@arco-design/web-vue'],
+          'vendor-echarts': ['echarts'],
+          'vendor-utils': ['dayjs', 'lodash-es', 'axios', 'qs'],
+          'vendor-ui': ['vant', 'html2canvas', 'jspdf', 'qrcode'],
+          'vendor-i18n': ['vue-i18n']
+        }
+      }
+    },
+    // 提高chunk大小警告阈值
+    chunkSizeWarningLimit: 1000,
+    // 启用CSS代码分割
+    cssCodeSplit: true,
+    // 压缩选项（使用默认esbuild压缩）
+    minify: 'esbuild'
   },
   server: {
     host: '0.0.0.0',
