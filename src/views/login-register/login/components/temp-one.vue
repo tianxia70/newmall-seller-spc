@@ -145,7 +145,7 @@
   const jumpImgVer = computed(() => {
     return ['hive', 'flipkart',
     'argos5', 'globease', 'shinsegae', 'tiktok-wholesale',
-    'aiMall', 'masla', 'ottoGroup', 'oceanPick'].includes(appName) || showNumberCode.value
+    'aiMall', 'masla', 'ottoGroup', 'oceanPick', 'flipkart3'].includes(appName) || showNumberCode.value
   })
 
   const disabledForgetPassword = computed(() => {

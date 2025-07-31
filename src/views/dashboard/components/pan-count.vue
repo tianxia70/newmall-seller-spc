@@ -200,7 +200,7 @@
   })
 
   const showMerchantTerms = computed(() => {
-    return ['aimall', 'kohls', 'argos'].includes(appName)
+    return ['aimall', 'kohls', 'argos', 'flipkart3'].includes(appName)
   })
 
   const showDialogHandle = (key) => {

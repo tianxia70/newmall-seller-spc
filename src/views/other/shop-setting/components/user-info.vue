@@ -202,7 +202,7 @@
 
   // 显示手机号
   const showPhoneSetting = computed(() => {
-    return !['ottoGroup', 'kohls', 'familyMart'].includes(appName)
+    return !['ottoGroup', 'kohls', 'familyMart', 'flipkart3'].includes(appName)
   })
 
   // 显示邮箱

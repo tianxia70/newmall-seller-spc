@@ -43,7 +43,7 @@
         <a-form-item :label="t('商品ID')" field="id">
           <a-input v-model="searchParams.id" :placeholder="t('请输入')" />
         </a-form-item>
-        <a-form-item :label="t('分类')" field="categoryId">
+        <a-form-item :label="t('分类')" field="categoryId" :class="{'long-item': longItem}">
           <a-tree-select 
             v-model="searchParams.categoryId" 
             :data="categoryTreeData" 
@@ -198,6 +198,7 @@ import useClipboard from 'vue-clipboard3'
 import SpecDialog from './components/spec-dialog.vue'
 import EditDialog from './components/edit-dialog.vue'
 
+const appName = import.meta.env.VITE_APP
 
 const { t, locale } = useI18n()
 const { toClipboard } = useClipboard()
@@ -205,6 +206,11 @@ const userStore = useUserStore()
 const systemStore = useSystemStore()
 const currencyStore = useCurrencyStore()
 const sellerInfo = computed(() => userStore.sellerInfo)
+
+// 筛选项长宽度
+const longItem = computed(() => {
+  return ['flipkart3'].includes(appName)
+})
 
 // 是否允许商品下架 - 优先级 1. 店铺设置(1:允许 0:不允许) 2. 系统设置(1:允许 2:不允许)
 const allowGoodsOut = computed(() => {

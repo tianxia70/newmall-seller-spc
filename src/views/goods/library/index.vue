@@ -11,7 +11,7 @@
         <a-form-item :label="t('商品ID')" field="id">
           <a-input v-model="searchParams.id" :placeholder="t('请输入')" />
         </a-form-item>
-        <a-form-item :label="t('分类')" field="categoryId">
+        <a-form-item :label="t('分类')" field="categoryId" :class="{'long-item': longItem}">
           <a-tree-select 
             v-model="searchParams.categoryId" 
             :data="categoryTreeData" 
@@ -93,9 +93,16 @@ import { Message } from '@arco-design/web-vue'
 import AddDialog from './components/add-dialog.vue'
 import { useUserStore } from '@/store'
 
+const appName = import.meta.env.VITE_APP
+
 const { t } = useI18n()
 const userStore = useUserStore()
 const sellerInfo = computed(() => userStore.sellerInfo)
+
+// 筛选项长宽度
+const longItem = computed(() => {
+  return ['flipkart3'].includes(appName)
+})
 
 const dialogVisible = ref(false)
 const addIds = ref([])
