@@ -21,7 +21,6 @@
   import { computed } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { langData } from './config'
-  import { langKey } from '@/configs'
   import { loadLocaleMessages } from '@/i18n'
 
   const props = defineProps({
