@@ -39,11 +39,22 @@
   })
 
   const handleSelect = async (data) => {
-    await loadLocaleMessages(data.key)
-    locale.value = data.key
-    localStorage.setItem(langKey, data.key)
-
-    window.location.reload()
+    try {
+      // 新的 loadLocaleMessages 函数已经包含了以下操作：
+      // 1. 设置 locale.value
+      // 2. 保存到 localStorage 
+      // 3. 设置文本方向
+      const success = await loadLocaleMessages(data.key)
+      
+      if (success) {
+        // 刷新页面以确保所有组件都使用新语言
+        window.location.reload()
+      } else {
+        console.error('Failed to load language:', data.key)
+      }
+    } catch (error) {
+      console.error('Language switch error:', error)
+    }
   }
 </script>
 
