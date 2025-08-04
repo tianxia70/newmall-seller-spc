@@ -127,11 +127,11 @@
 
   const handleHours = computed(() => {
     let hour = 24
-    if (['oufan', 'tiktok6', 'whale'].includes(appName)) {
-      day = 48
+    if (['oufan', 'tiktok6', 'whale', 'shein'].includes(appName)) {
+      hour = 48
     }
     if (['tiktok4'].includes(appName)) {
-      day = 72
+      hour = 72
     }
 
     return hour
