@@ -644,6 +644,8 @@
       }
     }
 
+    params.currency = params.channel
+
     // 没有虚拟币提现
     if (!hasCryptWithdraw.value) {
       const obj = {
