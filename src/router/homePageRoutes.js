@@ -1,3 +1,5 @@
+const appName = import.meta.env.VITE_APP
+
 export const homePageRoutes = [
   {
     name: 'dashboard',
@@ -141,7 +143,8 @@ export const homePageRoutes = [
         path: '/other/promotion',
         meta: {
           title: '创业联盟',
-          icon: 'new-flag'
+          icon: 'new-flag',
+          hidden: ['shein'].includes(appName)
         },
         component: () => import('@/views/other/promotion/index.vue')
       }
