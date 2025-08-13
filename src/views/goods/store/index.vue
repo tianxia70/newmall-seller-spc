@@ -162,7 +162,7 @@
           <template #content>
             <a-doption @click.stop="handleSpec(record)">{{ t('规格') }}</a-doption>
             <a-doption @click.stop="handleEdit(record)">{{ t('修改') }}</a-doption>
-            <a-doption @click.stop>
+            <a-doption v-if="allowGoodsOut" @click.stop>
               <a-popconfirm
                 type="warning"
                 :content="t('确定删除该商品？')"
