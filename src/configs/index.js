@@ -31,7 +31,7 @@ export const APP_PROXY_PREFIX = '/api'
 export const whiteRoute = ['login', 'register']
 
 // 系统支持的多语言标识
-export const langMessages = [ 'en', 'zh-cn', 'zh-tw', 'es', 'pt', 'af', 'el', 'it', 'ru', 'tr', 'de', 'fr', 'ja', 'ko', 'ms', 'th', 'tl', 'ar', 'vi', 'hi', 'id']
+export const langMessages = [ 'en', 'zh-cn', 'zh-tw', 'es', 'pt', 'af', 'el', 'it', 'ru', 'tr', 'de', 'fr', 'ja', 'ko', 'ms', 'th', 'tl', 'ar', 'vi', 'hi', 'id', 'ro']
 
 // 手机区号默认
 export const phoneAreaCodeDefalut = 44

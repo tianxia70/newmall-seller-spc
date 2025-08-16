@@ -25,7 +25,6 @@ async function initI18n() {
   
   const appName = import.meta.env.VITE_APP
   let lang = 'en'
-  const messagesArr = [ 'en', 'zh-cn', 'zh-tw', 'es', 'pt', 'af', 'el', 'it', 'ru', 'tr', 'de', 'fr', 'ja', 'ko', 'ms', 'th', 'tl', 'ar', 'vi', 'hi', 'id']
 
   // 获取存储的语言设置
   const storeLang = localStorage.getItem(langKey)
@@ -45,9 +44,9 @@ async function initI18n() {
       const browserLang = navigator.language.toLowerCase()
       const shortLang = browserLang.split('-')[0]
 
-      if (messagesArr.includes(browserLang)) {
+      if (langMessages.includes(browserLang)) {
         lang = browserLang
-      } else if (messagesArr.includes(shortLang)) {
+      } else if (langMessages.includes(shortLang)) {
         lang = shortLang
       }
     }

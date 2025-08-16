@@ -103,5 +103,10 @@ export const langData = [
     title: 'Indonesia',
     key: 'id',
     image: new URL('@/assets/images/lang/id.png', import.meta.url)
+  },
+  {
+    title: 'Română',
+    key: 'ro',
+    image: new URL('@/assets/images/lang/ro.png', import.meta.url)
   }
 ]

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { langKey } from '@/configs'
+import { langKey, langMessages } from '@/configs'
 
 // 注意：这个文件现在主要用于提供动态切换语言的功能
 // 主要的 i18n 初始化逻辑已经移动到 main.js 中
@@ -106,6 +106,9 @@ export const getLocationBasedLanguage = () => {
         case 'CN':
           lang = 'zh-cn'
           break
+        case 'RO':
+          lang = 'ro'
+          break
       }
       
       resolve(lang)
@@ -117,7 +120,7 @@ export const getLocationBasedLanguage = () => {
 
 // 获取支持的语言列表
 export const getSupportedLanguages = () => {
-  return ['en', 'zh-cn', 'zh-tw', 'es', 'pt', 'af', 'el', 'it', 'ru', 'tr', 'de', 'fr', 'ja', 'ko', 'ms', 'th', 'tl', 'ar', 'vi', 'hi', 'id']
+  return langMessages
 }
 
 // 获取当前语言
