@@ -4,5 +4,6 @@ import favicon from '@/assets/favicons/flipkart3.ico';
 export default {
   title: `Flipkart`,
   logo,
-  favicon
+  favicon,
+  siteAreaCodeDefalut: 82
 }
