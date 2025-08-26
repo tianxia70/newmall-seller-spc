@@ -299,13 +299,15 @@
       cryptData.value = data
 
       const storeArr = []
+      const storeNameArr = []
       for (let i = 0; i < data.length; i++) {
         const iconName = data[i].coin
-        if (!storeArr.includes(iconName)) {
+        if (!storeNameArr.includes(iconName)) {
           storeArr.push({
             label: iconName,
             value: iconName
           })
+          storeNameArr.push(iconName)
         }
       }
 
@@ -321,7 +323,7 @@
         })
       }
 
-      if (['argos', 'familyShop', 'selfridges', 'sm', 'argos4', 'cuttingEdge', 'harrods', 'zibbet', 'family-wholesale-group', 'oufan', 'tiktok5', 'argos6', 'tiktok8'].includes(appName)) {
+      if (['argos', 'familyShop', 'selfridges', 'sm', 'argos4', 'cuttingEdge', 'harrods', 'zibbet', 'family-wholesale-group', 'oufan', 'tiktok5', 'argos6', 'tiktok8', 'joom'].includes(appName)) {
         dataList.push({
           label: ['sm'].includes(appName) ? t('银行卡1') : t('银行卡'),
           value: 'bank',
