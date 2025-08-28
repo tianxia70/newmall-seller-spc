@@ -32,77 +32,79 @@
             <a-form-item :label="t('币种')" field="coin">
               <pc-check-picker v-model="formState.coin" :options="cryptSelectData" @change="getFeeHandle" />
             </a-form-item>
-            <a-form-item :label="t('区块链网络')" field="blockchain_name">
-              <pc-check-picker v-model="formState.blockchain_name" :options="blockchainNameData" />
-            </a-form-item>
-            <a-form-item :label="t('充值地址')" field="channel_address">
-              <a-input v-model="formState.channel_address" readonly>
-                <template #append>
-                  <a-link @click="handleCopy">{{ t('复制') }}</a-link>
+            <template v-if="showIconForm">
+              <a-form-item :label="t('区块链网络')" field="blockchain_name">
+                <pc-check-picker v-model="formState.blockchain_name" :options="blockchainNameData" />
+              </a-form-item>
+              <a-form-item :label="t('充值地址')" field="channel_address">
+                <a-input v-model="formState.channel_address" readonly>
+                  <template #append>
+                    <a-link @click="handleCopy">{{ t('复制') }}</a-link>
+                  </template>
+                </a-input>
+              </a-form-item>
+              <a-form-item v-if="qrCodeImg" :label="t('扫描二维码')">
+                <div class="qr-code-img-box">
+                  <div class="qr-code-img">
+                    <img :src="qrCodeImg" alt="qrcode" />
+                  </div>
+                  <a-link @click="downloadImage(qrCodeImg, `${formState.coin}_${formState.blockchain_name}`)">{{ t('保存二维码') }}</a-link>
+                </div>
+              </a-form-item>
+              <a-form-item class="label-item-flex" field="amount">
+                <template #label>
+                  <div class="flex items-center gap-2 justify-between flex-1">
+                    <span>{{ t('充值数量') }}</span>
+                    <p v-if="Number(fee)">{{ t('当前汇率') }}  {{ `${1} : ${numberStrFormat(fee, 2, false, true)}` }}</p>
+                  </div>
                 </template>
-              </a-input>
-            </a-form-item>
-            <a-form-item v-if="qrCodeImg" :label="t('扫描二维码')">
-              <div class="qr-code-img-box">
-                <div class="qr-code-img">
-                  <img :src="qrCodeImg" alt="qrcode" />
-                </div>
-                <a-link @click="downloadImage(qrCodeImg, `${formState.coin}_${formState.blockchain_name}`)">{{ t('保存二维码') }}</a-link>
+                <a-input-number
+                  v-model="formState.amount" model-event="input"
+                  :min="0"
+                  :placeholder="t('请输入')"
+                  :precision="precisionNum"
+                  :hide-button="true"
+                />
+                <template #extra>
+                  <div class="flex items-center justify-between mt-1">
+                    <div class="flex items-center gap-1">
+                      <span>{{ t('充值限额') }}</span>
+                      <p>
+                        <span class="main-color">{{ numberStrFormat(rechargeLimit.min, 2, false, true) }}USDT</span>
+                        <span class="main-color"> ~ </span>
+                        <span class="main-color">{{ numberStrFormat(rechargeLimit.max, 2, false, true) }}USDT</span>
+                      </p>
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <span>{{ t('预计到账') }}</span>
+                      <span class="main-color">{{ expectAmount }} USDT</span>
+                    </div>
+                  </div>
+                </template>
+              </a-form-item>
+              <a-form-item :label="t('上传图片（上传支付详情截图）')" field="img">
+                <Uploader
+                  v-model="formState.img"
+                  :after-read="(file) => afterRead(file)"
+                  :max-count="1"
+                  :readonly="false"
+                  :preview-options="{
+                    closeOnClickOverlay: true,
+                    closeable: true
+                  }"
+                  :max-size="10 * 1024 * 1024"
+                  @oversize="onOversize"
+                />
+              </a-form-item>
+              <a-form-item v-if="showRemark" :label="t('备注')" field="remark">
+                <a-textarea v-model="formState.remark" :placeholder="t('请输入')" :max-length="100" show-word-limit/>
+              </a-form-item>
+              <div class="flex items-center gap-2 justify-end mt-2 pb-4">
+                <a-button type="primary" :loading="submitLoading" @click="handleSubmit">{{ t('提交') }}</a-button>
               </div>
-            </a-form-item>
-            <a-form-item class="label-item-flex" field="amount">
-              <template #label>
-                <div class="flex items-center gap-2 justify-between flex-1">
-                  <span>{{ t('充值数量') }}</span>
-                  <p v-if="Number(fee)">{{ t('当前汇率') }}  {{ `${1} : ${numberStrFormat(fee, 2, false, true)}` }}</p>
-                </div>
-              </template>
-              <a-input-number
-                v-model="formState.amount" model-event="input"
-                :min="0"
-                :placeholder="t('请输入')"
-                :precision="precisionNum"
-                :hide-button="true"
-              />
-              <template #extra>
-                <div class="flex items-center justify-between mt-1">
-                  <div class="flex items-center gap-1">
-                    <span>{{ t('充值限额') }}</span>
-                    <p>
-                      <span class="main-color">{{ numberStrFormat(rechargeLimit.min, 2, false, true) }}USDT</span>
-                      <span class="main-color"> ~ </span>
-                      <span class="main-color">{{ numberStrFormat(rechargeLimit.max, 2, false, true) }}USDT</span>
-                    </p>
-                  </div>
-                  <div class="flex items-center gap-1">
-                    <span>{{ t('预计到账') }}</span>
-                    <span class="main-color">{{ expectAmount }} USDT</span>
-                  </div>
-                </div>
-              </template>
-            </a-form-item>
-            <a-form-item :label="t('上传图片（上传支付详情截图）')" field="img">
-              <Uploader
-                v-model="formState.img"
-                :after-read="(file) => afterRead(file)"
-                :max-count="1"
-                :readonly="false"
-                :preview-options="{
-                  closeOnClickOverlay: true,
-                  closeable: true
-                }"
-                :max-size="10 * 1024 * 1024"
-                @oversize="onOversize"
-              />
-            </a-form-item>
-            <a-form-item v-if="showRemark" :label="t('备注')" field="remark">
-              <a-textarea v-model="formState.remark" :placeholder="t('请输入')" :max-length="100" show-word-limit/>
-            </a-form-item>
-            <div class="flex items-center gap-2 justify-end mt-2 pb-4">
-              <a-button type="primary" :loading="submitLoading" @click="handleSubmit">{{ t('提交') }}</a-button>
-            </div>
+            </template>
           </template>
-          <template v-if="currentType === 'service'">
+          <template v-if="currentType === 'service' || !showIconForm">
             <a-alert>
               <template #title>{{ t('提示') }}</template>
               {{ t('请联系客服') }}
@@ -311,6 +313,13 @@
         }
       }
 
+      if (['joom'].includes(appName)) {
+        storeArr.push({
+          label: t('银行卡'),
+          value: 'bank'
+        })
+      }
+
       cryptSelectData.value = storeArr
 
       const dataList = []
@@ -386,16 +395,22 @@
     })
   }
 
+  const openServiceHandle = () => {
+    if (systemStore.customer_service_url) {
+      window.open(systemStore.customer_service_url)
+    } else {
+      im_create_iframe_client && im_create_iframe_client.open();
+    }
+  }
+
   const handleChangeType = () => {
     if (currentType.value === 'crypt') {
+      formState.value.type = typeData.value[0].value
+      formState.value.coin = cryptSelectData.value[0].value
       getFeeHandle()
     }
     if (currentType.value === 'service') {
-      if (systemStore.customer_service_url) {
-        window.open(systemStore.customer_service_url)
-      } else {
-        im_create_iframe_client && im_create_iframe_client.open();
-      }
+      openServiceHandle()
     }
   }
 
@@ -409,17 +424,26 @@
       fee.value = res.price
     })
   }
-  const getFeeHandle = () => {
-    if (formState.value.coin) {
-      getFeeRequest()
-      if (feeInterval.value) {
-        clearInterval(feeInterval.value)
-      }
 
-      feeInterval.value = setInterval(() => {
+  const showIconForm = ref(true)
+  const getFeeHandle = (type) => {
+    if (type === 'bank') {
+      showIconForm.value = false
+      openServiceHandle()
+    } else {
+      showIconForm.value = true
+      if (formState.value.coin) {
         getFeeRequest()
-      }, 1000)
+        if (feeInterval.value) {
+          clearInterval(feeInterval.value)
+        }
+
+        feeInterval.value = setInterval(() => {
+          getFeeRequest()
+        }, 1000)
+      }
     }
+    
   }
 
   const handleCopy = async () => {
