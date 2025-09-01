@@ -1591,5 +1591,6 @@ export default {
   "转出金额最大为：": "Suma maximă transferată:",
   "服务器资源不存在": "Resursa serverului nu există",
   "{0}欢迎您！": "Bun venit la {0}!",
-  "如果你没有账号，你想要现在注册一个吗？": "Dacă nu aveți un cont, doriți să vă înregistrați unul acum?"
+  "如果你没有账号，你想要现在注册一个吗？": "Dacă nu aveți un cont, doriți să vă înregistrați unul acum?",
+  "批量下单": "Comanda lot"
 }

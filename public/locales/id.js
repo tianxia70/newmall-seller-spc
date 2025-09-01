@@ -1592,5 +1592,6 @@ export default {
   "转出金额最大为：": "Jumlah penarikan maksimal adalah:",
   "服务器资源不存在": "Sumber daya server tidak ada",
   "{0}欢迎您！": "{0}Selamat datang!",
-  "如果你没有账号，你想要现在注册一个吗？": "Jika Anda tidak memiliki akun, apakah Anda ingin membuat akun sekarang?"
+  "如果你没有账号，你想要现在注册一个吗？": "Jika Anda tidak memiliki akun, apakah Anda ingin membuat akun sekarang?",
+  "批量下单": "Pesanan batch"
 }

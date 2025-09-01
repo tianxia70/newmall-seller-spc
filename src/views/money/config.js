@@ -6,6 +6,7 @@ export const contentTypeData = [
   { label: '全部', value: '' },
   { label: '充值订单', value: 'recharge' },
   { label: '提现订单', value: 'withdraw' },
+  { label: '批量下单', value: 'pay-order' },
   { label: '推广佣金', value: 'brokerage' },
   { label: '商品采购', value: 'push-order' },
   { label: '商品退款', value: 'return-order-seller' },

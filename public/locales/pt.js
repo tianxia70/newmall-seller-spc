@@ -1592,5 +1592,6 @@ export default {
   "转出金额最大为：": "O valor máximo do saque é:",
   "服务器资源不存在": "Recurso do servidor não existe",
   "{0}欢迎您！": "{0}Bem-vindo!",
-  "如果你没有账号，你想要现在注册一个吗？": "Se você não tem uma conta, deseja criar uma conta agora?"
+  "如果你没有账号，你想要现在注册一个吗？": "Se você não tem uma conta, deseja criar uma conta agora?",
+  "批量下单": "Pedido por lote"
 }
