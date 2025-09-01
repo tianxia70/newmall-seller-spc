@@ -1,3 +1,6 @@
+const browserLang = navigator.language || 'en'; // 例如 zh-CN、en-US
+document.documentElement.setAttribute("lang", browserLang);
+
 import { createApp } from 'vue'
 import ArcoVue from '@arco-design/web-vue'
 import ArcoVueIcon from '@arco-design/web-vue/es/icon'
