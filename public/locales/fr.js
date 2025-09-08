@@ -1592,5 +1592,6 @@ export default {
   "服务器资源不存在": "Le serveur n'existe pas",
   "{0}欢迎您！": "{0}Bienvenue !",
   "如果你没有账号，你想要现在注册一个吗？": "Si vous n'avez pas de compte, voulez-vous en créer un maintenant ?",
-  "批量下单": "Commande par lot"
+  "批量下单": "Commande par lot",
+  "图片裁切": "Recadrer l'image"
 }

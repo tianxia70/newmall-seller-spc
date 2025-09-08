@@ -1592,5 +1592,6 @@ export default {
   "服务器资源不存在": "Resursa serverului nu există",
   "{0}欢迎您！": "Bun venit la {0}!",
   "如果你没有账号，你想要现在注册一个吗？": "Dacă nu aveți un cont, doriți să vă înregistrați unul acum?",
-  "批量下单": "Comanda lot"
+  "批量下单": "Comanda lot",
+  "图片裁切": "Tăiere imagine"
 }

@@ -1595,5 +1595,6 @@ export default {
   "服务器资源不存在": "Tài nguyên máy chủ không tồn tại",
   "{0}欢迎您！": "{0}Chào mừng bạn!",
   "如果你没有账号，你想要现在注册一个吗？": "Nếu bạn không có tài khoản, bạn có muốn tạo tài khoản ngay bây giờ không?",
-  "批量下单": "Đơn hàng batch"
+  "批量下单": "Đơn hàng batch",
+  "图片裁切": "Cắt ảnh"
 }

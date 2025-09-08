@@ -1,10 +1,11 @@
 <template>
   <a-card :title="t('横幅设置')">
+    <PictureCropper v-model:visible="pictureCropperVisible" :file="pictureCropperFile" :width="1920" :height="300" @confirm="pictureCropperConfirm" />
+
     <a-form ref="formRef" :model="formState" layout="vertical" style="max-width: 1200px;">
       <a-form-item field="banner1" :label="`${t('店铺横幅')}1 (1920x300)`" class="banner-item">
         <Uploader
           v-model="formState.banner1"
-          :before-read="(file) => beforeRead(file)"
           :after-read="(file) => afterRead(file, 'banner1')"
           :max-count="1"
           :readonly="false"
@@ -19,7 +20,6 @@
       <a-form-item field="banner2" :label="`${t('店铺横幅')}2 (1920x300)`" class="banner-item">
         <Uploader
           v-model="formState.banner2"
-          :before-read="(file) => beforeRead(file)"
           :after-read="(file) => afterRead(file, 'banner2')"
           :max-count="1"
           :readonly="false"
@@ -34,7 +34,6 @@
       <a-form-item field="banner3" :label="`${t('店铺横幅')}3 (1920x300)`" class="banner-item">
         <Uploader
           v-model="formState.banner3"
-          :before-read="(file) => beforeRead(file)"
           :after-read="(file) => afterRead(file, 'banner3')"
           :max-count="1"
           :readonly="false"
@@ -56,13 +55,14 @@
 <script setup>
   import { ref, computed } from 'vue'
   import { Uploader } from 'vant'
-  import { Message, Notification } from '@arco-design/web-vue'
-  import { compressImage, getImageSize } from '@/utils'
+  import { Message } from '@arco-design/web-vue'
+  import { compressImage } from '@/utils'
   import { imageUpload } from '@/api/system'
   import { sellerUpdate } from '@/api/seller'
   import { useI18n } from 'vue-i18n'
   import { useUserStore } from '@/store'
   import { cloneDeep } from 'lodash-es'
+  import PictureCropper from '@/components/picture-cropper/index.vue'
 
   const { t } = useI18n()
   const userStore = useUserStore()
@@ -79,19 +79,12 @@
     Message.error(t('图片大小不能超过{0}', ['10MB']))
   }
 
-  const beforeRead = async (file) => {
-    const {width, height} = await getImageSize(file)
-    if (width !== 1920 || height !== 300) {
-      Notification.error({
-        title: t('图片尺寸不符合要求'),
-        content: `${t('上传文件的图片大小不合符标准,标准尺寸为1920×300。当前上传图片的尺寸为：')} ${width}x${height}`
-      })
-      return Promise.reject()
-    }
-    return Promise.resolve()
-  }
+  const imageUploadHandle = async (file, moduleName) => {
+    formState.value[moduleName] = [{
+      status: 'uploading',
+      message: t('上传中...')
+    }]
 
-  const afterRead = async (file, moduleName) => {
     file.status = 'uploading'
     file.message = t('上传中...')
 
@@ -99,6 +92,7 @@
       // 如果文件大于10MB，直接提示并返回
       if (file.file.size > 10 * 1024 * 1024) {
         Message.error(t('图片大小不能超过{0}', ['10MB']))
+        formState.value[moduleName][0].status = 'failed'
         file.status = 'failed'
         return
       }
@@ -109,6 +103,12 @@
       formData.append('file', compressedFile);
       formData.append('moduleName', moduleName)
       imageUpload(formData).then(res => {
+        formState.value[moduleName] = [{
+          message: t('上传成功'),
+          url: res.url,
+          status: 'success'
+        }]
+
         file.status = 'success'
         file.message = t('上传成功')
         file.url = res.url
@@ -116,6 +116,9 @@
         formRef.value.validateField(moduleName)
 
       }).catch(function (err) {
+        formState.value[moduleName][0].status = 'failed'
+        formState.value[moduleName][0].message = t('上传失败')
+
         file.status = 'failed'
         file.message = t('上传失败')
 
@@ -127,12 +130,32 @@
     }
   }
 
+  const currentModuleName = ref('')
+  const pictureCropperVisible = ref(false)
+  const pictureCropperFile = ref(null)
+  const afterRead = async (file, moduleName) => {
+    currentModuleName.value = moduleName
+    pictureCropperFile.value = file.file
+    pictureCropperVisible.value = true
+  }
+
+  const pictureCropperConfirm = async (obj) => {
+    const file = {
+      file: obj.file,
+      content: obj.dataURL,
+      objectUrl: obj.blobURL,
+      message: '',
+      status: ''
+    }
+    await imageUploadHandle(file, currentModuleName.value)
+  }
+
   const subLoading = ref(false)
   const submitHandle = async () => {
     const valid = await formRef.value.validate()
     if (!valid) {
       const params = cloneDeep(formState.value)
-      if (params.banner1[0].status === 'uploading' || params.banner2[0].status === 'uploading' || params.banner3[0].status === 'uploading') {
+      if (params.banner1[0]?.status === 'uploading' || params.banner2[0]?.status === 'uploading' || params.banner3[0]?.status === 'uploading') {
         Message.error(t('请等待图片上传完成'))
         return false
       }
@@ -179,6 +202,12 @@
     height: auto;
     aspect-ratio: 64 / 10;
     margin: 0;
+  }
+  :deep(.van-uploader__preview),
+  :deep(.van-uploader__file) {
+    width: 100%;
+    height: 100%;
+    margin: 0 !important;
   }
 }
 

@@ -20,7 +20,7 @@
   const pageContainer = ref(null)
 
   const showSoical = computed(() => {
-    return !['argos2', 'argos5', 'flipkart'].includes(appName)
+    return !['argos2', 'argos5', 'flipkart', 'primePick'].includes(appName)
   })
 
   const scrollToBottom = () => {

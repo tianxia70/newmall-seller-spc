@@ -1594,5 +1594,6 @@ export default {
   "服务器资源不存在": "Server bron bestaan ​​nie",
   "{0}欢迎您！": "{0}welkom!",
   "如果你没有账号，你想要现在注册一个吗？": "As jy nie 'n rekening het nie, wil jy nou 'n rekening maak?",
-  "批量下单": "Batch-aanspreek"
+  "批量下单": "Batch-aanspreek",
+  "图片裁切": "Prent klip"
 }
