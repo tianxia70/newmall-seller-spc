@@ -1,7 +1,7 @@
 <template>
   <div ref="pageContainer">
     <basic-info class="mb-3"></basic-info>
-    <banner-info class="mb-3"></banner-info>
+    <banner-info v-if="showBanner" class="mb-3"></banner-info>
     <soical-info v-if="showSoical" class="mb-3"></soical-info>
     <user-info class="mb-3"></user-info>
   </div>
@@ -21,6 +21,10 @@
 
   const showSoical = computed(() => {
     return !['argos2', 'argos5', 'flipkart', 'primePick'].includes(appName)
+  })
+
+  const showBanner = computed(() => {
+    return !['primePick'].includes(appName)
   })
 
   const scrollToBottom = () => {
