@@ -176,7 +176,7 @@
 
   // 邀请码
   const showUserCode = computed(() => {
-    return !['family-wholesale-group', 'tiktok4', 'whale'].includes(appName)
+    return !['family-wholesale-group', 'tiktok4', 'whale', 'primePick'].includes(appName)
   })
 
   // 邀请码选填
