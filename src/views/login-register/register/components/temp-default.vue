@@ -176,12 +176,12 @@
 
   // 邀请码
   const showUserCode = computed(() => {
-    return !['family-wholesale-group', 'tiktok4', 'whale', 'primePick'].includes(appName)
+    return !['family-wholesale-group', 'tiktok4', 'whale'].includes(appName)
   })
 
   // 邀请码选填
   const noRequriedUserCode = computed(() => {
-    return ['tiktok4', 'tiktok8', 'tiktok11'].includes(appName)
+    return ['tiktok4', 'tiktok8', 'tiktok11', 'primePick'].includes(appName)
   })
 
   const agreeStatus = ref(false)
