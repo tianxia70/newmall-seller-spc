@@ -166,6 +166,14 @@
           item.content = t(item.title + ' content', varObj)
           item.title = t(item.title)
           break;
+        case 'inbox_notify_shop_open':
+          item.title = t('开店通知')
+          item.content = t('店铺{shopName}已开店', varObj)
+          break;
+          case 'inbox_notify_shop_closed':
+          item.title = t('闭店通知')
+          item.content = t('店铺{shopName}已闭店', varObj)
+          break;
       }
 
       // 订单采购超时提醒、通知
@@ -173,6 +181,7 @@
         item.title = t('订单逾期未采购提醒')
         item.content = t('订单逾期未采购提醒内容', varObj)
       }
+
       if (item.bizType === 'inbox_warn_order_purchas') {
         item.title = t('订单逾期未采购通知')
         item.content = t('订单逾期未采购通知内容', varObj)
