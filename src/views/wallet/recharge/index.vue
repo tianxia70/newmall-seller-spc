@@ -313,6 +313,7 @@
         }
       }
 
+      // 在币种增加银行卡
       if (['joom'].includes(appName)) {
         storeArr.push({
           label: t('银行卡'),
@@ -332,7 +333,7 @@
         })
       }
 
-      if (['argos', 'familyShop', 'selfridges', 'sm', 'argos4', 'cuttingEdge', 'harrods', 'zibbet', 'family-wholesale-group', 'oufan', 'tiktok5', 'argos6', 'tiktok8', 'joom'].includes(appName)) {
+      if (['argos', 'familyShop', 'selfridges', 'sm', 'argos4', 'cuttingEdge', 'harrods', 'zibbet', 'family-wholesale-group', 'oufan', 'tiktok5', 'argos6', 'tiktok8', 'joom', 'primePick'].includes(appName)) {
         dataList.push({
           label: ['sm'].includes(appName) ? t('银行卡1') : t('银行卡'),
           value: 'bank',
