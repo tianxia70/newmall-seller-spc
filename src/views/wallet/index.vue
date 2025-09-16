@@ -85,7 +85,7 @@
     </a-row>
 
     <a-carousel
-      v-if="showINviteBanner || (syspara.length && [0, 1].includes(Number(sellerInfo.rechargeBonusStatus)))"
+      v-if="inviteFriends.length || (syspara.length && [0, 1].includes(Number(sellerInfo.rechargeBonusStatus)))"
       class="mb-3"
       :current="carouselCurrent"
       :style="{
@@ -98,7 +98,7 @@
       indicator-type="dot"
       show-arrow="always"
     >
-      <a-carousel-item v-if="showINviteBanner">
+      <a-carousel-item v-if="inviteFriends.length">
         <div class="swiper-item" :style="{'background-image': `url(${inviteBgImg.href})`}" @click.stop="showInviteDialogHandle">
           <h3 v-html="t('邀请好友开店 <span class=highlight>豪礼</span>相送')"></h3>
           <p>{{
@@ -195,10 +195,6 @@
 
   const loanShow = computed(() => {
     return ['hive', 'kaifeng', 'family-wholesale-group', 'whale'].includes(appName)
-  })
-
-  const showINviteBanner = computed(() => {
-    return !['flipkart3'].includes(appName) && inviteFriends.value.length
   })
 
   const headerSpan = computed(() => {
