@@ -4,7 +4,7 @@
       <a-form :model="searchParams" layout="inline">
         <a-form-item :label="t('资金类型')" field="content_type">
           <a-select v-model="searchParams.content_type" :placeholder="t('请选择')">
-            <a-option v-for="item in contentTypeData" :key="item.value" :value="item.value">
+            <a-option v-for="item in contentTypeDataRef" :key="item.value" :value="item.value">
               {{ t(item.label) }}
             </a-option>
           </a-select>
@@ -77,12 +77,14 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue'
+  import { ref, computed } from 'vue'
   import { useI18n } from 'vue-i18n'
   import { useTableList } from '@/hooks/useTableList'
   import { pageListMoneyLog } from '@/api/user'
   import { contentTypeData, tableColumns } from './config'
   import { cloneDeep } from 'lodash-es'
+
+  const appName = import.meta.env.VITE_APP
 
   const { t } = useI18n()
   const searchParams = ref({
@@ -92,12 +94,24 @@
   
   const { tableData, tableLoading, getTableData, searchReset, tableRef, pageObj, pageChange, pageSizeChange } = useTableList(pageListMoneyLog)
 
+  const contentTypeDataRef = computed(() => {
+    const data = cloneDeep(contentTypeData)
+    if (['primePick'].includes(appName)) {
+      const arr = ['invest-in', 'invest-out']
+      const resData = data.filter(item => !arr.includes(item.value))
+      return resData
+    } else {
+      return data
+    }
+    return data
+  })
+
   const getTypeName = (type) => {
-    const obj = contentTypeData.find(item => item.value === type)
+    const obj = contentTypeDataRef.value.find(item => item.value === type)
     if (obj) {
       return t(obj.label)
     }
-    return ''
+    return '--'
   }
 
   const searchHandle = () => {
