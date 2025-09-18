@@ -103,7 +103,7 @@ const showCodeCopy = computed(() => {
 })
 
 const showPromoRate = computed(() => {
-  return !['oufan', 'ottoGroup', 'kohls', 'flipkart3'].includes(appName)
+  return !['oufan', 'ottoGroup', 'klepierre', 'flipkart3'].includes(appName)
 })
 
 const pageLoading = ref(false)

@@ -6,8 +6,8 @@
   "scripts": {
     "dev:argos": "VITE_APP=argos vite",
     "build:argos": "VITE_APP=argos vite build",
-    "dev:kohls": "VITE_APP=kohls vite",
-    "build:kohls": "VITE_APP=kohls vite build",
+    "dev:klepierre": "VITE_APP=klepierre vite",
+    "build:klepierre": "VITE_APP=klepierre vite build",
     "dev:tiktok11": "VITE_APP=tiktok11 vite",
     "dev:flipkart3": "VITE_APP=flipkart3 vite",
     "dev:shein": "VITE_APP=shein vite",
