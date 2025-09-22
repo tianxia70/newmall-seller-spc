@@ -218,6 +218,11 @@ function createRequest(service, externalService) {
       data: {},
     };
 
+    // 规定 formData 形式
+    if (config.formData) {
+      configDefault.headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
+    }
+
     // 如果是 FormData，必须删除 Content-Type 让浏览器自动加
     if (config.data instanceof FormData) {
       delete configDefault.headers['Content-Type'];

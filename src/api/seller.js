@@ -12,11 +12,12 @@ export const sellerInfo = () =>
 /**
  * 修改店铺信息
  */
-export const sellerUpdate = (params) =>
+export const sellerUpdate = (data) =>
   request({
+    formData: true,
     url: '/user/seller/update',
     method: 'post',
-    params
+    data
   });
 
 /**
