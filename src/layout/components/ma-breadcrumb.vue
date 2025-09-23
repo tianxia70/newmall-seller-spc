@@ -29,7 +29,7 @@ const timeZoneName = ref('')
 
 onMounted(() => {
   getTimeZone().then(res => {
-    if (appName === 'flipkart3') {
+    if (['klepierre', 'flipkart3'].includes(appName)) { // 韩国时区
       timeZoneName.value = 'GMT+9'
     } else {
       timeZoneName.value = res.timeZoneName

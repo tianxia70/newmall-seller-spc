@@ -8,7 +8,7 @@ import { useUserStore } from "@/store";
 moment.tz.setDefault('Asia/Shanghai')
 let timezone = moment.tz.guess(true) || 'Asia/Shanghai'
 const appName = import.meta.env.VITE_APP
-if (appName === 'flipkart3') { // 韩国时区
+if (['klepierre', 'flipkart3'].includes(appName)) { // 韩国时区
   timezone = 'Asia/Seoul'
 }
 
