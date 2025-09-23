@@ -6,7 +6,11 @@ import { useUserStore } from "@/store";
 
 // 获取时区信息
 moment.tz.setDefault('Asia/Shanghai')
-const timezone = moment.tz.guess(true)
+let timezone = moment.tz.guess(true) || 'Asia/Shanghai'
+const appName = import.meta.env.VITE_APP
+if (appName === 'flipkart3') { // 韩国时区
+  timezone = 'Asia/Seoul'
+}
 
 const BASE_URL = window.location.protocol + "//" + window.location.host
 
@@ -44,7 +48,7 @@ service.interceptors.request.use(config => {
     config.params = {}
   }
   config.params.lang = i18n.global.locale.value || 'en'
-  config.params.tz = timezone || 'Asia/Shanghai'
+  config.params.tz = timezone
 
   return config
 }, error => {

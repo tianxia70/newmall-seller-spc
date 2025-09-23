@@ -201,9 +201,15 @@ function createRequest(service, externalService) {
       config.params = {}
     }
 
+    const appName = import.meta.env.VITE_APP
+    let tzInfo = moment.tz.guess(true)
+    if (appName === 'flipkart3') { // 韩国时区
+      tzInfo = 'Asia/Seoul'
+    }
+
     config.params = {
       ...config.params,
-      'tz': moment.tz.guess(true) // 时区
+      'tz': tzInfo // 时区
     }
 
     const configDefault = {

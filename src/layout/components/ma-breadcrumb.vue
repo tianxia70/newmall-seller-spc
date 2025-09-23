@@ -24,11 +24,16 @@ import { getTimeZone } from '@/api/system'
 const { t } = useI18n()
 const route = useRoute()
 
+const appName = import.meta.env.VITE_APP
 const timeZoneName = ref('')
 
 onMounted(() => {
   getTimeZone().then(res => {
-    timeZoneName.value = res.timeZoneName
+    if (appName === 'flipkart3') {
+      timeZoneName.value = 'GMT+9'
+    } else {
+      timeZoneName.value = res.timeZoneName
+    }
   })
 })
 </script>

@@ -447,13 +447,15 @@
       cryptData.value = data
 
       const storeArr = []
+      const storeNameArr = []
       for (let i = 0; i < data.length; i++) {
         const iconName = data[i].coin
-        if (!storeArr.includes(iconName)) {
+        if (!storeNameArr.includes(iconName)) {
           storeArr.push({
             label: iconName,
             value: iconName
           })
+          storeNameArr.push(iconName)
         }
       }
 
