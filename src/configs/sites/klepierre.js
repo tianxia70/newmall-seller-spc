@@ -4,5 +4,6 @@ import favicon from '@/assets/favicons/klepierre.ico';
 export default {
   title: `Klepierre`,
   logo,
-  favicon
+  favicon,
+  siteAreaCodeDefalut: 82
 }

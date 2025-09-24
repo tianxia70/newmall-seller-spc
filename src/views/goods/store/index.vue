@@ -430,7 +430,7 @@ const dialogVisible = ref(false)
 
 const openDetails = (data) => {
   const {hostname, origin} = window.location
-  const href = ['localhost'].includes(hostname) ? 'https://www.sjiepc.com/#/product/details/' : `${origin}/#/product/details/`
+  const href = ['localhost'].includes(hostname) ? 'https://www.sjiepc.com/web/#/product/details/' : `${origin}/web/#/product/details/`
   const hrefUrl = `${href}${data.id}/${locale.value}/${currencyStore.currencyShort}-${currencyStore.currencyUnit}/seller`
 
   goodsUrl.value = hrefUrl

@@ -86,7 +86,7 @@
   })
 
   const intoShop = () => {
-    window.open(getOrigin() + "/#/store/details/" + sellerInfo.value.id + '?lang=' + locale.value);
+    window.open(getOrigin() + "/web/#/store/details/" + sellerInfo.value.id + '?lang=' + locale.value);
   }
 
   onMounted(async () => {
