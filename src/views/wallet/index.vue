@@ -233,7 +233,7 @@
   const handleLoan = () => {
     const { origin, hostname } = window.location
     const url = hostname === 'localhost' ? TEST_URL : origin
-    window.open(`${url}/web/#/credit?token=${getToken()}&lang=${locale.value}`)
+    window.open(`${url}/#/credit?token=${getToken()}&lang=${locale.value}`)
   }
 
   const showTransferDialog = ref(false)
