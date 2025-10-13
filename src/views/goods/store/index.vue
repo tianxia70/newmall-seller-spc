@@ -86,6 +86,9 @@
         showTotal: true,
         showPageSize: true
       }"
+      :scroll="{
+        x: 1800
+      }"
       :row-selection="rowSelection"
       v-model:selectedKeys="selectedKeys"
       @page-change="pageChange"

@@ -58,7 +58,7 @@ export const tableColumns = [
     title: t('标签'),
     dataIndex: 'tagHandle',
     slotName: 'tagHandle',
-    width: 190
+    width: 200
   },
   {
     title: t('销售价格'),
