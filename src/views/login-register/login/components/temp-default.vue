@@ -137,7 +137,7 @@
   }
 
   const showNumberCode = computed(() => {
-    return ['aliExpress-wholesale'].includes(appName)
+    return ['aliExpress-wholesale', 'shopify'].includes(appName)
   })
 
   const showAgree = computed(() => {

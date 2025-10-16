@@ -12,6 +12,7 @@
     "dev:shein": "VITE_APP=shein vite",
     "dev:joom": "VITE_APP=joom vite",
     "dev:primePick": "VITE_APP=primePick vite",
+    "dev:shopify": "VITE_APP=shopify vite",
     "build:tiktok11": "VITE_APP=tiktok11 vite build",
     "build:argos": "VITE_APP=argos vite build",
     "build:klepierre": "VITE_APP=klepierre vite build",
@@ -20,6 +21,7 @@
     "build:shein": "VITE_APP=shein vite build",
     "build:joom": "VITE_APP=joom vite build",
     "build:primePick": "VITE_APP=primePick vite build",
+    "build:shopify": "VITE_APP=shopify vite build",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"

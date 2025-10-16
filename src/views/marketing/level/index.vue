@@ -183,10 +183,10 @@
   })
 
   // 显示分店人数
-  const showStoreNum = computed(() => !['penguin', 'harrods', 'tiktok9'].includes(appName))
+  const showStoreNum = computed(() => !['penguin', 'harrods', 'tiktok9', 'shopify'].includes(appName))
 
   // 显示团队人数
-  const showTeamNum = computed(() => !['penguin'].includes(appName))
+  const showTeamNum = computed(() => !['penguin', 'shopify'].includes(appName))
 
   // 显示等级介绍
   const showLevelIntro = computed(() => {
