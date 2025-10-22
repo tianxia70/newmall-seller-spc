@@ -40,7 +40,7 @@ async function initI18n() {
     document.documentElement.setAttribute('dir', 'ltr')
     if (['tiktok9'].includes(appName)) {
       lang = 'zh-cn'
-    } else if (['oceanPick'].includes(appName)) {
+    } else if (['oceanPick', 'aiMall'].includes(appName)) {
       lang = 'en'
     } else {
       // 获取浏览器当前语言
