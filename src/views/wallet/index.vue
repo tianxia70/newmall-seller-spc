@@ -194,7 +194,7 @@
   })
 
   const loanShow = computed(() => {
-    return ['hive', 'kaifeng', 'family-wholesale-group', 'whale'].includes(appName)
+    return ['hive', 'kaifeng', 'family-wholesale-group', 'whale', 'aiMall'].includes(appName)
   })
 
   const headerSpan = computed(() => {

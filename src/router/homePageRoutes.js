@@ -144,7 +144,7 @@ export const homePageRoutes = [
         meta: {
           title: '创业联盟',
           icon: 'new-flag',
-          hidden: ['shein'].includes(appName)
+          hidden: ['shein', 'aiMall'].includes(appName)
         },
         component: () => import('@/views/other/promotion/index.vue')
       }

@@ -12,12 +12,21 @@
       <div class="document-content">
         <div class="content">
           <div v-for="(item, index) in agreeDataRef" :key="index" class="agree-item">
-            <h3>{{ t(item.title) }}</h3>
+            <h3>
+              <template v-if="item.title.indexOf('{appName}') > -1">
+                {{ t(item.title, {'appName': siteConfig.title}) }}
+              </template>
+              <template v-else>{{ t(item.title) }}</template>
+            </h3>
             <div v-if="item.data.length" class="info">
               <p v-for="(info, _index) in item.data" :key="info">
                 <template v-if="info.indexOf('{0}') > -1">
                   <template v-if="info.indexOf('您应当按照平台的规定设置商品价格') > -1">{{ `${index + 1}.${_index + 1} ${t(info, [timeSet])}` }}</template>
                   <template v-if="info.indexOf('店铺最低销售商品种类为') > -1">{{ `${index + 1}.${_index + 1} ${t(info, [goodsSet])}` }}</template>
+                  <template v-if="info.indexOf('您必须确保您的店铺正常运营') > -1">{{ `${index + 1}.${_index + 1} ${t(info, [runMonths])}` }}</template>
+                  <template v-if="info.indexOf('商家可通过{0}平台提供的在线申请系统提交申请') > -1">{{ `${index + 1}.${_index + 1} ${t(info, [siteConfig.title])}` }}</template>
+                  <template v-if="info.indexOf('每位{0}用户均需开通{0}提供的保险服务') > -1">{{ `${index + 1}.${_index + 1} ${t(info, [siteConfig.title, insuranceDays])}` }}</template>
+                  <template v-if="info.indexOf('{0}用户开通保险服务后，保险费将在{1}小时内退还') > -1">{{ `${index + 1}.${_index + 1} ${t(info, [siteConfig.title, insuranceHours])}` }}</template>
                 </template>
                 <template v-else>
                   {{ `${index + 1}.${_index + 1} ${t(info)}` }}
@@ -32,14 +41,15 @@
 </template>
 
 <script setup>
-  import { computed } from 'vue'
+  import { computed, onMounted, ref } from 'vue'
   import { useI18n } from 'vue-i18n'
-  import { agreeData } from "./config.js"
+  import { loadSiteConfig } from '@/utils'
+  import { agreeData, agreeDataAiMall } from "./config.js"
   import { cloneDeep } from 'lodash-es'
 
   const { t } = useI18n()
   const appName = import.meta.env.VITE_APP
-
+  const siteConfig = ref({})
 
   const emits = defineEmits(['update:visible', 'done']);
   const props = defineProps({
@@ -57,14 +67,42 @@
     return ['oufan'].includes(appName) ? 20 : 10
   })
 
+  const runMonths = computed(() => {
+    let months = 12
+    if (['aiMall'].includes(appName)) {
+      months = 12
+    }
+    return months
+  })
+
+  const insuranceDays = computed(() => {
+    let days = 180
+    if (['aiMall'].includes(appName)) {
+      days = 180
+    }
+    return days
+  })
+
+  const insuranceHours = computed(() => {
+    let hours = 24
+    if (['aiMall'].includes(appName)) {
+      hours = 24
+    }
+    return hours
+  })
+
   const agreeDataRef = computed(() => {
-    const data = cloneDeep(agreeData)
+    if (appName === 'aiMall') {
+      return cloneDeep(agreeDataAiMall)
+    } else {
+      const data = cloneDeep(agreeData)
       data.forEach(item => {
         if (item.key === 'two') {
           item.data.splice(2, 1)
         }
       })
       return data
+    }
   })
 
   const handleOk = () => {
@@ -75,6 +113,10 @@
   const handleCancel = () => {
     emits('update:visible', false)
   }
+
+  onMounted(async () => {
+    siteConfig.value = await loadSiteConfig(appName)
+  })
 </script>
 
 <style lang="less" scoped>
